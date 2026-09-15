@@ -11,7 +11,7 @@ const API = '';  // same origin
     const fromUrl = params.get('token');
     if (fromUrl) {
       window._authToken = fromUrl;
-      try { sessionStorage.setItem('soup_auth_token', fromUrl); } catch (e) {}
+      try { sessionStorage.setItem('kadhi_auth_token', fromUrl); } catch (e) {}
       // Drop ?token=… from the URL so refresh history doesn't leak it.
       params.delete('token');
       const qs = params.toString();
@@ -20,7 +20,8 @@ const API = '';  // same origin
       window.history.replaceState(null, '', clean);
     } else {
       try {
-        const saved = sessionStorage.getItem('soup_auth_token');
+        const saved = sessionStorage.getItem('kadhi_auth_token') ||
+          sessionStorage.getItem('soup_auth_token');
         if (saved) window._authToken = saved;
       } catch (e) {}
     }
@@ -622,7 +623,7 @@ function renderTrainingPage(templates, status) {
 
         <div class="card">
           <div class="card-title">Config (YAML)</div>
-          <textarea id="${editorId}" rows="22" placeholder="Paste your soup.yaml config here or select a template...">${templates[templateNames[0]] || ''}</textarea>
+          <textarea id="${editorId}" rows="22" placeholder="Paste your training config here or select a template...">${templates[templateNames[0]] || ''}</textarea>
         </div>
 
         <div style="display:flex; gap:0.75rem; margin-top:0.75rem">
@@ -713,8 +714,8 @@ async function startTraining() {
     });
     document.getElementById('config-status').innerHTML =
       `<span style="color:var(--accent)">Training started! PID: ${escapeHtml(String(result.pid))}</span>`;
-    // Refresh status
-    loadTrainingPage();
+    await loadTrainingPage();
+    await connectTrainingSSE();
   } catch (err) {
     document.getElementById('config-status').innerHTML =
       `<span style="color:var(--danger)">Error: ${escapeHtml(err.message)}</span>`;

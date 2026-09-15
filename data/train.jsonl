@@ -1,0 +1,5 @@
+{"instruction":"What is Python?","output":"Python is a programming language used to build applications, automate tasks, and analyze data."}
+{"instruction":"What is CUDA?","output":"CUDA is NVIDIA's platform for running parallel computations on a GPU."}
+{"instruction":"Explain machine learning simply.","output":"Machine learning finds patterns in examples and uses those patterns to make predictions or generate responses."}
+{"instruction":"What makes a good dataset?","output":"A good dataset is accurate, consistent, relevant to the task, and large enough to represent the behavior you want to learn."}
+{"instruction":"Write a short welcome message.","output":"Welcome! I am ready to help you learn and build."}
