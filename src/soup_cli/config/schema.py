@@ -1,6 +1,7 @@
 """Pydantic schemas for soup.yaml config — single source of truth."""
 
 import re
+from urllib.parse import urlparse
 from typing import Any, Dict, List, Literal, Optional, Union
 
 from pydantic import BaseModel, Field, field_validator, model_validator
@@ -4288,6 +4289,31 @@ class SoupConfig(BaseModel):
             "(v0.54.0 — schema-only on SoupConfig)."
         ),
     )
+
+    @field_validator("base", mode="before")
+    @classmethod
+    def normalize_huggingface_model_url(cls, value: str) -> str:
+        """Accept a Hugging Face model page URL as its repo id.
+
+        The model loaders expect ``namespace/name`` rather than the browser
+        URL copied from a model page. Local paths and non-Hugging Face values
+        remain unchanged.
+        """
+        if not isinstance(value, str):
+            return value
+        parsed = urlparse(value.strip())
+        if parsed.scheme not in {"http", "https"}:
+            return value
+        if parsed.netloc.lower() not in {"huggingface.co", "www.huggingface.co"}:
+            return value
+        parts = [part for part in parsed.path.split("/") if part]
+        if len(parts) < 2:
+            return value
+        if parts[0] in {"models", "datasets", "spaces"}:
+            parts = parts[1:]
+        if len(parts) < 2:
+            return value
+        return "/".join(parts[:2])
 
     @field_validator("experiment_name")
     @classmethod

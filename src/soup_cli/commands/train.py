@@ -1660,11 +1660,11 @@ def train(
             f"Duration: [bold]{result['duration']}[/]\n"
             f"Output: [bold]{result['output_dir']}[/]\n"
             f"Run ID: [bold]{run_id}[/]\n\n"
-            f"Quick test:  [bold]soup chat --model {result['output_dir']}[/]\n"
-            f"Push to HF:  [bold]soup push --model {result['output_dir']}[/]\n"
-            f"Merge LoRA:  [bold]soup merge --adapter {result['output_dir']}[/]\n"
-            f"Export GGUF: [bold]soup export --model {result['output_dir']}[/]\n"
-            f"Run details: [bold]soup runs show {run_id}[/]",
+            f"Quick test:  [bold]kadhi chat --model {result['output_dir']}[/]\n"
+            f"Push to HF:  [bold]kadhi push --model {result['output_dir']}[/]\n"
+            f"Merge LoRA:  [bold]kadhi merge --adapter {result['output_dir']}[/]\n"
+            f"Export GGUF: [bold]kadhi export --model {result['output_dir']}[/]\n"
+            f"Run details: [bold]kadhi runs show {run_id}[/]",
             title="[bold green]Training Complete![/]",
         )
     )

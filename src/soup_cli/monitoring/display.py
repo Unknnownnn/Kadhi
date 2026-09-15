@@ -133,7 +133,7 @@ class TrainingDisplay:
         name = self.config.experiment_name or self.config.base
         return Panel(
             content,
-            title=f"[bold green]Soup Training: {name}[/]",
+            title=f"[bold green]Kadhi Training: {name}[/]",
             subtitle=f"[dim]{self.device_name}[/]",
             border_style="green",
         )

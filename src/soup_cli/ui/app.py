@@ -582,7 +582,7 @@ def create_app(host: str = "127.0.0.1", port: int = 7860):
             # write; mkstemp creates a fresh O_EXCL file (no symlink following,
             # unpredictable name).
             fd, config_path = tempfile.mkstemp(
-                prefix="soup_ui_config_", suffix=".yaml"
+                prefix="kadhi_ui_config_", suffix=".yaml"
             )
             with os.fdopen(fd, "w", encoding="utf-8") as fh:
                 fh.write(req.config_yaml)
