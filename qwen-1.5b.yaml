@@ -1,0 +1,25 @@
+base: Qwen/Qwen2.5-1.5B-Instruct
+task: sft
+
+data:
+  train: ./data/train.jsonl
+  format: alpaca
+  val_split: 0.1
+  max_length: 256
+  train_on_responses_only: true
+
+training:
+  epochs: 3
+  lr: 2e-4
+  batch_size: 1
+  gradient_accumulation_steps: 4
+  gradient_checkpointing: true
+  logging_steps: 1
+  lora:
+    r: 16
+    alpha: 32
+    target_modules: auto
+    dropout: 0.05
+  quantization: 4bit
+
+output: ./output-qwen-1.5b
