@@ -91,6 +91,8 @@ def config_dict(shape: Dict[str, int]) -> Dict[str, Any]:
         "eos_token_id": 128001,
         "use_cache": False,
         "transformers_version": "synthetic",
+        "_kadhi_synthetic": True,
+        # Retain the historical marker for older loaders and fixtures.
         "_soup_synthetic": True,
     }
 

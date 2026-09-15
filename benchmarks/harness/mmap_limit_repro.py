@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproduce the Windows safetensors mapping limit without Soup, CUDA or bitsandbytes.
+"""Reproduce the Windows safetensors mapping limit without Kadhi, CUDA or bitsandbytes.
 
 ``shard_checkpoint`` enters every source shard into one ``ExitStack`` and keeps
 all the memory maps alive for the whole of pass 2. On the 2026-09-12 dev box

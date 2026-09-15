@@ -1,7 +1,7 @@
 """Harness for the #395 second-stack VRAM record.
 
 Reproduces every figure in ``benchmarks/gate-395-second-stack-vram.md`` against
-a released Soup, so the record can be re-measured rather than taken on trust.
+a released Kadhi build, so the record can be re-measured rather than taken on trust.
 
 Requirements
 ------------
@@ -10,7 +10,7 @@ Requirements
 - Downloads ``HuggingFaceTB/SmolLM2-135M`` and ``Qwen/Qwen2.5-0.5B``.
 - Original environment: A10G 23 GB (AWS ``g5.xlarge``), Ubuntu 22.04,
   torch 2.13.0+cu130, transformers 5.16.1, trl 0.29.1, peft 0.20.0,
-  Python 3.10. Soup 0.73.3.
+    Python 3.10. Kadhi 0.73.3.
 - Needs ``jinja2>=3.1.0``; the ``[dev]`` extra may resolve lower, and the
   chat-template path raises without it.
 - Whole run is a few minutes.
@@ -23,7 +23,7 @@ Usage
 
 Protocol
 --------
-Real ``soup train`` setup + one step, bf16, batch 1, ``quantization: none``,
+Real Kadhi training setup + one step, bf16, batch 1, ``quantization: none``,
 LoRA r=8, ``stream_buffers: 2``. "Real peak" is
 ``torch.cuda.max_memory_allocated()`` over the step.
 

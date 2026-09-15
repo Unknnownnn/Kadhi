@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Reproduce the layer-streaming bit-exactness measurement.
 
-This is the published ``bitexact.py`` harness described in
-``benchmarks/gate-h100-validation.md``:
+This is the published ``bitexact.py`` harness for Kadhi's layer-streaming
+implementation, described in ``benchmarks/gate-h100-validation.md``:
 
     shard -> stream -> compare logits/gradients/loss curve
     against a resident reference of matching numerics
@@ -11,7 +11,7 @@ Requirements
 ------------
 - CUDA-capable GPU.
 - PyTorch, transformers, peft, safetensors, and bitsandbytes for NF4.
-- A locally available checkpoint, either as a path or through Soup's
+- A locally available checkpoint, either as a path or through Kadhi's
   weight cache/resolver.
 - Enough GPU memory for the resident reference as well as the streamed model.
 
@@ -47,6 +47,11 @@ DEFAULT_BATCH = 1
 DEFAULT_SEED = 3
 INPUT_SEED = 17
 
+# Make the checked-out src-layout importable when this harness is run directly.
+_SRC_DIR = Path(__file__).resolve().parents[2] / "src"
+if _SRC_DIR.is_dir() and str(_SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(_SRC_DIR))
+
 
 def cuda_available() -> bool:
     try:
@@ -59,20 +64,20 @@ def cuda_available() -> bool:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Reproduce Soup's layer-streaming bit-exactness gate."
+        description="Reproduce Kadhi's layer-streaming bit-exactness gate."
     )
     parser.add_argument(
         "--weights",
         required=True,
         help=(
-            "checkpoint path or model id resolvable by Soup's "
+            "checkpoint path or model id resolvable by Kadhi's "
             "weight resolver"
         ),
     )
     parser.add_argument(
         "--shards",
         required=True,
-        help="directory in which Soup should create or reuse layer shards",
+        help="directory in which Kadhi should create or reuse layer shards",
     )
     parser.add_argument(
         "--quant",

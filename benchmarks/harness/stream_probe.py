@@ -71,7 +71,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--shards",
         default=None,
-        help="shard cache dir (default: the same ~/.soup/layer-stream/<slug> soup train uses)",
+        help="shard cache dir (default: the same ~/.soup/layer-stream/<slug> Kadhi train uses)",
     )
     parser.add_argument("--quant", choices=("none", "nf4"), default="nf4")
     parser.add_argument("--tier", choices=("ram", "disk"), default="ram")

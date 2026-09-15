@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""End-to-end MLX SFT smoke run through Soup's own trainer wrapper (#23).
+"""End-to-end MLX SFT smoke run through Kadhi's own trainer wrapper (#23).
 
 Drives ``MLXSFTTrainerWrapper`` rather than ``mlx_lm`` directly: the point of
 #23 is that the *wrapper's* training loop had never run against a real MLX
@@ -14,7 +14,7 @@ machine is directly comparable to `benchmarks/run-m1-8gb-mlx-sft.md`.
 
 Requires Apple Silicon and ``pip install -e ".[mlx]"``.
 
-Attaches Soup's Rich display and a local experiment tracker, and refuses a run
+Attaches Kadhi's Rich display and a local experiment tracker, and refuses a run
 with no bridge metrics. The database stays beside the temporary artifacts;
 the bridge also emits its normal process-local SSE events. Timing includes
 display/tracker overhead, unlike the original published M1 measurements.
