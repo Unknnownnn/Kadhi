@@ -1,6 +1,6 @@
-"""Live Langfuse pull for ``soup ingest --source langfuse --pull`` (#204).
+"""Live Langfuse pull for ``kadhi ingest --source langfuse --pull`` (#204).
 
-The only network path in ``soup ingest``. Every other invocation parses an
+The only network path in ``kadhi ingest``. Every other invocation parses an
 offline export; ``commands/ingest.py`` imports this module only when ``--pull``
 is passed, so the local-export path loads no HTTP code.
 

@@ -165,7 +165,7 @@ def load_model_and_tokenizer(
     Returns ``(model, tokenizer, device)``. ``model`` is ``.eval()``-ed and
     moved to the resolved device. Heavy imports are local. ``dtype`` (e.g.
     ``"auto"``) is forwarded as ``torch_dtype`` so a caller can preserve the
-    checkpoint's native precision instead of upcasting to fp32 (``soup shrink``
+    checkpoint's native precision instead of upcasting to fp32 (``kadhi shrink``
     needs this so the shipped smaller model is not silently re-widened).
     ``quantization`` (``"4bit"`` / ``"8bit"`` / ``None``) judges the base the
     way it was trained instead of always upcasting to full precision; see

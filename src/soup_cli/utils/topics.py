@@ -8,7 +8,7 @@ testable on CPU with hand-built input.
 Honest framing, repeated in the docs: labels are **emergent unsupervised
 term clusters**, not a classification against a fixed ontology. "82% code"
 means "82% of rows fell in a cluster whose top c-TF-IDF terms look like
-code". There is also NO join to ``soup eval coverage`` — that command
+code". There is also NO join to ``kadhi eval coverage`` — that command
 compares an eval suite's *scorer mix* to a task taxonomy, a different axis
 entirely.
 """

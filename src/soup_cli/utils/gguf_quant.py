@@ -3,7 +3,7 @@
 Schema-only support for Unsloth Dynamic 2.0 GGUF ladder (``UD-Q8_K_XL`` …
 ``UD-IQ1_M``), the IQ1/IQ2/IQ3 family, the Apple/ARM-friendly Q4_NL /
 Q5.x / Q4.x variants, and the existing TQ1_0 1.58-bit GGUF flavour (from
-v0.52.0 Part D, re-exposed here for ``soup export --format gguf-iq``).
+v0.52.0 Part D, re-exposed here for ``kadhi export --format gguf-iq``).
 
 Live llama.cpp ``imatrix`` calibration + actual GGUF write are deferred
 to v0.53.1 (mirrors v0.50.0 stub-then-live pattern).

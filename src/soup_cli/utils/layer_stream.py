@@ -2,7 +2,7 @@
 
 The pure half: tier choice, pinned-vs-pageable decision, the architecture
 allowlist, and the VRAM / throughput arithmetic. **No top-level torch** — this
-module sits on the light CLI's import path so `soup profile` and friends can
+module sits on the light CLI's import path so `kadhi profile` and friends can
 forecast a streaming run without pulling in the training stack.
 
 The runtime half (buffer pool, weight source, prefetch scheduler, layer

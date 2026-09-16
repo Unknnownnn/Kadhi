@@ -39,7 +39,7 @@ _TASK_FORMAT_MAP = {
 
 
 def migrate_llamafactory(config_path: Path) -> Dict[str, Any]:
-    """Parse a LLaMA-Factory YAML config and return a Soup config dict.
+    """Parse a LLaMA-Factory YAML config and return a kadhi config dict.
 
     Returns a dict suitable for config_to_yaml(). Includes a ``_warnings``
     key with a list of human-readable migration notes.

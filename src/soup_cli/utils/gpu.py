@@ -76,8 +76,8 @@ def resolve_device_map(device: str):
 
     Each rank must pin its own GPU instead. Measured on 8x H100
     (benchmarks/gate-h100-validation.md, FINDING 4): without this, the exact
-    ``accelerate launch --num_processes 8 soup train -c ...`` command that
-    ``soup train --gpus 8`` prints fails immediately, with and without
+    ``accelerate launch --num_processes 8 kadhi train -c ...`` command that
+    ``kadhi train --gpus 8`` prints fails immediately, with and without
     ``--deepspeed``.
 
     A malformed ``LOCAL_RANK`` / ``WORLD_SIZE`` falls back to ``"auto"``: that is
@@ -338,7 +338,7 @@ def estimate_batch_size(
 def model_size_from_name(model_name: str) -> float:
     """Model size in billions: exact for a local checkpoint, else guessed.
 
-    A LOCAL path is measured, not guessed — `soup merge` writes directories
+    A LOCAL path is measured, not guessed — `kadhi merge` writes directories
     like ``./denseA`` whose name carries no size marker, so the name-based
     fallback called them 7B and the hardware-fit gate refused to train a
     135M model. That blocked merge -> train-from-merged, the ordinary
@@ -380,7 +380,7 @@ def model_size_from_name(model_name: str) -> float:
 
     # Sub-billion checkpoints carry their size in MILLIONS (SmolLM2-135M,
     # SmolVLM-256M, ...). Without this they fell through to the 7B default and
-    # the hardware-fit gate refused to train them — which blocked `soup draft`
+    # the hardware-fit gate refused to train them — which blocked `kadhi draft`
     # for exactly the tiny models drafts are made of (v0.71.33 live smoke;
     # same class as the v0.71.32 whisper fix).
     #

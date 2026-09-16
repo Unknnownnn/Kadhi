@@ -146,7 +146,7 @@ def apply_chat_template_override(
 
     Returns ``True`` when an override was applied. When ``console`` is
     supplied and an override fires, prints a yellow advisory so the user
-    knows that ``soup push`` will persist the override into
+    knows that ``kadhi push`` will persist the override into
     ``tokenizer_config.json``.
     """
     resolved = resolve_chat_template(value)

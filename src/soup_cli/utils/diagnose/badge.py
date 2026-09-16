@@ -1,4 +1,4 @@
-"""SVG badge renderer for `soup diagnose --badge` (v0.56.0).
+"""SVG badge renderer for `kadhi diagnose --badge` (v0.56.0).
 
 Renders a 6-cell mini scorecard + overall verdict pill. Pure-string SVG
 (no external deps) — embeddable in model cards and Twitter previews.

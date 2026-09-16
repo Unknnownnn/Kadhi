@@ -1,4 +1,4 @@
-"""soup chat — interactive chat with a fine-tuned model."""
+"""kadhi chat — interactive chat with a fine-tuned model."""
 
 import json
 from pathlib import Path

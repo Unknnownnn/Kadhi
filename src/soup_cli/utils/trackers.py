@@ -208,7 +208,7 @@ def build_telemetry_payload(
 
 _POSTHOG_HOST = "https://us.i.posthog.com"
 _POSTHOG_ENDPOINT = f"{_POSTHOG_HOST}/i/v0/e/"
-# v0.53.10 #154 — bundled public write-only project key for Soup CLI
+# v0.53.10 #154 — bundled public write-only project key for Kadhi
 # telemetry. The key is INTENTIONALLY hard-coded: PostHog "phc_*" keys are
 # write-only (cannot read events back); rotating it requires a release.
 # Operators wanting to point telemetry at their own PostHog project should

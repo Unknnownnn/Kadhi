@@ -222,7 +222,7 @@ def get_auth_token() -> str:
 
 
 def set_auth_token(token: str) -> None:
-    """Replace the process-wide auth token (used by `soup ui --auth-token`).
+    """Replace the process-wide auth token (used by `kadhi ui --auth-token`).
 
     Validates via `utils.qr_url.validate_token` so a malformed override
     can't bypass the urlsafe-base64 shape check.
@@ -305,7 +305,7 @@ def create_app(host: str = "127.0.0.1", port: int = 7860):
     from fastapi.staticfiles import StaticFiles
 
     # #731: FastAPI's interactive docs describe every route, parameter and
-    # schema, and served none of it behind a token -- so a `soup ui --public`
+    # schema, and served none of it behind a token -- so a `kadhi ui --public`
     # bind let anyone on the LAN enumerate the whole API surface. Gating them
     # behind `_verify_token` does not work: `/docs` is a browser navigation and
     # Swagger cannot attach a Bearer header to it (the #687 constraint), so
@@ -364,7 +364,7 @@ def create_app(host: str = "127.0.0.1", port: int = 7860):
         with _auth_token_lock:
             expected = f"Bearer {_auth_token}"
         # Constant-time compare — a plain != leaks the token byte-by-byte via
-        # response timing when `soup ui --public` is exposed on a LAN.
+        # response timing when `kadhi ui --public` is exposed on a LAN.
         if not secrets.compare_digest(auth, expected):
             raise HTTPException(status_code=401, detail="Unauthorized")
 

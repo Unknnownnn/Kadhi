@@ -1,4 +1,4 @@
-"""v0.71.7 #165 — live probe runners for ``soup diagnose``.
+"""v0.71.7 #165 — live probe runners for ``kadhi diagnose``.
 
 This is the model-loading layer the v0.56.0 ``utils/diagnose`` package was
 designed around: the six ``score_*`` functions are already real pure

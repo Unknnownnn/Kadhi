@@ -1,11 +1,11 @@
-"""soup diagnose — post-training model report card (v0.56.0).
+"""kadhi diagnose — post-training model report card (v0.56.0).
 
 Top-level CLI command (NOT a sub-group) — operators type:
 
-    soup diagnose <run-id>
-    soup diagnose <run-id> --output diagnose.json
-    soup diagnose <run-id> --badge diagnose.svg
-    soup diagnose <run-id> --attach-to-registry <id>
+    kadhi diagnose <run-id>
+    kadhi diagnose <run-id> --output diagnose.json
+    kadhi diagnose <run-id> --badge diagnose.svg
+    kadhi diagnose <run-id> --attach-to-registry <id>
 
 Since v0.71.7 (#165) the six probe runners (forgetting / refusal / format /
 mode_collapse / memorization / contamination) run LIVE when ``--base-model``
@@ -84,7 +84,7 @@ def _load_evidence(path: str) -> dict:
 
     Opens with ``O_NOFOLLOW`` (where available) and fstats the open fd so a
     symlink swapped in after the containment check cannot redirect the read
-    (TOCTOU defence — backports the v0.71.25 ``soup ship`` hardened loader;
+    (TOCTOU defence — backports the v0.71.25 ``kadhi ship`` hardened loader;
     v0.71.25 known-limitation (4)).
     """
     enforce_under_cwd_and_no_symlink(path, "evidence path")

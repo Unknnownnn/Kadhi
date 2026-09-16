@@ -6,7 +6,7 @@
     `torch.autograd.set_detect_anomaly(True)`.
   - `nccl_bandwidth_check`: scaffold that returns the expected upper-bound
     bandwidth for a (gpu_pair, link) tuple. Live measurement deferred — we
-    expose the reference table so `soup doctor --nccl` can warn when measured
+    expose the reference table so `kadhi doctor --nccl` can warn when measured
     perf is well below expectation.
 
 Containment, redaction, and exception-narrowing follow v0.34.0 `crash.py` /

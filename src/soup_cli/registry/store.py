@@ -52,8 +52,8 @@ _VALID_KINDS = frozenset(
         "grace_codebook",
         # v0.71.29 — depth-prune + distill-heal shrink reports.
         "shrink_report",
-        # #309 — provenance documents surfaced by `soup card`: the ML-BOM
-        # (`soup bom emit`) and the in-toto/SLSA attestation (`soup attest emit`).
+        # #309 — provenance documents surfaced by `kadhi card`: the ML-BOM
+        # (`kadhi bom emit`) and the in-toto/SLSA attestation (`kadhi attest emit`).
         "bom",
         "attestation",
     }
@@ -542,7 +542,7 @@ class RegistryStore:
         # Cycle check: if parent already has child as an ancestor, adding this
         # edge would close a loop. Use an UNBOUNDED reachability walk — the old
         # code walked get_ancestors(parent_id) whose max_depth=10 cap silently
-        # accepted a cycle-closing edge >10 hops away (the `soup loop watch`
+        # accepted a cycle-closing edge >10 hops away (the `kadhi loop watch`
         # daemon builds long chains), corrupting the DAG.
         if self._reaches_ancestor(parent_id, child_id):
             raise ValueError(

@@ -15,7 +15,7 @@ from typing import Optional
 
 from soup_cli.utils.paths import is_under_cwd
 
-# Closed allowlist — matches `soup serve --backend`.
+# Closed allowlist — matches `kadhi serve --backend`.
 SUPPORTED_BACKENDS = frozenset({"transformers", "vllm", "sglang", "mlx"})
 
 # Architecture-name keyword -> preferred backend. First match wins; the

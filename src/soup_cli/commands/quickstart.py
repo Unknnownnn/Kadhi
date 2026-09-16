@@ -1,4 +1,4 @@
-"""soup quickstart — one command for a complete demo (create data + config + train)."""
+"""kadhi quickstart — one command for a complete demo (create data + config + train)."""
 
 from __future__ import annotations
 
@@ -88,7 +88,7 @@ def _pick_quickstart_model() -> tuple[str, str | None]:
     return _DEFAULT_MODEL, None
 
 
-DEMO_CONFIG = """# Soup Quickstart Config — auto-generated demo
+DEMO_CONFIG = """# kadhi Quickstart Config — auto-generated demo
 base: TinyLlama/TinyLlama-1.1B-Chat-v1.0
 
 task: sft
@@ -195,7 +195,7 @@ def quickstart(
             ).replace("./quickstart_output", str(out_dir / "quickstart_output"))
         config_path.write_text(rendered, encoding="utf-8")
         console.print(f"[green]Created:[/] {config_path}")
-    # Also write a `soup.yaml` symlink-style alias for tools that look for it.
+    # Also write a `kadhi.yaml` symlink-style alias for tools that look for it.
     soup_yaml = out_dir / "soup.yaml"
     if not soup_yaml.exists() and output is not None:
         try:

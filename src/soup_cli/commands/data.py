@@ -1,4 +1,4 @@
-"""soup data — dataset inspection and tools."""
+"""kadhi data — dataset inspection and tools."""
 
 from __future__ import annotations
 
@@ -59,7 +59,7 @@ def inspect(
     if rows > 0 and len(data) > 0:
         # Escape dataset-derived cell content + column names: a stray '[/]' in
         # ordinary data crashes Rich with MarkupError; a crafted '[link=...]'
-        # renders a phishing hyperlink. Mirrors `soup data review`.
+        # renders a phishing hyperlink. Mirrors `kadhi data review`.
         from rich.markup import escape as _escape
 
         console.print(f"\n[bold]Sample rows ({min(rows, len(data))}):[/]")
@@ -266,7 +266,7 @@ def _row_embed_text(row: dict, field: Optional[str]) -> str:
     """What gets embedded for a row: one field, or all text values joined.
 
     Mirrors the MinHash branch's text selection so ``--field`` means the
-    same thing for both backends. NOTE: ``soup data topics`` deliberately
+    same thing for both backends. NOTE: ``kadhi data topics`` deliberately
     picks row text differently — it prefers ``_eval_text.row_text``'s
     assistant-turn extraction, because a topic map should cluster on what
     the model is taught to SAY, whereas dedup must consider the whole row.
@@ -285,7 +285,7 @@ def _semantic_dedup(
     device: str,
     out_path: Path,
 ) -> DedupReport:
-    """SemDeDup branch of ``soup data dedup --semantic``."""
+    """SemDeDup branch of ``kadhi data dedup --semantic``."""
     texts = [_row_embed_text(row, field) for row in data]
     try:
         vectors = embed_texts(texts, model_id=embed_model, device=device)
@@ -293,7 +293,7 @@ def _semantic_dedup(
         console.print(
             "[red]Semantic dedup needs PyTorch + transformers.[/]\n"
             # \[train] is escaped: Rich would otherwise eat the bracket as a
-            # markup tag and print `pip install "soup-cli"` -- a command that
+            # markup tag and print `pip install "kadhi"` -- a command that
             # installs the package WITHOUT the extra the user is missing.
             # Double quotes, not single: cmd.exe cannot strip `'` and pip then
             # rejects the requirement outright.
@@ -1831,7 +1831,7 @@ def register_data(
         help="Dataset format: alpaca, sharegpt, chatml, dpo, kto, auto",
     ),
 ):
-    """Register a local dataset by name for use in soup.yaml.
+    """Register a local dataset by name for use in kadhi.yaml.
 
     Accepts both ``--name X --path Y`` and positional ``X Y``.
     """
@@ -2586,7 +2586,7 @@ def ingest_document(
     """Ingest a document into JSONL with one row per page / heading.
 
     Lazy-imports the per-format extractor so missing optional deps don't
-    break the rest of `soup data --help`. Supported formats:
+    break the rest of `kadhi data --help`. Supported formats:
     - .pdf  → pypdf
     - .docx → python-docx
     - .md   → markdown
@@ -2723,7 +2723,7 @@ def demo_bundle(
 ) -> None:
     """List or copy a bundled demo dataset (v0.43.0).
 
-    `soup data demo` lists available bundles. `soup data demo <name>` copies
+    `kadhi data demo` lists available bundles. `kadhi data demo <name>` copies
     the JSONL fixture to the current directory. Bundles are version-locked
     JSONL fixtures shipped under `examples/data/`.
     """

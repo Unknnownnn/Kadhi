@@ -31,7 +31,7 @@ def _set_ppo_training_kwargs(
     ppo_config_cls: type,
     tcfg: Any,
 ) -> dict[str, str]:
-    """Forward Soup's three PPO schedules across TRL parameter renames."""
+    """Forward Kadhi's three PPO schedules across TRL parameter renames."""
     from soup_cli.trainer._trl_compat import config_accepts, kl_penalty_kwargs
 
     applied: dict[str, str] = {}

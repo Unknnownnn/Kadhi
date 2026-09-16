@@ -1,4 +1,4 @@
-"""soup diagnose — post-training model report card (v0.56.0).
+"""kadhi diagnose — post-training model report card (v0.56.0).
 
 Seven independent failure-mode probes scored against a base reference:
 

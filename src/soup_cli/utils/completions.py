@@ -1,6 +1,6 @@
 """Shell completion script generators + dynamic value completers.
 
-`soup completions <shell>` emits a sourceable bash / zsh / fish script.
+`kadhi completions <shell>` emits a sourceable bash / zsh / fish script.
 The dynamic completers (``complete_recipe_name`` /
 ``complete_target_modules``) are exposed for use as
 ``shell_complete=...`` callbacks on Typer options.

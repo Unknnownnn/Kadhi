@@ -79,7 +79,7 @@ def apply_unfrozen_parameters(model: Any, patterns: list) -> int:
     This is the Spectrum (#266) targeted-training mechanism: full fine-tuning
     of a hand-picked parameter set (LoRA off). Each pattern is treated as a
     regular expression (``re.search`` against the parameter name) — the
-    ``soup spectrum scan`` output uses parameter-name prefixes such as
+    ``kadhi spectrum scan`` output uses parameter-name prefixes such as
     ``model.layers.0.self_attn.q_proj``.
 
     Args:

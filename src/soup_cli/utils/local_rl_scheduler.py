@@ -1,8 +1,8 @@
-"""``soup local-rl train`` scheduler scaffold (v0.71.13 #229).
+"""``kadhi local-rl train`` scheduler scaffold (v0.71.13 #229).
 
 Render a systemd-user ``local-rl.service`` + ``.timer`` (Linux) or a
 ``com.soup.local-rl.plist`` (macOS launchd) that invokes
-``soup local-rl train --once`` daily at a configurable local time.
+``kadhi local-rl train --once`` daily at a configurable local time.
 
 This module only **renders** the unit files (and writes them to a chosen
 directory) — it never runs ``systemctl`` / ``launchctl`` itself, so it is

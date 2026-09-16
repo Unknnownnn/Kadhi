@@ -1,4 +1,4 @@
-"""``soup data doctor`` / ``soup data lint`` — Fine-tune Doctor (v0.71.27).
+"""``kadhi data doctor`` / ``kadhi data lint`` — Fine-tune Doctor (v0.71.27).
 
 Thin Typer/Rich CLI layer over the pure engines in
 ``utils/data_doctor.py`` (chat-template compat report + loss-mask X-ray)

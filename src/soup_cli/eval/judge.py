@@ -348,7 +348,7 @@ class JudgeEvaluator:
 
 
 # ---------------------------------------------------------------------------
-# Pairwise judging (v0.71.31) — shared by online-DPO + `soup ship --task-mode
+# Pairwise judging (v0.71.31) — shared by online-DPO + `kadhi ship --task-mode
 # pairwise`. `compare_pair` (above) issues one A/B judgment; the free functions
 # add swap-debiasing and a win-rate reduction.
 # ---------------------------------------------------------------------------
@@ -483,9 +483,9 @@ def make_judge_reward_func(evaluator: object, *, name: str = "soup_judge"):
 
     trl 1.x removed the pairwise-judge Online DPO API (``BasePairwiseJudge``) and
     ranks the two on-policy completions by a per-completion ``reward_funcs``
-    signal instead. This adapts Soup's ``JudgeEvaluator`` by scoring each
+    signal instead. This adapts Kadhi's ``JudgeEvaluator`` by scoring each
     completion pointwise with ``evaluator.evaluate(prompt, completion)`` — the
-    SAME pointwise judge ``soup data best-of-n`` uses — returning its
+    SAME pointwise judge ``kadhi data best-of-n`` uses — returning its
     ``weighted_score``. Note the semantic difference vs the trl-0.19.x path,
     which uses the swap-debiased *pairwise* comparison; per-version behaviour is
     documented as a known difference.
@@ -526,7 +526,7 @@ def _base_pairwise_judge_cls() -> type:
 
 
 def make_soup_pairwise_judge(evaluator: "PairwiseJudge") -> "BasePairwiseJudge":
-    """Build a TRL ``BasePairwiseJudge`` bound to a Soup ``JudgeEvaluator``.
+    """Build a TRL ``BasePairwiseJudge`` bound to a Kadhi ``JudgeEvaluator``.
 
     Factory (not a module-level subclass) so ``eval/judge.py`` stays importable
     without trl for the pure ``pairwise_*`` functions. ``judge`` returns, per

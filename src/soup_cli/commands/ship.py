@@ -1,13 +1,13 @@
-"""soup ship — the SHIP / DON'T-SHIP verdict (v0.71.25).
+"""kadhi ship — the SHIP / DON'T-SHIP verdict (v0.71.25).
 
 Top-level CLI command (NOT a sub-group) — operators type::
 
-    soup ship --base <m> --adapter <lora> --task-eval tasks.jsonl
-    soup ship --evidence ev.json            # offline, pre-computed scores
-    soup ship ... --output verdict.json
-    soup ship ... --config soup.yaml        # read eval.ship defaults + bind provenance
-    soup ship ... --emit-evidence ev.json   # re-serialise scores as replayable input
-    soup ship --evidence ev.json --push owner/repo#42   # verdict as a PR comment
+    kadhi ship --base <m> --adapter <lora> --task-eval tasks.jsonl
+    kadhi ship --evidence ev.json            # offline, pre-computed scores
+    kadhi ship ... --output verdict.json
+    kadhi ship ... --config kadhi.yaml        # read eval.ship defaults + bind provenance
+    kadhi ship ... --emit-evidence ev.json   # re-serialise scores as replayable input
+    kadhi ship --evidence ev.json --push owner/repo#42   # verdict as a PR comment
 
 After fine-tuning, answer ONE question: did the model get better, or did I
 break it? The decision fuses two legs (task win + catastrophic-forgetting
@@ -18,7 +18,7 @@ Exit codes so CI can gate on the result:
 **0 = SHIP, 2 = DON'T SHIP, 3 = usage/validation error, 1 = runtime error**.
 Usage errors moved off ``2`` in v0.71.38 — a typo'd flag was previously
 indistinguishable from a caught regression (both exited ``2``); ``3`` mirrors
-``soup plan`` / ``soup env check``. Offline ``--evidence`` read/parse errors
+``kadhi plan`` / ``kadhi env check``. Offline ``--evidence`` read/parse errors
 stay ``1``.
 
 Leg 1 (task win) modes: ``metric`` (reuses ``eval/custom.run_eval`` accuracy),
@@ -86,13 +86,13 @@ app = typer.Typer(no_args_is_help=False)
 # Exit-code taxonomy (v0.71.38): keep DON'T-SHIP distinct from a config typo.
 _EXIT_RUNTIME = 1  # something went wrong actually running (IO, model load, ...)
 _EXIT_DONT_SHIP = 2  # a verdict: leg 1 or leg 2 said don't ship
-_EXIT_USAGE = 3  # bad flags / validation (mirrors `soup plan` / `env check`)
+_EXIT_USAGE = 3  # bad flags / validation (mirrors `kadhi plan` / `env check`)
 
-# 16 MiB cap on evidence JSON (mirrors `soup diagnose` — prevents a
+# 16 MiB cap on evidence JSON (mirrors `kadhi diagnose` — prevents a
 # multi-GB / symlink-pointed file from OOMing at json.load time).
 _MAX_EVIDENCE_BYTES = 16 * 1024 * 1024
 
-# 4 MiB cap on a soup.yaml passed via --config (configs are small).
+# 4 MiB cap on a kadhi.yaml passed via --config (configs are small).
 _MAX_CONFIG_BYTES = 4 * 1024 * 1024
 
 # 8 GiB cap on the training file we fingerprint for provenance.data_sha
@@ -201,7 +201,7 @@ def _reject_lm_eval_injection(value: str, field: str) -> None:
 
 
 # ---------------------------------------------------------------------------
-# --config — read leg-1/leg-2 defaults from a committed soup.yaml (v0.71.39)
+# --config — read leg-1/leg-2 defaults from a committed kadhi.yaml (v0.71.39)
 # ---------------------------------------------------------------------------
 
 def _safe_read_text(path: str, field: str, max_bytes: int) -> str:
@@ -226,10 +226,10 @@ def _safe_read_text(path: str, field: str, max_bytes: int) -> str:
 
 
 def _parse_ship_config(path: str) -> "Tuple[SoupConfig, Optional[ShipConfig]]":
-    """Load a soup.yaml and return ``(SoupConfig, ShipConfig | None)``.
+    """Load a kadhi.yaml and return ``(SoupConfig, ShipConfig | None)``.
 
     A read / parse / validation failure is a USAGE error (exit 3), mirroring
-    ``soup plan`` / ``soup env check``.
+    ``kadhi plan`` / ``kadhi env check``.
     """
     import yaml
 
@@ -247,7 +247,7 @@ def _parse_ship_config(path: str) -> "Tuple[SoupConfig, Optional[ShipConfig]]":
 def _config_sha_of(cfg: "SoupConfig") -> str:
     """Canonical (order/whitespace-insensitive) SHA-256 of the training recipe.
 
-    Semantic, not textual: a reformatted soup.yaml keeps the same sha but a real
+    Semantic, not textual: a reformatted kadhi.yaml keeps the same sha but a real
     recipe change does not. Cheap — hashes only the config dict, never the data
     file (that's the ``data_sha`` in the full provenance).
 
@@ -337,13 +337,13 @@ def _compute_provenance(cfg: "SoupConfig") -> Dict[str, object]:
 def _check_evidence_staleness(payload: dict, expected_sha: str) -> None:
     """Refuse evidence whose ``config_sha`` != the committed config's (exit 3).
 
-    Catches DRIFT: a PR that changed ``soup.yaml`` but forgot to recompute its
+    Catches DRIFT: a PR that changed ``kadhi.yaml`` but forgot to recompute its
     ``ship_evidence.json`` is caught here instead of shipping a verdict about a
     *different* recipe than the one in the diff. This is staleness detection,
     NOT tamper-resistance — ``config_sha`` is an unkeyed hash, so it verifies
     "this evidence claims to describe the config at HEAD", not "these scores were
     actually produced by that config" (the ``--evidence`` trust model has always
-    assumed a trusted artifact from your own pipeline; ``soup attest`` /
+    assumed a trusted artifact from your own pipeline; ``kadhi attest`` /
     ``adapters sign`` provide ed25519 signing if forgery is in scope). Pure — the
     payload is already loaded (read once per invocation).
     """
@@ -1153,7 +1153,7 @@ def _emit_and_exit(
 
 
 # ---------------------------------------------------------------------------
-# CLI entrypoint (callback so `soup ship <opts>` needs no subcommand)
+# CLI entrypoint (callback so `kadhi ship <opts>` needs no subcommand)
 # ---------------------------------------------------------------------------
 
 @app.callback(invoke_without_command=True)

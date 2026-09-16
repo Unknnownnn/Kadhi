@@ -1,4 +1,4 @@
-"""soup infer — batch inference on a list of prompts."""
+"""kadhi infer — batch inference on a list of prompts."""
 
 from __future__ import annotations
 
@@ -591,7 +591,7 @@ def _infer_asr(
         out_lines.append(json.dumps(rec, ensure_ascii=False))
 
     # All rows failed to transcribe — do not write an empty file and claim
-    # success; a scripted pipeline (soup ship, CI) must see a non-zero exit.
+    # success; a scripted pipeline (kadhi ship, CI) must see a non-zero exit.
     if not out_lines:
         console.print(
             f"[red]No clips transcribed ({skipped} skipped). "

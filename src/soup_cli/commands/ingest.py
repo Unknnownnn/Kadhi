@@ -1,9 +1,9 @@
-"""`soup ingest` — universal trace importer (v0.63.0 Part A).
+"""`kadhi ingest` — universal trace importer (v0.63.0 Part A).
 
 Imports production traces from Langfuse / LangSmith / Helicone / OpenPipe /
 OpenTelemetry / OpenAI Stored Completions JSONL exports and emits a
-normalised JSONL stream that downstream tools (`soup data from-traces`,
-`soup loop watch`) can consume.
+normalised JSONL stream that downstream tools (`kadhi data from-traces`,
+`kadhi loop watch`) can consume.
 
 Composes with v0.26.0 Trace-to-Preference: the emitted records share the
 same prompt/output/signal vocabulary so the existing pair-builder works
@@ -107,7 +107,7 @@ def ingest(
 
     Reads an offline JSONL export and writes a normalised trace stream,
     making no network calls — operators export from their SaaS dashboard or
-    via that vendor's official API, then point ``soup ingest`` at the file.
+    via that vendor's official API, then point ``kadhi ingest`` at the file.
     ``--source langfuse --pull`` fetches from the Langfuse API instead (#204).
     """
     try:

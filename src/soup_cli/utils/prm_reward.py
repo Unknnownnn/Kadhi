@@ -1,6 +1,6 @@
 """PRM-as-per-step-reward for GRPO — v0.71.30 (#PRM-guided GRPO).
 
-Use a trained Soup PRM (the v0.53.11 ``PRMTrainerWrapper``) as the reward
+Use a trained Kadhi PRM (the v0.53.11 ``PRMTrainerWrapper``) as the reward
 function inside GRPO: split each generated completion into reasoning steps,
 score every step with the PRM's scalar reward head, and fold the per-step
 scores into a single scalar reward (``min`` / ``prod`` / ``last``) that GRPO
@@ -110,7 +110,7 @@ def aggregate_step_scores(scores: list[float], mode: Any) -> float:
 
 
 class PRMScorer:
-    """Stateful GRPO reward: score each completion's steps with a Soup PRM.
+    """Stateful GRPO reward: score each completion's steps with a Kadhi PRM.
 
     Torch / transformers / safetensors are lazy-imported inside methods so the
     module stays importable on the light core. ``__name__`` is set to
@@ -328,11 +328,11 @@ class PRMScorer:
         return rewards
 
 def load_reward_head_weights(prm_path: str) -> dict[str, Any]:
-    """Load ``reward_head.{weight,bias}`` tensors from a Soup-trained PRM dir.
+    """Load ``reward_head.{weight,bias}`` tensors from a Kadhi-trained PRM dir.
 
     Scans every ``*.safetensors`` shard in ``prm_path`` via
     ``safetensors.safe_open`` and collects the ``reward_head.*`` tensors.
-    Raises ``ValueError`` (friendly "not a Soup-trained PRM") when absent —
+    Raises ``ValueError`` (friendly "not a Kadhi-trained PRM") when absent —
     ``AutoModelForCausalLM.from_pretrained`` silently drops these keys, so a
     base checkpoint without a head must be rejected loudly.
     """

@@ -1,7 +1,7 @@
 """Run a ``.can`` end-to-end: extract, train, optionally deploy (v0.33.0 #34).
 
 Orchestrator wired to existing CLI primitives via subprocess. Keeps the
-training entry point a single source of truth (``soup train``) instead of
+training entry point a single source of truth (``kadhi train``) instead of
 re-implementing the trainer dispatch.
 """
 
@@ -153,13 +153,13 @@ def run_can(
     train_argv_extra: Optional[list[str]] = None,
     confirm_callback: Optional[Callable[[Manifest], bool]] = None,
 ) -> CanRunResult:
-    """Extract a can, run ``soup train`` against the embedded config, optionally
+    """Extract a can, run ``kadhi train`` against the embedded config, optionally
     run the embedded deploy targets.
 
     Args:
         can_path: path to the ``.can`` file (must stay under cwd).
         yes: skip the confirmation prompt (matches the ``--yes`` flag in
-            ``soup train`` / ``soup autopilot``).
+            ``kadhi train`` / ``kadhi autopilot``).
         deploy: also run any ``deploy_targets`` from the manifest.
         extract_dir: where to extract the can. Defaults to a fresh temp dir.
         capture_env_to: write env summary to this path before training.

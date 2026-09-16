@@ -3,17 +3,17 @@
 Lifts the v0.62.0 Part B deferred note ("Live orchestration that chains the
 two stages in a single call is deferred"). Two surfaces:
 
-* ``autolink_generator_retriever(cfg)`` — when a ``soup train`` of a generator
+* ``autolink_generator_retriever(cfg)`` — when a ``kadhi train`` of a generator
   stage (``training.ra_dit_stage='generator'``) has no
   ``training.ra_dit_retriever_model`` set, discover the most-recent
   RA-DIT retriever run from the Registry and splice its output in. A manual
   value always wins (no overwrite); a yellow advisory string is returned so
   the caller can surface what happened.
 * ``run_ra_dit(retriever_config, generator_config, ...)`` — the one-shot
-  orchestrator behind ``soup ra-dit``: run the retriever stage, link its
+  orchestrator behind ``kadhi ra-dit``: run the retriever stage, link its
   output into the generator config, run the generator stage. Subprocess
   invocation mirrors ``utils.mix_proxy`` (list argv, no shell, per-stage
-  ``soup train --config <yaml> --yes``).
+  ``kadhi train --config <yaml> --yes``).
 
 Security:
 - Config paths are containment-checked via the shared
@@ -184,7 +184,7 @@ def autolink_generator_retriever(cfg: Any) -> Optional[str]:
 def validate_ra_dit_config_path(name: str, raw: str) -> str:
     """Containment-check an operator-supplied RA-DIT config path.
 
-    Public so the ``soup ra-dit`` CLI can reuse it without importing a private
+    Public so the ``kadhi ra-dit`` CLI can reuse it without importing a private
     symbol across modules (code-review M5).
     """
     from soup_cli.utils.paths import enforce_under_cwd_and_no_symlink  # noqa: PLC0415

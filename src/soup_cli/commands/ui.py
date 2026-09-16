@@ -1,4 +1,4 @@
-"""soup ui — local web interface for managing experiments and training."""
+"""kadhi ui — local web interface for managing experiments and training."""
 
 from __future__ import annotations
 

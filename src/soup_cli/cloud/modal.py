@@ -1,16 +1,16 @@
-"""Modal.com cloud-training backend for ``soup train --cloud modal`` (#16).
+"""Modal.com cloud-training backend for ``kadhi train --cloud modal`` (#16).
 
 Many users have no local GPU. `Modal.com <https://modal.com>`_ offers
 serverless GPU training with per-second billing. ``--cloud modal`` renders a
-self-contained Modal app from the user's ``soup.yaml`` (the config YAML is
+self-contained Modal app from the user's ``kadhi.yaml`` (the config YAML is
 base64-embedded — no code interpolation, no secrets) that:
 
-1. builds an image with ``soup-cli[train]`` pinned to the running version,
-2. writes the embedded config to ``/root/soup.yaml`` inside the container,
-3. runs ``soup train --config /root/soup.yaml --yes`` on the chosen GPU.
+1. builds an image with ``kadhi[train]`` pinned to the running version,
+2. writes the embedded config to ``/root/kadhi.yaml`` inside the container,
+3. runs ``kadhi train --config /root/kadhi.yaml --yes`` on the chosen GPU.
 
 Default behaviour is **plan-only**: write the stub + print the planned
-``modal run`` command (matching the ``soup quantize`` / ``soup agent train``
+``modal run`` command (matching the ``kadhi quantize`` / ``kadhi agent train``
 "print the command" design). ``--cloud-submit`` attempts a live submit,
 gated on a Modal token (``modal setup`` or ``MODAL_TOKEN_ID`` /
 ``MODAL_TOKEN_SECRET``); a mockable seam (``_MODAL_SUBMIT_OVERRIDE``) keeps
@@ -162,7 +162,7 @@ def plan_modal_run(
     soup_version: str,
     stub_path: str = "soup_modal_app.py",
 ) -> CloudPlan:
-    """Build a :class:`CloudPlan` from a cwd-contained ``soup.yaml``.
+    """Build a :class:`CloudPlan` from a cwd-contained ``kadhi.yaml``.
 
     Reads the config (cwd-containment + symlink rejection), renders the
     Modal stub, and returns the plan (stub text + planned ``modal run``

@@ -2,7 +2,7 @@
 
 Declarative ``evals/gate.yaml`` suites define per-task thresholds; the gate
 runs them at epoch boundaries during training (or post-hoc via
-``soup eval gate``) and surfaces pass / fail / regression verdicts.
+``kadhi eval gate``) and surfaces pass / fail / regression verdicts.
 """
 
 from __future__ import annotations

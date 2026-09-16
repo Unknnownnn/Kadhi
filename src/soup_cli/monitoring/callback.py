@@ -27,7 +27,7 @@ def _get_trainer_callback_base():
 
 
 class _SoupTrainerCallback_body:  # noqa: N801
-    """Bridges HF Trainer events to Soup's Rich live display and experiment tracker."""
+    """Bridges HF Trainer events to Kadhi's Rich live display and experiment tracker."""
 
     def __init__(
         self,
@@ -214,7 +214,7 @@ class _SoupTrainerCallback_body:  # noqa: N801
         # The RECORD must not. Persisting the carried value would write a
         # measurement on steps where no evaluation ran -- 9 stored points for 2
         # real ones at a realistic cadence -- inflating n for anything that
-        # reads the series back, including `soup eval`'s paired bootstrap. That
+        # reads the series back, including `kadhi eval`'s paired bootstrap. That
         # is the same fabrication this change refuses for legacy rows, and it
         # would be inconsistent to reject 0.0 there and accept a carried value
         # here.
@@ -357,7 +357,7 @@ class _SoupTrainerCallback_body:  # noqa: N801
         injected it, so unit tests that pre-set ``_gate_suite`` /
         ``_gate_generate_fn`` still control the harness. Failures are logged and
         leave the gate inert rather than crashing training setup — the CLI
-        (``soup train --gate``) already validated the suite path up front.
+        (``kadhi train --gate``) already validated the suite path up front.
         """
         cfg = self.eval_gate_config
         if cfg is None or not getattr(cfg, "enabled", False):
@@ -539,7 +539,7 @@ class _SoupTrainerCallback_body:  # noqa: N801
 
     def _write_spike_recovery_hint(self, args, loss: float) -> None:
         """Write a JSON recovery hint next to the run output so a wrapper
-        script (or `soup train --resume`) can pick up the new LR.
+        script (or `kadhi train --resume`) can pick up the new LR.
 
         Best-effort: errors are logged but never crash training.
         """

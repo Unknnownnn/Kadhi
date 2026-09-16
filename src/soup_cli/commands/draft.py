@@ -8,14 +8,13 @@ Three subcommands::
 
 ``distill`` is thin orchestration over the existing ``task='distill'`` trainer:
 it renders a validated distill config (student = the tiny draft base, teacher =
-your tuned target), runs ``soup train`` as a subprocess, then merges the LoRA
+your tuned target), runs ``kadhi train`` as a subprocess, then merges the LoRA
 adapter back into a DENSE checkpoint — a draft has to be loadable standalone as
 ``assistant_model=``. The draft is recorded in the local registry so
-``soup serve --auto-spec`` picks it up.
+``kadhi serve --auto-spec`` picks it up.
 
 ``measure`` reports the teacher-forced acceptance rate (see ``utils/draft.py``)
-plus plain-vs-assisted throughput. Exit codes mirror ``soup ship`` / ``soup
-shrink``: 0 = ok, 2 = below ``--min-acceptance``, 1 = runtime error.
+plus plain-vs-assisted throughput. Exit codes mirror ``kadhi ship`` / ``kadhi shrink``: 0 = ok, 2 = below ``--min-acceptance``, 1 = runtime error.
 
 Draft and target MUST share a tokenizer (v1). Heavy imports are lazy.
 """
@@ -358,7 +357,7 @@ def _run_distill(
 ) -> None:
     """Distil the target into the draft base, then merge the adapter to dense.
 
-    Writes a validated distill config, runs ``soup train`` as a subprocess
+    Writes a validated distill config, runs ``kadhi train`` as a subprocess
     (argv list, no shell — mirrors ``commands/shrink.py::_run_heal``), then
     merges the trained LoRA into the draft base so the shipped artifact is a
     single DENSE model loadable as ``assistant_model=``.
@@ -701,7 +700,7 @@ def measure(
     # generation gates on config.vocab_size (not the tokenizer's vocab) and raises
     # "different tokenizers" deep inside generate() — after the expensive load —
     # for a pair whose tokenizers ARE identical but whose padded embedding rows
-    # differ (e.g. Qwen2.5 large<-small). `soup draft distill` already refuses
+    # differ (e.g. Qwen2.5 large<-small). `kadhi draft distill` already refuses
     # such a pair up front; measure uses the SAME definition here so the two agree
     # (issue #344). same_tokenizer() below stays as an additional check.
     target_vocab, draft_vocab = _pair_vocab_sizes_or_fail(
@@ -840,7 +839,7 @@ def measure(
 # ---------------------------------------------------------------------------
 @app.command("list")
 def list_registered() -> None:
-    """List locally-trained drafts that `soup serve --auto-spec` can use."""
+    """List locally-trained drafts that `kadhi serve --auto-spec` can use."""
     entries = list_drafts()
     if not entries:
         console.print(

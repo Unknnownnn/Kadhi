@@ -1,4 +1,4 @@
-"""v0.44.0 Part D — `soup llama <subcommand> [args...]` proxy.
+"""v0.44.0 Part D — `kadhi llama <subcommand> [args...]` proxy.
 
 Forwards to a llama.cpp binary on PATH (`llama-cli`, `llama-mtmd-cli`,
 `llama-gguf-split`, `llama-server`, `llama-quantize`). Closed allowlist;
@@ -24,7 +24,7 @@ from soup_cli.utils.llama_proxy import (
 
 console = Console()
 
-# A standalone Typer sub-app so `soup llama --help` lists the subcommands.
+# A standalone Typer sub-app so `kadhi llama --help` lists the subcommands.
 app = typer.Typer(
     name="llama",
     help="Proxy to llama.cpp binaries (llama-cli / llama-server / etc).",
@@ -46,7 +46,7 @@ def _root(ctx: typer.Context) -> None:
 
 # Env vars that the llama.cpp binaries legitimately consume. We deliberately
 # DROP everything else (HF_TOKEN / OPENAI_API_KEY / ANTHROPIC_API_KEY / etc)
-# so the wrapped binary can't exfiltrate Soup-issued credentials.
+# so the wrapped binary can't exfiltrate Kadhi-issued credentials.
 _LLAMA_ENV_ALLOWLIST = frozenset(
     {
         "PATH",

@@ -11,7 +11,7 @@ Schema shapes:
 - ``subject``: ``[{name, digest: {sha256: ...}}]``
 - ``predicate``: SLSA-3 provenance v1 (``buildDefinition`` + ``runDetails``).
 
-Stage allowlist (mirrors the v0.26.0 Soup-Can lifecycle):
+Stage allowlist (mirrors the v0.26.0 Kadhi-Can lifecycle):
 ``extract`` / ``train`` / ``eval`` / ``export`` / ``publish``.
 """
 

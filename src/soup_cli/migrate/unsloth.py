@@ -39,7 +39,7 @@ _TASK_FORMAT_MAP = {
 
 
 def migrate_unsloth(notebook_path: Path) -> Dict[str, Any]:
-    """Parse an Unsloth .ipynb notebook and return a Soup config dict.
+    """Parse an Unsloth .ipynb notebook and return a kadhi config dict.
 
     Extracts parameters from function calls using AST parsing only.
     Returns a dict suitable for config_to_yaml(). Includes a ``_warnings``

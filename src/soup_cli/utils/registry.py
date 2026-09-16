@@ -1,7 +1,7 @@
 """Dataset info registry — local name → path + format mapping.
 
 Stores registry at ~/.soup/datasets.json so datasets can be referenced
-by name in soup.yaml instead of by path.
+by name in kadhi.yaml instead of by path.
 """
 
 from __future__ import annotations

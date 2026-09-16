@@ -1,6 +1,6 @@
 """Trace-to-Preference harvester (v0.26.0 Part C).
 
-Ingests production logs from LangChain / OpenAI-style / Soup-serve, extracts
+Ingests production logs from LangChain / OpenAI-style / Kadhi-serve, extracts
 preference pairs from explicit signals, and emits JSONL for DPO/KTO/ORPO.
 """
 

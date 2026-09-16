@@ -307,7 +307,7 @@ def apply_nvfp4(model: object) -> int:
 
     Live since v0.71.21 (#141). Routes through the same
     ``torchao.quantization.NVFP4Config`` surface as the v0.53.1
-    ``soup export --format torchao`` path, gated on a Blackwell GPU
+    ``kadhi export --format torchao`` path, gated on a Blackwell GPU
     (SM 10.0 datacenter / SM 12.0 consumer).
 
     Returns:

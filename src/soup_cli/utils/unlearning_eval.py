@@ -255,7 +255,7 @@ def _overall_verdict(verdicts: Tuple[str, ...]) -> str:
 
 @dataclass(frozen=True)
 class UnlearnReport:
-    """Frozen report card for a single ``soup eval unlearning`` run."""
+    """Frozen report card for a single ``kadhi eval unlearning`` run."""
 
     run_id: str
     benchmark: str
@@ -398,7 +398,7 @@ def run_unlearn_eval(
 
     Missing evidence per-metric falls through to ``_neutral_metric``
     (OK score, explicit "no evidence supplied" rationale). This mirrors
-    v0.56.0 ``soup diagnose`` policy.
+    v0.56.0 ``kadhi diagnose`` policy.
     """
     bench = validate_benchmark_name(benchmark)
     _validate_run_id(run_id)

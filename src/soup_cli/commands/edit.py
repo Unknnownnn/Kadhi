@@ -1,7 +1,7 @@
-"""v0.61.0 Parts C/D/E — `soup edit` command group.
+"""v0.61.0 Parts C/D/E — `kadhi edit` command group.
 
-* ``soup edit set`` — surgical ROME / MEMIT / AlphaEdit (Part C).
-* ``soup edit diff`` — knowledge-injection diff visualizer (Part E).
+* ``kadhi edit set`` — surgical ROME / MEMIT / AlphaEdit (Part C).
+* ``kadhi edit diff`` — knowledge-injection diff visualizer (Part E).
 * Sequential edit governor (Part D) is consulted by both subcommands.
 """
 
@@ -226,7 +226,7 @@ def set_edit(
             console.print(f"[red]Cannot load --cov-corpus:[/] {escape(str(exc))}")
             raise typer.Exit(2) from exc
 
-    # Load a persisted governor so sequential edits across separate `soup edit
+    # Load a persisted governor so sequential edits across separate `kadhi edit
     # set` runs accumulate (#196 / #197). Best-effort — a missing / unreadable
     # governor DB never blocks an edit.
     governor = None

@@ -6,7 +6,7 @@ MATH-500 / HumanEval+ / SWE-bench-Verified) with friendlier-than-default
 ``full | fast | math | code``.
 
 This module ships only the schema + dispatcher. Live ``lm-eval-harness``
-invocation lives in ``soup eval benchmark`` (existing v0.10 surface) so
+invocation lives in ``kadhi eval benchmark`` (existing v0.10 surface) so
 the operator can compose capability suites with the existing eval gate.
 """
 from __future__ import annotations
@@ -226,7 +226,7 @@ def run_capability_suite(
     report. ``limit`` caps eval examples per task (use ``1-5`` for a smoke).
 
     Lazy-imports ``lm_eval`` — raises a friendly ``RuntimeError`` when it is
-    not installed (``pip install soup-cli[eval]``).
+    not installed (``pip install kadhi[eval]``).
     """
     if not isinstance(run_id, str) or not run_id.strip():
         raise ValueError("run_id must be a non-empty string")

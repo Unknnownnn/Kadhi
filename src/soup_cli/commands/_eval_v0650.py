@@ -1,6 +1,6 @@
-"""v0.65.0 — `soup eval behavior` / `capability` / `checklist` / `irt-subset`.
+"""v0.65.0 — `kadhi eval behavior` / `capability` / `checklist` / `irt-subset`.
 
-Subcommand bundle attached to the existing ``soup eval`` Typer app via
+Subcommand bundle attached to the existing ``kadhi eval`` Typer app via
 :func:`register`. Mirrors the v0.55.0 / v0.61.0 registration pattern so
 ``commands/eval.py`` stays under length cap.
 """
@@ -103,7 +103,7 @@ def _write_json_output(
 
 
 def register(app: typer.Typer, console: Console) -> None:
-    """Attach v0.65.0 subcommands to the existing ``soup eval`` app."""
+    """Attach v0.65.0 subcommands to the existing ``kadhi eval`` app."""
 
     @app.command(name="behavior")
     def behavior_cmd(

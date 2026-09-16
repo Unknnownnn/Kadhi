@@ -1,10 +1,10 @@
-"""soup spectrum — native Spectrum targeted-training scan (#266, v0.71.23).
+"""kadhi spectrum — native Spectrum targeted-training scan (#266, v0.71.23).
 
-``soup spectrum scan`` streams a model's ``.safetensors`` shards (NO model
+``kadhi spectrum scan`` streams a model's ``.safetensors`` shards (NO model
 load), computes a singular-value SNR per weight matrix (arXiv:2406.06623),
 ranks layers within each module-type group and prints the top ``--top-percent``
 as a ready-to-paste ``training.unfrozen_parameters`` YAML block. Paste it into
-a ``soup.yaml`` to fine-tune only the high-SNR layers (full FT, LoRA off).
+a ``kadhi.yaml`` to fine-tune only the high-SNR layers (full FT, LoRA off).
 
 The scan is pure-numpy and runs on a CPU box even for very large models —
 peak RSS is the largest single weight matrix, not the whole model.

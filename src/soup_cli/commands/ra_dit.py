@@ -1,4 +1,4 @@
-"""v0.71.10 #200 — ``soup ra-dit`` one-shot two-stage RA-DIT orchestrator.
+"""v0.71.10 #200 — ``kadhi ra-dit`` one-shot two-stage RA-DIT orchestrator.
 
 Chains the RA-DIT retriever (stage 1, embedding/contrastive) and generator
 (stage 2, RAFT-style SFT) in a single invocation, **recording** the trained
@@ -12,7 +12,7 @@ the deferred "live orchestration" note.
 
 ``--plan-only`` validates both config paths + renders the resolved plan
 without training. The live path runs each stage as a subprocess
-(``soup train --config <yaml> --yes``) via :mod:`soup_cli.utils.ra_dit_run`.
+(``kadhi train --config <yaml> --yes``) via :mod:`soup_cli.utils.ra_dit_run`.
 """
 
 from __future__ import annotations

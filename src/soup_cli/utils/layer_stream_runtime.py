@@ -962,7 +962,7 @@ def _build_streamed_layer_class():
             # keys as missing and returns the untuned base, with no exception.
             # Every adapter artifact (the final `trainer.save_model()`, each
             # `save_steps` checkpoint, and therefore everything downstream:
-            # `soup merge` / `serve` / `chat` / `adapters *` / the Registry)
+            # `kadhi merge` / `serve` / `chat` / `adapters *` / the Registry)
             # reaches disk through this method, so delegating at OUR prefix is
             # what makes a streamed adapter indistinguishable from a normal
             # LoRA run.
@@ -1368,7 +1368,7 @@ def measure_step_peak_bytes(
     ``input_ids`` are used rather than a real batch because the quantity being
     bounded is the CONFIGURED shape, which is the worst case any real batch can
     pad up to; a real batch would measure whatever length it happened to have.
-    Validated against a full ``soup train`` run of the same config: probe
+    Validated against a full ``kadhi train`` run of the same config: probe
     4.3117 GB reserved vs the real run's 4.3159 GB, 0.1% apart.
 
     Costs one step. Measured on an RTX 3050 Laptop: 1.02-1.15 s for

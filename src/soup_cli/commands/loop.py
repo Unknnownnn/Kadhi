@@ -1,14 +1,14 @@
-"""soup loop — CLI-first data flywheel (v0.58.0 capstone).
+"""kadhi loop — CLI-first data flywheel (v0.58.0 capstone).
 
 Subcommands:
 
-    soup loop init <served-model> --eval <suite> --baseline <ref>
-    soup loop status
-    soup loop watch [--detach] [--max-iterations N]
-    soup loop pause
-    soup loop resume
-    soup loop canary <new-adapter> --traffic 5% [--autoroll-on-regress]
-    soup loop replay <iteration-id>
+    kadhi loop init <served-model> --eval <suite> --baseline <ref>
+    kadhi loop status
+    kadhi loop watch [--detach] [--max-iterations N]
+    kadhi loop pause
+    kadhi loop resume
+    kadhi loop canary <new-adapter> --traffic 5% [--autoroll-on-regress]
+    kadhi loop replay <iteration-id>
 
 State lives in ``.soup/loop.yaml``; per-iteration artifacts under
 ``.soup-loops/<iteration-id>/iteration.json``. Both paths are cwd-

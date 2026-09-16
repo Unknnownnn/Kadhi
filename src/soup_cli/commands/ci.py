@@ -1,7 +1,7 @@
-"""soup ci — fine-tuning CI helpers (v0.71.35).
+"""kadhi ci — fine-tuning CI helpers (v0.71.35).
 
-``soup ci init`` writes a GitHub Actions workflow that gates every PR on
-``soup data validate`` -> ``soup expect`` -> ``soup ship --evidence``.
+``kadhi ci init`` writes a GitHub Actions workflow that gates every PR on
+``kadhi data validate`` -> ``kadhi expect`` -> ``kadhi ship --evidence``.
 """
 
 from __future__ import annotations

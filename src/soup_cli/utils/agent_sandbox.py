@@ -1,6 +1,6 @@
-"""Sandboxed tool-call scoring for ``soup agent eval`` (v0.71.18 #110).
+"""Sandboxed tool-call scoring for ``kadhi agent eval`` (v0.71.18 #110).
 
-v0.46.0 ``soup agent eval`` scores predicted tool-calls with a *heuristic*:
+v0.46.0 ``kadhi agent eval`` scores predicted tool-calls with a *heuristic*:
 the predicted ``tool`` must exist in the spec catalog and its ``arguments``
 may only reference declared parameters. That catches malformed predictions
 but never *executes* the call.

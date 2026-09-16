@@ -2,11 +2,11 @@
 
 Two new save-format surfaces ship this release (schema-only):
 
-* ``soup merge --save-format <fmt>`` where fmt ∈ {fp16, 4bit, 4bit_forced}.
+* ``kadhi merge --save-format <fmt>`` where fmt ∈ {fp16, 4bit, 4bit_forced}.
   ``4bit`` writes a single BNB-4bit-quantized merged checkpoint without
   the dequant → merge → requant cycle (unsloth ``merged_4bit`` recipe).
   ``4bit_forced`` is the unsloth ``4bit_forced`` shortcut.
-* ``soup export --format torchao --quant-config <yaml>`` — invokes
+* ``kadhi export --format torchao --quant-config <yaml>`` — invokes
   ``torchao.quantize_`` then ``save_pretrained`` for the
   ``Int4WeightOnly`` / ``Int8DynActInt4`` / ``Float8DynActFloat8`` /
   ``NVFP4`` PTQ schemes (unsloth + axolotl parity).

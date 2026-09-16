@@ -1,4 +1,4 @@
-"""`soup delinearize-llama4` — Llama 4 expert-weight reshape.
+"""`kadhi delinearize-llama4` — Llama 4 expert-weight reshape.
 
 v0.44.0 shipped the planner; v0.71.21 (#97) lifts the live torch runtime
 (load each shard → reshape fused 2-D expert weights to 3-D → atomic write

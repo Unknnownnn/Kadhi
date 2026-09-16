@@ -2,8 +2,8 @@
 
 Adapters for production-observability ingest from Langfuse / LangSmith /
 Helicone / OpenPipe / OpenTelemetry / OpenAI Stored Completions. Extends the
-v0.26.0 Trace harvester (LangChain / OpenAI / Soup-serve) to the full SaaS
-ecosystem so `soup loop` can close the train -> eval -> gate -> ship cycle
+v0.26.0 Trace harvester (LangChain / OpenAI / Kadhi-serve) to the full SaaS
+ecosystem so `kadhi loop` can close the train -> eval -> gate -> ship cycle
 without ripping out existing dashboards.
 
 Every parser normalises to a frozen `TraceRecord` that downstream
@@ -13,7 +13,7 @@ once per ingest invocation, mirroring v0.26.0 Part C policy.
 Design notes:
 - All parsers are pure Iterable[dict] -> Iterator[TraceRecord]. No network
   code here. Users hand us a JSONL export; the one live pull
-  (``soup ingest --source langfuse --pull``, #204) lives in
+  (``kadhi ingest --source langfuse --pull``, #204) lives in
   ``utils/ingest_pull.py`` and feeds ``parse_langfuse`` in memory.
 - File reads enforce cwd containment + null-byte rejection (TOCTOU policy
   mirroring v0.26.0 / v0.40.3 / v0.55.0).

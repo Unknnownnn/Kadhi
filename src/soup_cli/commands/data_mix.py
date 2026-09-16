@@ -1,4 +1,4 @@
-"""soup data mix — Data Mixing Optimizer CLI (v0.48.0 Part B — BETA).
+"""kadhi data mix — Data Mixing Optimizer CLI (v0.48.0 Part B — BETA).
 
 Two modes:
 
@@ -6,7 +6,7 @@ Two modes:
 * ``--apply <recipe.yaml>`` re-loads a previously written recipe and prints
   the spliceable ``data:`` block.
 
-Live wiring of the proxy training loop into ``soup train`` is deferred to
+Live wiring of the proxy training loop into ``kadhi train`` is deferred to
 v0.48.1 (matches the project's stub-then-live pattern). The CLI ships a
 synthetic offline proxy so users can exercise the budget tracker, the
 optimiser surface, and the recipe writer end-to-end without GPUs.
@@ -31,7 +31,7 @@ def _offline_proxy(weights: Tuple[float, ...]) -> float:
 
     Penalises mixtures that concentrate too much weight on a single dataset
     so the budget tracker / writer exercises a non-trivial search landscape.
-    Live wiring (short ``soup train`` proxy run) lands in v0.48.1.
+    Live wiring (short ``kadhi train`` proxy run) lands in v0.48.1.
     """
     # Minimum at uniform mixture; quadratic penalty away from uniform.
     if not weights:
@@ -144,7 +144,7 @@ def mix(
             console.print(f"  train: {escape(json.dumps(train_value))}")
         else:
             # #443 — current recipes: data.train is the full dataset list,
-            # index-aligned with data.interleave.probs, now that soup train
+            # index-aligned with data.interleave.probs, now that kadhi train
             # actually consumes the mixture. (Also matches pre-#330 recipes
             # on disk, which happened to be list-shaped by accident.)
             console.print("  train:")

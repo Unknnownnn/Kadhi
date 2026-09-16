@@ -1,4 +1,4 @@
-"""`soup prune-prompt` — strip shared system-prompt prefix from training data.
+"""`kadhi prune-prompt` — strip shared system-prompt prefix from training data.
 
 Detect a static system-prompt prefix across all rows of a trace JSONL,
 strip it from training data so the FT model internalises it (OpenPipe's

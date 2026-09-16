@@ -56,7 +56,7 @@ def _streaming_builder_for(entry: str) -> str:
 
 
 # Cap on rows materialised from a remote/streaming source — matches v0.24.0
-# ``soup data download --samples`` ceiling. Defends against OOM when a
+# ``kadhi data download --samples`` ceiling. Defends against OOM when a
 # crafted / oversized bucket object or hub dataset is pointed at via
 # streaming + eager-materialise. Shared by _load_remote_dataset (v0.53.8
 # #85) and _load_interleaved_streaming_datasets (#459) so the ceiling can't
@@ -162,7 +162,7 @@ def _format_rows(
     """Normalize rows, optionally retaining columns used by GRPO rewards.
 
     TRL forwards every non-prompt dataset column to custom reward functions.
-    Soup's normalizers intentionally return only task-specific columns, which
+    Kadhi's normalizers intentionally return only task-specific columns, which
     is correct for supervised and preference trainers but would discard GRPO
     references such as ``answer``, ``expected``, ``schema``, or custom
     metadata.  The opt-in keeps the default loader contract byte-for-byte
@@ -242,12 +242,12 @@ def _finalize(
     """Split train/val, then mix replay into train ONLY.
 
     Single exit point for every load path (local / remote / HF) so replay
-    behaviour cannot drift between them — `soup sweep` and
-    `soup train --dry-run` go through the same seam.
+    behaviour cannot drift between them — `kadhi sweep` and
+    `kadhi train --dry-run` go through the same seam.
 
     Replay is mixed AFTER the split so val stays pure new-task: it is the
     yardstick for the task being learned. Old-task retention is measured
-    externally with `soup eval custom` / `soup ship`, which adds no new
+    externally with `kadhi eval custom` / `kadhi ship`, which adds no new
     eval machinery here.
     """
     if val is not None:

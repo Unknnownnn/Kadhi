@@ -21,7 +21,7 @@ Three modes via the input data shape:
    #206.
 
 Composes with v0.19 human eval (the output JSONL is a drop-in human-eval
-prompt set) and v0.58 ``soup loop watch`` (which can run this nightly).
+prompt set) and v0.58 ``kadhi loop watch`` (which can run this nightly).
 """
 
 from __future__ import annotations

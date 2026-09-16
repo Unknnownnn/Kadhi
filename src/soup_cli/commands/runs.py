@@ -1,4 +1,4 @@
-"""soup runs — experiment tracking commands."""
+"""kadhi runs — experiment tracking commands."""
 
 from __future__ import annotations
 

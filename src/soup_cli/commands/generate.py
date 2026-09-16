@@ -1,4 +1,4 @@
-"""soup data generate — generate synthetic training data using LLMs."""
+"""kadhi data generate — generate synthetic training data using LLMs."""
 
 import json
 import logging
@@ -837,7 +837,7 @@ def _generate_server(
     seed_examples: list[dict],
     generation_prompt: Optional[str] = None,
 ) -> list[dict]:
-    """Generate examples using a local OpenAI-compatible server (soup serve, Ollama, etc.).
+    """Generate examples using a local OpenAI-compatible server (kadhi serve, Ollama, etc.).
 
     Unlike the 'openai' provider, no API key is required. Connects to a running
     local inference server via its OpenAI-compatible /v1/chat/completions endpoint.

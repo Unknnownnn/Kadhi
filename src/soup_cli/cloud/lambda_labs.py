@@ -1,4 +1,4 @@
-"""Lambda Cloud controller for ``soup train --cloud lambda`` (#264).
+"""Lambda Cloud controller for ``kadhi train --cloud lambda`` (#264).
 
 The rendered controller launches an instance with secret-free cloud-init
 ``user_data``, waits for training over SSH, copies the configured output back

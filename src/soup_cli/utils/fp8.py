@@ -4,7 +4,7 @@ FP8 training on Hopper (H100, H200) and Blackwell (B100, B200) GPUs uses 8-bit
 floating point for matmuls, giving ~2x speedup vs bf16 at comparable quality.
 
 This extends the existing int8-QAT infrastructure (``utils/qat.py``). When the
-user sets ``quantization_aware: 'fp8'`` in soup.yaml the FP8 recipe is applied;
+user sets ``quantization_aware: 'fp8'`` in kadhi.yaml the FP8 recipe is applied;
 ``quantization_aware: true`` keeps the legacy int8 QAT path.
 
 Requires:

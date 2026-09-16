@@ -129,7 +129,7 @@ def atomic_write_lines(
 ) -> str:
     """Stream ``lines`` into ``output_path`` atomically under cwd containment.
 
-    Streaming sibling of :func:`atomic_write_text` (#204 ``soup ingest --pull``):
+    Streaming sibling of :func:`atomic_write_text` (#204 ``kadhi ingest --pull``):
     each line is written to the staging file as the iterable yields it, so a
     large result is never held in memory, and the target is replaced only once
     the iterable is exhausted. An exception raised while iterating removes the

@@ -1,4 +1,4 @@
-"""``soup adapters bisect`` — binary search over training history (v0.67.0 Part F).
+"""``kadhi adapters bisect`` — binary search over training history (v0.67.0 Part F).
 
 Given an ordered history of checkpoints (or dataset commits) and an
 operator-supplied predicate that returns True when "eval passes",
@@ -6,7 +6,7 @@ binary-search for the FIRST checkpoint where the predicate flips to
 False. The result is the regression boundary.
 
 Composes with v0.66 Part B influence-blame: once the boundary is
-found, ``soup adapters blame`` can attribute the regression to
+found, ``kadhi adapters blame`` can attribute the regression to
 specific dataset rows.
 
 Public surface:
@@ -182,7 +182,7 @@ def run_bisect(
     passes (no regression) and ``False`` when it fails. The bisect
     assumes monotonic regression: once a checkpoint fails, every later
     one also fails. Non-monotonic histories produce undefined results;
-    operators wanting a sweep should use ``soup eval`` directly.
+    operators wanting a sweep should use ``kadhi eval`` directly.
     """
     if not isinstance(plan, BisectPlan):
         raise TypeError("plan must be BisectPlan")

@@ -1,4 +1,4 @@
-"""v0.61.0 Part B — `soup eval unlearning` subcommand.
+"""v0.61.0 Part B — `kadhi eval unlearning` subcommand.
 
 Computes Forget Quality + Model Utility + PrivLeak metrics from
 operator-supplied evidence JSON and emits an :class:`UnlearnReport`.
@@ -152,7 +152,7 @@ def register(app: typer.Typer, console: Console) -> None:
                     )
 
         # Exit code: 0 on OK / MINOR; 2 on MAJOR (matches v0.56.0 diagnose
-        # gate convention so CI scripts can chain `soup train` → `soup
+        # gate convention so CI scripts can chain `kadhi train` → `soup
         # eval unlearning` → exit-on-MAJOR).
         if report.overall == "MAJOR":
             raise typer.Exit(2)

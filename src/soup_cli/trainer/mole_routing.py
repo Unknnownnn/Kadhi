@@ -408,7 +408,7 @@ class MoleRoutingTrainerWrapper:
         gate_path = output_dir / "mole_gate.pt"
         torch.save(self.model.mole_gate.state_dict(), str(gate_path))
         # v0.71.17 #259 — write a self-describing manifest next to the gate so
-        # `soup serve --mole <dir>` can reconstruct the decode-time blend
+        # `kadhi serve --mole <dir>` can reconstruct the decode-time blend
         # (base + N frozen task LoRAs + gate geometry).
         from soup_cli.utils.mole_routing import (
             MoleServeManifest,
@@ -428,7 +428,7 @@ class MoleRoutingTrainerWrapper:
             f"[green]MoLE serve manifest written:[/] {manifest_path}"
         )
         # Match the generic train.py result shape (initial/final loss, duration,
-        # total_steps) so `soup train task=moe_lora_routing` completes cleanly,
+        # total_steps) so `kadhi train task=moe_lora_routing` completes cleanly,
         # while keeping the MoLE-specific keys (gate_path / manifest_path).
         logs = self.trainer.state.log_history
         train_losses = [entry["loss"] for entry in logs if "loss" in entry]

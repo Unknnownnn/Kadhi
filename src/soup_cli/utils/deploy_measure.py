@@ -1,4 +1,4 @@
-"""v0.53.1 #109 — soup deploy autopilot --measure helper.
+"""v0.53.1 #109 — kadhi deploy autopilot --measure helper.
 
 Live Quant-Lobotomy measurement for each candidate quant in a deploy profile.
 Wraps v0.26.0 :mod:`soup_cli.eval.quant_check` with disk-cache so that

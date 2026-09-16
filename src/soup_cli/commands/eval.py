@@ -1,4 +1,4 @@
-"""soup eval — evaluation platform with benchmarks, custom evals, LLM judge, and more."""
+"""kadhi eval — evaluation platform with benchmarks, custom evals, LLM judge, and more."""
 
 from __future__ import annotations
 
@@ -39,7 +39,7 @@ def _reject_lm_eval_injection(value: str, field: str) -> None:
         raise typer.Exit(1)
 
 
-# ─── soup eval benchmark ───
+# ─── kadhi eval benchmark ───
 
 
 @app.command()
@@ -131,7 +131,7 @@ def benchmark(
     console.print("\n[green]Results saved to experiment tracker.[/]")
 
 
-# ─── soup eval aider ───
+# ─── kadhi eval aider ───
 
 
 @app.command()
@@ -299,7 +299,7 @@ def aider(
     console.print(f"[green]Soup result written to:[/] {escape(str(result_path))}")
 
 
-# ─── soup eval custom ───
+# ─── kadhi eval custom ───
 
 
 @app.command()
@@ -435,7 +435,7 @@ def custom(
         )
 
 
-# ─── soup eval judge ───
+# ─── kadhi eval judge ───
 
 
 @app.command()
@@ -600,7 +600,7 @@ def judge(
         console.print("[green]Results saved to experiment tracker.[/]")
 
 
-# ─── soup eval auto ───
+# ─── kadhi eval auto ───
 
 
 @app.command()
@@ -626,7 +626,7 @@ def auto(
         ),
     ),
 ):
-    """Run automatic evaluation using config from soup.yaml."""
+    """Run automatic evaluation using config from kadhi.yaml."""
     from soup_cli.config.loader import load_config
 
     config_path = Path(config)
@@ -713,7 +713,7 @@ def auto(
     console.print("\n[green]Auto-eval complete.[/]")
 
 
-# ─── soup eval compare ───
+# ─── kadhi eval compare ───
 
 
 @app.command()
@@ -779,7 +779,7 @@ def compare(
         )
 
 
-# ─── soup eval leaderboard ───
+# ─── kadhi eval leaderboard ───
 
 
 @app.command()
@@ -844,7 +844,7 @@ def leaderboard(
     console.print(table)
 
 
-# ─── soup eval human ───
+# ─── kadhi eval human ───
 
 
 @app.command()
@@ -1156,7 +1156,7 @@ def _short_model_name(path: str) -> str:
     return path
 
 
-# ─── soup eval gate (v0.26.0 Part B) ───
+# ─── kadhi eval gate (v0.26.0 Part B) ───
 
 
 @app.command(name="gate")
@@ -1268,7 +1268,7 @@ def gate_cmd(
     raise typer.Exit(0 if result.passed else 1)
 
 
-# ─── soup eval quant-check (v0.26.0 Part D) ───
+# ─── kadhi eval quant-check (v0.26.0 Part D) ───
 
 
 @app.command(name="quant-check")

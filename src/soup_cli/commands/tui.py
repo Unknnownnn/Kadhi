@@ -1,8 +1,8 @@
-"""soup tui — full-screen Textual dashboard for live + historical runs.
+"""kadhi tui — full-screen Textual dashboard for live + historical runs.
 
 The Textual app itself is constructed inside ``run_tui`` so the import is
 lazy and the rest of the CLI keeps working when ``textual`` isn't
-installed. The user-facing error mirrors the pattern used by ``soup ui``
+installed. The user-facing error mirrors the pattern used by ``kadhi ui``
 and the optional ``[tui]`` install extra.
 """
 

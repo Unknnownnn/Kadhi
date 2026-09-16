@@ -1,14 +1,14 @@
 """Shared LoRA -> dense merge (v0.71.33).
 
-Extracted from ``commands/shrink.py`` (v0.71.29) so both ``soup shrink`` (fuse
-the distill-heal adapter back into the pruned model) and ``soup draft`` (a
+Extracted from ``commands/shrink.py`` (v0.71.29) so both ``kadhi shrink`` (fuse
+the distill-heal adapter back into the pruned model) and ``kadhi draft`` (a
 speculative-decoding draft must be loadable standalone as ``assistant_model=``,
 so the distilled adapter has to be merged into a dense checkpoint) go through
 ONE implementation instead of two copies that can drift.
 
 :func:`merge_adapter_to_dense` is the general form — base model + adapter ->
 dense model at an arbitrary destination. :func:`fuse_adapter_into` is the
-in-place special case (destination == the base directory) that ``soup shrink``
+in-place special case (destination == the base directory) that ``kadhi shrink``
 uses. Heavy imports (torch / transformers / peft) stay inside the functions.
 """
 
@@ -118,7 +118,7 @@ def merge_adapter_to_dense(
 
 
 def fuse_adapter_into(*, base_dir: str, adapter_dir: str, trc: bool = False) -> None:
-    """Merge a LoRA adapter into ``base_dir`` in place (``soup shrink``'s case).
+    """Merge a LoRA adapter into ``base_dir`` in place (``kadhi shrink``'s case).
 
     ``base_dir`` is BOTH the base weights and the destination: the healed model
     replaces the pruned one. Thin wrapper over :func:`merge_adapter_to_dense`.

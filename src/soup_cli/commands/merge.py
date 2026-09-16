@@ -1,4 +1,4 @@
-"""soup merge — merge LoRA adapter with base model into a full model."""
+"""kadhi merge — merge LoRA adapter with base model into a full model."""
 
 import json
 from pathlib import Path

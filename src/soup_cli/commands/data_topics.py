@@ -1,10 +1,10 @@
-"""``soup data topics`` — topic map over training data (v0.71.36).
+"""``kadhi data topics`` — topic map over training data (v0.71.36).
 
 Thin Typer/Rich layer over the pure engine in ``utils/topics.py``.
 BERTopic-lite: embed -> k-means -> c-TF-IDF labels -> coverage table.
 
 Labels are EMERGENT unsupervised term clusters, not a classification
-against a fixed ontology, and there is no join to ``soup eval coverage``
+against a fixed ontology, and there is no join to ``kadhi eval coverage``
 (that compares an eval suite's scorer mix to a task taxonomy — a different
 axis). The help text and docs say so plainly rather than implying the
 labels mean more than they do.

@@ -1,4 +1,4 @@
-"""`soup plan` / `soup apply` — Terraform-shape lock-and-execute for FT.
+"""`kadhi plan` / `kadhi apply` — Terraform-shape lock-and-execute for FT.
 
 A training run is a one-shot infrastructure-shaped operation: spot
 price, expected cost, base SHA, dataset SHA, peak VRAM. v0.64 borrows
@@ -6,17 +6,17 @@ Terraform's plan-apply split so operators can review what they're
 about to spend before committing.
 
 Workflow:
-1. ``soup plan --config soup.yaml`` writes ``soup.tfstate`` with a
+1. ``kadhi plan --config kadhi.yaml`` writes ``soup.tfstate`` with a
    ``TrainingPlan`` summarising the run (config SHA, dataset SHA,
    estimated cost, ETA, peak VRAM, spot price).
-2. ``soup apply --config soup.yaml`` re-builds the plan from the
+2. ``kadhi apply --config kadhi.yaml`` re-builds the plan from the
    current YAML, compares against the state file, and **refuses** if
    the plan drifted. Operators see "config drifted: epochs 1 -> 99"
    instead of silently spending another $0.50.
 3. ``--dry-run`` exits 0 after the drift check without actually
    invoking the trainer.
 
-The state file is a thin JSON envelope; the actual ``soup train`` is
+The state file is a thin JSON envelope; the actual ``kadhi train`` is
 still the run-driver. This is a *gate*, not a parallel trainer.
 
 Public surface:
@@ -51,7 +51,7 @@ _MAX_BASE_LEN = 512
 
 @dataclass(frozen=True)
 class TrainingPlan:
-    """Pre-flight summary of a planned `soup train` invocation."""
+    """Pre-flight summary of a planned `kadhi train` invocation."""
 
     base: str
     task: str
@@ -171,12 +171,12 @@ def compute_config_sha(config: Mapping[str, Any]) -> str:
 def compute_dataset_sha(path: object) -> str:
     """SHA-256 of dataset file bytes. Returns zero-hash on missing file.
 
-    Returning a constant for "missing" lets ``soup plan`` run before the
-    dataset exists (e.g. dataset built by an earlier `soup data` step).
+    Returning a constant for "missing" lets ``kadhi plan`` run before the
+    dataset exists (e.g. dataset built by an earlier `kadhi data` step).
     Drift detection still surfaces the change once the file appears.
 
     Security: cwd containment + symlink rejection BEFORE the open() so a
-    crafted ``soup.yaml`` with ``data.train: /etc/shadow`` cannot leak the
+    crafted ``kadhi.yaml`` with ``data.train: /etc/shadow`` cannot leak the
     file contents into the SHA. An empty path returns zero-hash without
     touching the filesystem.
     """
@@ -222,7 +222,7 @@ _DEFAULT_PEAK_VRAM = 8.0
 def _to_float(value: Any, default: float) -> float:
     """Coerce a config number to float, tolerating ``batch_size: "auto"``.
 
-    ``soup train`` accepts ``batch_size: "auto"`` (int-or-"auto" per schema), so
+    ``kadhi train`` accepts ``batch_size: "auto"`` (int-or-"auto" per schema), so
     the plan estimator must not crash on ``float("auto")`` — fall back to the
     baseline for the heuristic instead.
     """

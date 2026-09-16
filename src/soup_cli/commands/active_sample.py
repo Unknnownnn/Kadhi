@@ -1,4 +1,4 @@
-"""`soup data active-sample` — active-learning sampler (v0.63.0 Part C)."""
+"""`kadhi data active-sample` — active-learning sampler (v0.63.0 Part C)."""
 
 from __future__ import annotations
 

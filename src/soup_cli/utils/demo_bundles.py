@@ -1,4 +1,4 @@
-"""v0.43.0 Part D — `soup data demo` bundle registry.
+"""v0.43.0 Part D — `kadhi data demo` bundle registry.
 
 Single source of truth for the small JSONL fixtures bundled under
 `examples/data/`. The CLI command resolves a name to a path, copies the
@@ -36,7 +36,7 @@ class DemoBundle:
 
 # Descriptions carry no row counts on purpose. `alpaca_demo` advertised
 # "20-row" against a 10-row file: a number describing a file, hardcoded in a
-# different file, with nothing checking the two agree. `soup data inspect
+# different file, with nothing checking the two agree. `kadhi data inspect
 # <file>` reports the real count, and examples/data/README.md tabulates them.
 _BUNDLES: Mapping[str, DemoBundle] = MappingProxyType({
     "alpaca_demo": DemoBundle(

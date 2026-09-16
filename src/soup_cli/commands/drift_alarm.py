@@ -1,4 +1,4 @@
-"""`soup drift-alarm` — online-eval drift alarm (v0.63.0 Part E)."""
+"""`kadhi drift-alarm` — online-eval drift alarm (v0.63.0 Part E)."""
 
 from __future__ import annotations
 

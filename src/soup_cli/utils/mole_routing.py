@@ -298,7 +298,7 @@ _MAX_MANIFEST_BYTES = 1 * 1024 * 1024  # 1 MiB cap on the manifest file
 class MoleServeManifest:
     """Self-describing MoLE deployment manifest written next to ``mole_gate.pt``.
 
-    Captures everything ``soup serve --mole`` needs to reconstruct the
+    Captures everything ``kadhi serve --mole`` needs to reconstruct the
     decode-time blend: the base model, the N frozen task-LoRA paths, and the
     gate geometry (``hidden_dim`` / ``top_k`` / ``temperature``). Frozen +
     fully validated so a tampered manifest fails loud at load time.

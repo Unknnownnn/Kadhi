@@ -1587,7 +1587,7 @@ def adapter_bisect(
     """Binary-search a training history to find the first failing checkpoint.
 
     Composes with v0.66 Part B influence-blame: once the boundary is
-    found, ``soup adapters blame`` can attribute the regression to
+    found, ``kadhi adapters blame`` can attribute the regression to
     specific dataset rows.
     """
     from soup_cli.utils.adapter_bisect import build_bisect_plan, run_bisect

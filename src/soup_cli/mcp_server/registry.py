@@ -1,4 +1,4 @@
-"""Pure MCP tool registry for ``soup mcp serve`` (v0.71.28).
+"""Pure MCP tool registry for ``kadhi mcp serve`` (v0.71.28).
 
 This module has **no** dependency on the ``mcp`` SDK: it defines the tool
 table (:class:`ToolSpec`), the handler functions (each a pure
@@ -179,7 +179,7 @@ def _enforce_data_path(path: str, field: str = "data") -> None:
 
 
 def tool_advise(args: dict) -> dict:
-    """`soup advise` — pre-flight PROMPT_ENG / RAG / SFT / DPO / GRPO verdict."""
+    """`kadhi advise` — pre-flight PROMPT_ENG / RAG / SFT / DPO / GRPO verdict."""
     from soup_cli.utils import advise as _advise
 
     data = _require_str(args, "data")
@@ -217,7 +217,7 @@ def _load_data_rows(path: str) -> list[dict]:
 
 
 def tool_data_inspect(args: dict) -> dict:
-    """`soup data inspect` — dataset stats."""
+    """`kadhi data inspect` — dataset stats."""
     from soup_cli.data.validator import validate_and_stats
 
     rows = _load_data_rows(_require_str(args, "data"))
@@ -225,7 +225,7 @@ def tool_data_inspect(args: dict) -> dict:
 
 
 def tool_data_validate(args: dict) -> dict:
-    """`soup data validate` — format-compliance report.
+    """`kadhi data validate` — format-compliance report.
 
     Resolves ``format`` exactly as ``tool_data_doctor`` below already does,
     and for the same reason (#878). ``validator.validate_and_stats`` computes
@@ -245,7 +245,7 @@ def tool_data_validate(args: dict) -> dict:
 
     rows = _load_data_rows(_require_str(args, "data"))
     # Absent means auto; an empty or blank string is a value the caller
-    # supplied and it is not a format, so it is refused -- `soup data
+    # supplied and it is not a format, so it is refused -- `kadhi data
     # validate --format ""` exits 1 rather than auto-detecting, and this
     # surface has to answer the same way.
     fmt = _opt_str(args, "format")
@@ -269,7 +269,7 @@ def tool_data_validate(args: dict) -> dict:
 
 
 def tool_data_score(args: dict) -> dict:
-    """`soup data score` — PII / keyword triage / language / educational scorecard."""
+    """`kadhi data score` — PII / keyword triage / language / educational scorecard."""
     from soup_cli.utils.data_score import compute_scorecard
 
     rows = _load_data_rows(_require_str(args, "data"))
@@ -286,7 +286,7 @@ def tool_data_score(args: dict) -> dict:
 
 
 def tool_data_doctor(args: dict) -> dict:
-    """`soup data doctor` — chat-template compat report (needs the tokenizer stack)."""
+    """`kadhi data doctor` — chat-template compat report (needs the tokenizer stack)."""
     from soup_cli.data import formats as _formats
     from soup_cli.utils import data_doctor as _dd
 
@@ -329,7 +329,7 @@ def tool_data_doctor(args: dict) -> dict:
 
 
 def tool_recipes_search(args: dict) -> dict:
-    """`soup recipes search` — compact recipe list (no yaml body)."""
+    """`kadhi recipes search` — compact recipe list (no yaml body)."""
     from soup_cli.recipes.catalog import RECIPES, search_recipes
 
     results = search_recipes(
@@ -351,7 +351,7 @@ def tool_recipes_search(args: dict) -> dict:
 
 
 def tool_recipes_show(args: dict) -> dict:
-    """`soup recipes show` — full recipe incl. the YAML body."""
+    """`kadhi recipes show` — full recipe incl. the YAML body."""
     from soup_cli.recipes.catalog import get_recipe
 
     name = _require_str(args, "name")
@@ -370,7 +370,7 @@ def tool_recipes_show(args: dict) -> dict:
 
 
 def tool_runs_list(args: dict) -> dict:
-    """`soup runs` — recent experiment runs."""
+    """`kadhi runs` — recent experiment runs."""
     from soup_cli.experiment.tracker import ExperimentTracker
 
     limit = _opt_int(args, "limit", 50, lo=1, hi=500)
@@ -379,7 +379,7 @@ def tool_runs_list(args: dict) -> dict:
 
 
 def tool_runs_show(args: dict) -> dict:
-    """`soup runs show` — one run's full record."""
+    """`kadhi runs show` — one run's full record."""
     from soup_cli.experiment.tracker import ExperimentTracker
 
     run = ExperimentTracker().get_run(_require_str(args, "run_id"))
@@ -389,7 +389,7 @@ def tool_runs_show(args: dict) -> dict:
 
 
 def tool_registry_list(args: dict) -> dict:
-    """`soup registry list` — model registry entries."""
+    """`kadhi registry list` — model registry entries."""
     from soup_cli.registry.store import RegistryStore
 
     limit = _opt_int(args, "limit", 100, lo=1, hi=500)
@@ -405,7 +405,7 @@ def tool_registry_list(args: dict) -> dict:
 
 
 def tool_registry_show(args: dict) -> dict:
-    """`soup registry show` — one registry entry (id / prefix / name:tag / registry://)."""
+    """`kadhi registry show` — one registry entry (id / prefix / name:tag / registry://)."""
     from soup_cli.registry.store import AmbiguousRefError, RegistryStore
 
     ref = _require_str(args, "ref")
@@ -445,7 +445,7 @@ def _resolve_gpu_memory_mcp(gpu: str | None) -> tuple[float, str]:
 
 
 def _load_config_under_cwd(config: str) -> SoupConfig:
-    """Read + validate a soup.yaml via the API-safe loader.
+    """Read + validate a kadhi.yaml via the API-safe loader.
 
     Uses ``load_config_from_string`` (raises ``ValueError``) NOT ``load_config``
     (which prints to stdout + ``sys.exit`` — both fatal to the MCP stdio stream).
@@ -460,7 +460,7 @@ def _load_config_under_cwd(config: str) -> SoupConfig:
 
 
 def tool_profile(args: dict) -> dict:
-    """`soup profile` — memory / speed / GPU estimate from a soup.yaml (no model load)."""
+    """`kadhi profile` — memory / speed / GPU estimate from a kadhi.yaml (no model load)."""
     from soup_cli.utils.gpu import model_size_from_name
     from soup_cli.utils.profiler import (
         estimate_speed,
@@ -501,7 +501,7 @@ def tool_profile(args: dict) -> dict:
 
 
 def tool_diagnose_evidence(args: dict) -> dict:
-    """`soup diagnose --evidence` — failure-mode report card from pre-computed scores."""
+    """`kadhi diagnose --evidence` — failure-mode report card from pre-computed scores."""
     from soup_cli import __version__
     from soup_cli.utils.diagnose.report import FAILURE_MODES, FailureScore, classify_score
     from soup_cli.utils.diagnose.runner import build_report
@@ -583,7 +583,7 @@ def _evidence_error_message(exc: Exception) -> str:
 
 
 def tool_ship_evidence(args: dict) -> dict:
-    """`soup ship --evidence` — SHIP / DON'T-SHIP verdict from pre-computed scores."""
+    """`kadhi ship --evidence` — SHIP / DON'T-SHIP verdict from pre-computed scores."""
     from soup_cli.utils.ship_verdict import (
         DEFAULT_FORGETTING_THRESHOLD,
         floor_exceeds_threshold,
@@ -657,7 +657,7 @@ def _collect_external_protected_inputs(cfg: SoupConfig) -> list[ProtectedFile]:
 
 
 def tool_train_start(args: dict, execution: ExecutionManager | None = None) -> dict:
-    """`soup train` (plan-only) — validate a soup.yaml + render the command."""
+    """`kadhi train` (plan-only) — validate a kadhi.yaml + render the command."""
     config = _require_str(args, "config")
     text = _read_text_under_cwd(config, "config")
     try:
@@ -713,7 +713,7 @@ def tool_train_start(args: dict, execution: ExecutionManager | None = None) -> d
 
 
 def tool_export(args: dict, execution: ExecutionManager | None = None) -> dict:
-    """`soup export` (plan-only) — validate format + render the command."""
+    """`kadhi export` (plan-only) — validate format + render the command."""
     from soup_cli.commands.export import SUPPORTED_FORMATS
 
     model = _require_str(args, "model")

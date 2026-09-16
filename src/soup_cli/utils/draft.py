@@ -1,6 +1,6 @@
 """Speculative-decoding draft engine (v0.71.33).
 
-``soup draft`` distils a target model into a tiny *draft* model and reports how
+``kadhi draft`` distils a target model into a tiny *draft* model and reports how
 often that draft would be accepted by the target during speculative decoding.
 
 Two halves, deliberately separated:
@@ -244,7 +244,7 @@ def supports_universal_assisted_decoding() -> bool:
 # ---------------------------------------------------------------------------
 @dataclass(frozen=True)
 class AcceptanceReport:
-    """One-screen result of ``soup draft measure``."""
+    """One-screen result of ``kadhi draft measure``."""
 
     target: str
     draft: str
@@ -334,7 +334,7 @@ def _registry_lock():
     """Best-effort exclusive lock on the registry, in-process AND cross-process.
 
     The registry is a read-modify-write file (replace the entry for one target,
-    keep the rest), so two ``soup draft distill`` runs finishing at the same
+    keep the rest), so two ``kadhi draft distill`` runs finishing at the same
     time could otherwise lose one registration entirely — the second writer's
     snapshot predates the first writer's commit.
 
@@ -424,14 +424,14 @@ def _atomic_write_json(payload: dict, path: str) -> str:
 def _read_registry() -> list[dict]:
     """Load registry entries. A missing/corrupt file reads as empty, never raises.
 
-    ``soup serve --auto-spec`` calls into this on every start; a hand-edited or
+    ``kadhi serve --auto-spec`` calls into this on every start; a hand-edited or
     truncated JSON file must not take the server down.
     """
     path = draft_registry_path()
     try:
         if not os.path.isfile(path):
             return []
-        # O_NOFOLLOW: this runs on every `soup serve` startup, so a symlink
+        # O_NOFOLLOW: this runs on every `kadhi serve` startup, so a symlink
         # planted at ~/.soup/drafts.json must not be transparently followed.
         flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
         fd = os.open(path, flags)
@@ -490,7 +490,7 @@ def lookup_draft(target: str) -> Optional[str]:
 
     An entry whose directory no longer exists (the user moved or deleted the
     draft) is skipped — a stale registry must degrade to "no draft", never to a
-    crash inside ``soup serve``.
+    crash inside ``kadhi serve``.
     """
     if not isinstance(target, str) or not target.strip():
         return None

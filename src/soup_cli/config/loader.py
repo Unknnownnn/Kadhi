@@ -1,4 +1,4 @@
-"""Load and validate soup.yaml configs."""
+"""Load and validate kadhi.yaml configs."""
 
 from pathlib import Path
 
@@ -60,7 +60,7 @@ def _report_unknown_keys(raw: dict) -> "str | None":
 
 
 def load_config(path: "Path | str") -> SoupConfig:
-    """Load a soup.yaml file and return validated SoupConfig."""
+    """Load a kadhi.yaml file and return validated SoupConfig."""
     path = Path(path)
     raw = yaml.safe_load(path.read_text(encoding="utf-8"))
 

@@ -1,4 +1,4 @@
-"""soup attest — in-toto + SLSA-3 attestation CLI (v0.59.0 Part B; ed25519 v0.71.2)."""
+"""kadhi attest — in-toto + SLSA-3 attestation CLI (v0.59.0 Part B; ed25519 v0.71.2)."""
 
 from __future__ import annotations
 
@@ -69,7 +69,7 @@ def emit_cmd(
     With ``--sign ed25519 --key <priv.pem>`` (v0.71.2 #179) the rendered
     Statement is signed with a real detached ed25519 signature; when
     ``--output`` is set a ``<output>.sig`` JSON sidecar (backend / signature /
-    public_key) is written next to it. Verify with ``soup attest verify``.
+    public_key) is written next to it. Verify with ``kadhi attest verify``.
     """
     try:
         st = AttestationStatement(

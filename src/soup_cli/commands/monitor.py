@@ -1,4 +1,4 @@
-"""v0.44.0 Part A — `soup monitor` GPU live-monitor command.
+"""v0.44.0 Part A — `kadhi monitor` GPU live-monitor command.
 
 Renders a Rich panel with one row per detected GPU: Util / Temp / VRAM /
 Power. Polls `nvidia-smi` (Linux/Windows/CUDA) at the configured refresh

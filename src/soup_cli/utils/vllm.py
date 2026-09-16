@@ -1,4 +1,4 @@
-"""vLLM backend utilities for soup serve."""
+"""vLLM backend utilities for kadhi serve."""
 
 import logging
 from collections.abc import Mapping
@@ -95,7 +95,7 @@ def _render_chat_prompt(
 def build_chat_prompt(messages, tokenizer=None) -> str:
     """Render chat messages into a prompt string (#332).
 
-    THE single prompt builder shared by ``soup serve``'s transformers and vLLM
+    THE single prompt builder shared by ``kadhi serve``'s transformers and vLLM
     backends, so the two cannot drift again. Applies the model's own chat
     template when it has one, and falls back to the legacy role-prefixed
     format only when it does not (or when no tokenizer could be loaded).
@@ -121,7 +121,7 @@ def encode_rendered_prompt(
 
     A chat template already emits every special token the model expects —
     Llama-3, Gemma and Mistral render ``{{ bos_token }}`` — so letting the
-    tokenizer add its own on top sent ``[bos, bos, ...]``. Soup's training ids
+    tokenizer add its own on top sent ``[bos, bos, ...]``. Kadhi's training ids
     are built with ``add_special_tokens=False`` (``data/loss_mask.py``), as are
     HF's own ``apply_chat_template(tokenize=True)`` ids, and inference has to
     match them. Text no template rendered is tokenized exactly as before.
@@ -136,7 +136,7 @@ def encode_chat_prompt(
 ) -> Any:
     """Render ``messages`` with the model's template and tokenize them as Soup trains.
 
-    ``fallback_on_error`` keeps each caller's existing contract: ``soup serve``
+    ``fallback_on_error`` keeps each caller's existing contract: ``kadhi serve``
     serves the legacy prompt when a template fails to render, while the CLI
     commands surface the template's own error.
     """

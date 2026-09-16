@@ -1,4 +1,4 @@
-"""soup cost -- estimate training cost in USD."""
+"""kadhi cost -- estimate training cost in USD."""
 
 from __future__ import annotations
 

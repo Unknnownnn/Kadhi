@@ -1,14 +1,14 @@
-"""``soup.lock`` shared run lockfile (v0.67.0 Part E).
+"""``kadhi.lock`` shared run lockfile (v0.67.0 Part E).
 
-A ``soup.lock`` is the closure of three SHA-256 hashes:
+A ``kadhi.lock`` is the closure of three SHA-256 hashes:
 
     closure = sha256(base_model_sha || dataset_sha || env_hash)
 
-Committed to git alongside ``soup.yaml``, teams coordinate on
+Committed to git alongside ``kadhi.yaml``, teams coordinate on
 "reproducible training run" by checking the closure on every
-``soup train`` and refusing to start when the lock drifts. Composes
-with v0.64 Part C ``soup env`` — operators run ``soup env lock``
-to get ``env_hash``, then ``soup lock write`` to write the file.
+``kadhi train`` and refusing to start when the lock drifts. Composes
+with v0.64 Part C ``kadhi env`` — operators run ``kadhi env lock``
+to get ``env_hash``, then ``kadhi lock write`` to write the file.
 
 Public surface:
 
@@ -107,7 +107,7 @@ def compute_lock_closure(
 class SoupLock:
     """The on-disk lockfile shape.
 
-    Stored as JSON at ``soup.lock`` (or operator-named path); committed
+    Stored as JSON at ``kadhi.lock`` (or operator-named path); committed
     to git so the team coordinates on "reproducible training run".
     """
 
@@ -160,7 +160,7 @@ def write_lock(lock: SoupLock, path: str) -> str:
 
 
 def read_lock(path: str) -> SoupLock:
-    """Read + validate a soup.lock from JSON. cwd-contained, symlink-rejected."""
+    """Read + validate a kadhi.lock from JSON. cwd-contained, symlink-rejected."""
     if not isinstance(path, str):
         raise TypeError("path must be str")
     if not path:

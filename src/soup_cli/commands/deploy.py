@@ -1,4 +1,4 @@
-"""soup deploy — deploy models to inference runtimes (Ollama, HF Spaces)."""
+"""kadhi deploy — deploy models to inference runtimes (Ollama, HF Spaces)."""
 
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ app = typer.Typer(no_args_is_help=True)
 # HF Space templates (Part F of v0.29.0)
 # ---------------------------------------------------------------------------
 
-_GRADIO_APP_PY = '''"""Soup CLI-generated Gradio Chat Space."""
+_GRADIO_APP_PY = '''"""Kadhi-generated Gradio Chat Space."""
 
 import os
 import gradio as gr
@@ -55,7 +55,7 @@ def respond(message, history):
     return reply
 
 
-chat = gr.ChatInterface(respond, title="Soup CLI Fine-tuned Chat")
+chat = gr.ChatInterface(respond, title="Kadhi Fine-tuned Chat")
 chat.launch()
 '''
 
@@ -66,7 +66,7 @@ accelerate>=0.27.0
 """
 
 _GRADIO_README = """---
-title: Soup Chat
+title: kadhi Chat
 emoji: 🍲
 colorFrom: purple
 colorTo: cyan
@@ -76,21 +76,21 @@ app_file: app.py
 pinned: false
 ---
 
-# Soup Chat
+# kadhi Chat
 
-Generated with [Soup CLI](https://github.com/MakazhanAlpamys/Soup) — model: `{MODEL_REPO}`
+Generated with [Kadhi](https://github.com/MakazhanAlpamys/Soup) — model: `{MODEL_REPO}`
 """
 
 
-_STREAMLIT_APP_PY = '''"""Soup CLI-generated Streamlit Chat Space."""
+_STREAMLIT_APP_PY = '''"""Kadhi-generated Streamlit Chat Space."""
 
 import streamlit as st
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 MODEL_ID = "{MODEL_REPO}"
 
-st.set_page_config(page_title="Soup Chat", page_icon="🍲")
-st.title("Soup Chat")
+st.set_page_config(page_title="kadhi Chat", page_icon="🍲")
+st.title("kadhi Chat")
 
 
 @st.cache_resource
@@ -143,7 +143,7 @@ accelerate>=0.27.0
 """
 
 _STREAMLIT_README = """---
-title: Soup Chat
+title: kadhi Chat
 emoji: 🍲
 colorFrom: purple
 colorTo: cyan
@@ -153,9 +153,9 @@ app_file: app.py
 pinned: false
 ---
 
-# Soup Chat
+# kadhi Chat
 
-Generated with [Soup CLI](https://github.com/MakazhanAlpamys/Soup) — model: `{MODEL_REPO}`
+Generated with [Kadhi](https://github.com/MakazhanAlpamys/Soup) — model: `{MODEL_REPO}`
 """
 
 
@@ -343,7 +343,7 @@ def ollama(
     # Resolve template
     resolved_template = None
     if template == "auto":
-        # Try to infer from soup.yaml in cwd
+        # Try to infer from kadhi.yaml in cwd
         resolved_template = _auto_detect_template()
         if not resolved_template:
             resolved_template = "chatml"  # Default fallback
@@ -627,7 +627,7 @@ def autopilot(
 ):
     """Pick PEFT + quant + spec-decoding combo for a hardware target.
 
-    Writes a ready-to-train ``soup.yaml`` recipe and a planned deploy
+    Writes a ready-to-train ``kadhi.yaml`` recipe and a planned deploy
     shell script. Pass ``--measure --tasks <jsonl>`` to also run the
     Quant-Lobotomy measurement loop across candidate quants (v0.53.1 #109).
     """
@@ -717,7 +717,7 @@ def autopilot(
 
 
 def _auto_detect_template() -> Optional[str]:
-    """Try to infer chat template from soup.yaml in cwd."""
+    """Try to infer chat template from kadhi.yaml in cwd."""
     from soup_cli.utils.ollama import infer_chat_template
 
     config_path = Path("soup.yaml")

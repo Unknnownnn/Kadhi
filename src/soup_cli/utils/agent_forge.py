@@ -11,7 +11,7 @@ The parser surface is intentionally parser-only — no network code, no
 operators wanting full resolution should run ``openapi-spec-validator``
 upstream and feed the bundled JSON in.
 
-Live ``soup agent train`` orchestrator + ``soup agent eval`` sandbox
+Live ``kadhi agent train`` orchestrator + ``kadhi agent eval`` sandbox
 scoring re-use the v0.25.0 RLVR ``code_exec`` sandbox; this module ships
 the parse-and-synth layer.
 """

@@ -1,4 +1,4 @@
-"""`soup ab` — mSPRT A/B harness (v0.63.0 Part D)."""
+"""`kadhi ab` — mSPRT A/B harness (v0.63.0 Part D)."""
 
 from __future__ import annotations
 

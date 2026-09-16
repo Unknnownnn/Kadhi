@@ -1,4 +1,4 @@
-"""SGLang backend utilities for soup serve."""
+"""SGLang backend utilities for kadhi serve."""
 
 import json
 import logging

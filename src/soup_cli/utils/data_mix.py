@@ -7,11 +7,11 @@ This module ships the schema + budget accountant + recipe writer. The live
 Bayesian optimisation loop (``scikit-optimize``) is wired through a
 runtime-injected ``OptimizerProtocol`` so unit tests can drive deterministic
 mock optimisers and the library import is lazy (matches the project's
-``[optional-extras]`` policy — heavy deps never crash ``soup data --help``).
+``[optional-extras]`` policy — heavy deps never crash ``kadhi data --help``).
 
 CLI surface:
-    soup data mix --optimize --budget 1h --datasets a.jsonl,b.jsonl,c.jsonl
-    soup data mix --apply <recipe.yaml>
+    kadhi data mix --optimize --budget 1h --datasets a.jsonl,b.jsonl,c.jsonl
+    kadhi data mix --apply <recipe.yaml>
 
 Security:
 - All input/output paths are containment-checked via ``utils.paths.is_under_cwd``.
@@ -450,7 +450,7 @@ def describe_default_optimizer() -> str:
     """Return a short label naming the optimizer backend that
     :func:`_build_default_optimizer` would pick for the current process.
 
-    v0.53.10 #150 — used by ``soup data mix --optimize`` to print an advisory
+    v0.53.10 #150 — used by ``kadhi data mix --optimize`` to print an advisory
     so users can see whether the v0.48.0 Dirichlet fallback or the bundled
     scikit-optimize Bayesian loop is active. ``importlib.util.find_spec`` is
     a non-executing probe so skopt's import cost is not paid here.
@@ -486,7 +486,7 @@ def run_mix_optimizer(
         plan: A :class:`MixOptimizationPlan` from
             :func:`build_optimization_plan`.
         proxy_run: Callable that takes weights and returns observed eval loss.
-            In the live wiring this calls a short ``soup train`` invocation;
+            In the live wiring this calls a short ``kadhi train`` invocation;
             in tests it is mocked.
         optimizer: Optional injected :class:`OptimizerProtocol`. Defaults to
             the Dirichlet sampler when absent.
@@ -594,14 +594,14 @@ def run_mix_optimizer(
 def render_mix_recipe_yaml(report: MixOptimizationReport) -> str:
     """Render an applied-mixture recipe snippet for human review.
 
-    Produces a YAML fragment suitable for splicing into ``soup.yaml`` under
+    Produces a YAML fragment suitable for splicing into ``kadhi.yaml`` under
     ``data:``. Defends against YAML key injection by rejecting newlines and
     null bytes in dataset paths (mirrors v0.46.0 Part A
     ``render_recipe_yaml``).
 
     ``data.train`` renders as the full dataset list, index-aligned with
     ``data.interleave.probs`` — #443 wired ``data.interleave`` into
-    ``load_dataset()``, so ``soup train`` can now consume the real
+    ``load_dataset()``, so ``kadhi train`` can now consume the real
     N-dataset mixture this search found, rather than the
     single-highest-weighted-dataset collapse #330 used as a stopgap while
     there was no training-time reader. The full ranked weight/path
@@ -648,7 +648,7 @@ def render_mix_recipe_yaml(report: MixOptimizationReport) -> str:
         lines.append(f"#   {w:.6f}  {path}")
     lines.append("data:")
     if len(report.datasets) >= 2:
-        # #443 — soup train now consumes a real N-dataset mixture, so
+        # #443 — kadhi train now consumes a real N-dataset mixture, so
         # data.train renders every searched dataset, index-aligned with
         # data.interleave.probs below (build_optimization_plan already
         # requires >= 2 datasets, so the single-dataset branch is a
@@ -730,8 +730,8 @@ def write_mix_recipe(
 def load_mix_recipe(path: str) -> Mapping[str, object]:
     """Load + validate a previously-written mix recipe.
 
-    Used by ``soup data mix --apply <recipe.yaml>`` to splice the recommended
-    mixture into a target ``soup.yaml``.
+    Used by ``kadhi data mix --apply <recipe.yaml>`` to splice the recommended
+    mixture into a target ``kadhi.yaml``.
     """
     from soup_cli.utils.paths import is_under_cwd
 

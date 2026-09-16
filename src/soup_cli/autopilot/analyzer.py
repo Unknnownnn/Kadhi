@@ -38,7 +38,7 @@ class HardwareProfile:
 def analyze_dataset(path: str) -> DatasetProfile:
     """Inspect a dataset file and produce a profile.
 
-    Delegates to Soup's existing loader/validator/format-detector so we don't
+    Delegates to Kadhi's existing loader/validator/format-detector so we don't
     duplicate heuristics.
     """
     from soup_cli.data.formats import detect_format

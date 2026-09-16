@@ -66,7 +66,7 @@ def write_eval_json(
 def lookup_entry_by_output_dir(output_dir: str) -> Optional[str]:
     """Find a registry entry whose stored ``output`` directory matches.
 
-    Used by ``soup export`` to auto-attach artifacts when the user did not
+    Used by ``kadhi export`` to auto-attach artifacts when the user did not
     pass ``--registry-id`` explicitly. Returns None if no match.
     """
     import warnings

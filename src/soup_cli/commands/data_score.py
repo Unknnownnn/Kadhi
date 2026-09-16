@@ -1,4 +1,4 @@
-"""soup data score / decontaminate / toxicity / langdetect / pii / educational
+"""kadhi data score / decontaminate / toxicity / langdetect / pii / educational
 (v0.47.0 Part B).
 
 Each subcommand reads JSONL, runs one of the pure-function quality

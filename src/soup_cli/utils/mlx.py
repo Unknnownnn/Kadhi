@@ -1,7 +1,7 @@
 """MLX backend utilities — detection + hardware info + batch size estimation.
 
 MLX is Apple's ML framework for Apple Silicon (M1-M4 chips). This module
-provides feature detection and helpers so the rest of Soup can opportunistically
+provides feature detection and helpers so the rest of kadhi can opportunistically
 enable MLX training paths without hard-depending on the ``mlx`` package.
 """
 
@@ -103,7 +103,7 @@ def get_unified_memory_bytes() -> Optional[int]:
 
 
 def get_mlx_info() -> dict[str, Any]:
-    """Return a full MLX detection report suitable for ``soup doctor``."""
+    """Return a full MLX detection report suitable for ``kadhi doctor``."""
     available = detect_mlx()
     info: dict[str, Any] = {
         "available": available,

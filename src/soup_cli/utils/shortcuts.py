@@ -2,7 +2,7 @@
 
 Pure-Python: builds the shortcut file content for the host platform.
 Returns the rendered text + suggested filename without writing — the caller
-(`soup install-shortcut`) does the actual write under cwd containment.
+(`kadhi install-shortcut`) does the actual write under cwd containment.
 """
 
 from __future__ import annotations

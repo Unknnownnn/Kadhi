@@ -9,7 +9,7 @@ Live wiring into the v0.26.0 Quant-Lobotomy Checker (so the autopilot
 actually *measures* OK/MINOR/MAJOR before picking a quant) is deferred to
 v0.46.1; this release ships the schema + the canonical combo table + the
 recipe-yaml / deploy-script writers so users have a reproducible artifact
-the moment they run ``soup deploy autopilot --target mac-m3``.
+the moment they run ``kadhi deploy autopilot --target mac-m3``.
 
 The catalog is frozen at import time (``MappingProxyType``); name lookup is
 case-insensitive over a strict kebab-case regex (matches v0.45.0 Part A
@@ -188,7 +188,7 @@ def _validate_base(base: str) -> str:
 
 
 def render_recipe_yaml(profile: DeployProfile, base: str, output_dir: str) -> str:
-    """Render a ready-to-train ``soup.yaml`` for ``profile`` + ``base``.
+    """Render a ready-to-train ``kadhi.yaml`` for ``profile`` + ``base``.
 
     Returns the YAML *text*; callers handle write-out with their own
     containment checks. The output_dir is validated as a non-empty
@@ -244,8 +244,8 @@ def render_recipe_yaml(profile: DeployProfile, base: str, output_dir: str) -> st
 def render_deploy_script(profile: DeployProfile, model_path: str) -> str:
     """Render the shell script that takes the trained model to the target.
 
-    The script is intentionally a stub: it prints the planned ``soup serve``
-    or ``soup deploy`` command rather than executing it, so the user keeps
+    The script is intentionally a stub: it prints the planned ``kadhi serve``
+    or ``kadhi deploy`` command rather than executing it, so the user keeps
     the final approval gate. ``model_path`` is shell-escaped via
     ``shlex.quote`` so a crafted path cannot inject shell syntax.
     """

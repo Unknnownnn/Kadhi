@@ -1,4 +1,4 @@
-"""soup audit-log — HIPAA/SOC2 JSONL audit log CLI (v0.59.0 Part D)."""
+"""kadhi audit-log — HIPAA/SOC2 JSONL audit log CLI (v0.59.0 Part D)."""
 
 from __future__ import annotations
 

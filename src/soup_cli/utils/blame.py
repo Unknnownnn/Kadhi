@@ -256,7 +256,7 @@ class RowInfluence:
 
 @dataclass(frozen=True)
 class BlameResult:
-    """End-to-end blame result for ``soup adapters blame --live``."""
+    """End-to-end blame result for ``kadhi adapters blame --live``."""
 
     adapter_dir: str
     dataset_path: str

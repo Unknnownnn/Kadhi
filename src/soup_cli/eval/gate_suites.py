@@ -1,4 +1,4 @@
-"""Bundled general-suite registry for ``soup ship``'s leg 2 (v0.71.38).
+"""Bundled general-suite registry for ``kadhi ship``'s leg 2 (v0.71.38).
 
 The v0.25.0 leg-2 default was 15 hand-written trivia prompts scored by raw
 substring containment (``eval/forgetting``) — decorative. This module makes the
@@ -18,7 +18,7 @@ It composes two families:
   here rather than a call into ``diagnose.format.is_valid_json``).
 
 No lm-eval, no network, no torch — the whole surface is CPU-testable and the
-``soup ci init`` core-only install keeps working.
+``kadhi ci init`` core-only install keeps working.
 
 #316 — two of the three behavioural suites measured NOTHING on a real model.
 Measured on an H100 against Meta-Llama-3.1-8B-Instruct, both were **harness**
@@ -87,7 +87,7 @@ DEFAULT_GENERAL_SUITE: Tuple[str, ...] = tuple(MINI_BENCHMARKS) + EXTENDED_SUITE
 #: scale (v0.73.2 measured ``mini_mmlu`` 0.423 -> 0.731 and ``mini_tool_call``
 #: 0.225 -> 1.000 on an unchanged model). Baselines therefore carry this
 #: revision in their provenance stamp; ``resolve_baseline`` warns only when
-#: the stamp disagrees with the running Soup.
+#: the stamp disagrees with the running Kadhi.
 #:
 #: Bump this integer in the **same change** that alters a bundled scorer's
 #: behaviour, and update ``BUNDLED_SCORER_FINGERPRINT`` with it. The revision
@@ -337,7 +337,7 @@ def _unwrap_tool_call(output: str) -> str:
 
     The repair stays inside this module rather than loosening
     ``eval.custom._extract_function``, which would change what
-    ``soup eval custom`` accepts for every user of that scorer.
+    ``kadhi eval custom`` accepts for every user of that scorer.
     """
     extracted = _extract_json_container(output)
     if _looks_like_a_bare_function(extracted):

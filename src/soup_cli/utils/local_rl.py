@@ -1,8 +1,8 @@
-"""``soup local-rl`` — personal-LLM flywheel daemon (v0.68.0 Part E).
+"""``kadhi local-rl`` — personal-LLM flywheel daemon (v0.68.0 Part E).
 
 Wrap Ollama / MLX inference, capture thumbs into SQLite, harvest DPO pairs,
 and (in v0.68.1) DPO-train nightly via systemd / launchd. Smaller-scope
-cousin of v0.58 ``soup loop`` — runs locally on a single workstation,
+cousin of v0.58 ``kadhi loop`` — runs locally on a single workstation,
 trains the user's personal model from their own feedback.
 
 Schema + thumbs recording + DPO-pair harvester are LIVE from v0.68.0; the
@@ -445,7 +445,7 @@ def _default_train_fn(
     output_dir: str,
     train_method: str,
 ) -> None:
-    """Train one round via a ``soup train`` subprocess (no shell).
+    """Train one round via a ``kadhi train`` subprocess (no shell).
 
     Mirrors v0.71.11 ``iterative_dpo._default_train_fn``: render a YAML via
     ``yaml.safe_dump`` (no value can inject extra keys) and invoke
@@ -508,7 +508,7 @@ def run_nightly_train(
     prior train exists and no new thumbs landed since, skip. Otherwise
     harvest pairs and — when at least ``min_pairs`` are available — write a
     tmp JSONL in the right shape for ``config.train_method`` and invoke the
-    DPO/KTO/ORPO trainer via ``soup train`` (or an injected ``train_fn`` for
+    DPO/KTO/ORPO trainer via ``kadhi train`` (or an injected ``train_fn`` for
     tests). ``last_train_at`` is stamped only after a real train.
 
     ``config.model`` is the **training base** here (an HF repo id or local

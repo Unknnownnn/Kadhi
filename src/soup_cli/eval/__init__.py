@@ -1,1 +1,1 @@
-"""Soup eval platform — custom evals, LLM-as-a-judge, leaderboard, human eval."""
+"""kadhi eval platform — custom evals, LLM-as-a-judge, leaderboard, human eval."""

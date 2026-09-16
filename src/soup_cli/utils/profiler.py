@@ -55,7 +55,7 @@ GPU_MEMORY: dict[str, int] = {
     "v100": 32,
 }
 
-# What ``soup profile`` and the MCP ``profile`` tool fall back to when there is
+# What ``kadhi profile`` and the MCP ``profile`` tool fall back to when there is
 # no --gpu and no device is detected. Always reported as assumed, not measured.
 ASSUMED_GPU_MEMORY_GB = 24.0
 

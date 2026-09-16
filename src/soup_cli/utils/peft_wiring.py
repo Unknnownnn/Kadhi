@@ -139,7 +139,7 @@ def build_lora_config(
 ) -> Any:
     """Build a PEFT ``LoraConfig`` through the single shared kwargs path.
 
-    Keeping the PEFT import inside this function preserves Soup's lazy-import
+    Keeping the PEFT import inside this function preserves Kadhi's lazy-import
     boundary while ensuring every trainer consumes new shared LoRA fields such
     as ``rank_pattern`` and ``alpha_pattern`` automatically.
     """

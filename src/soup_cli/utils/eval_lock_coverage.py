@@ -1,4 +1,4 @@
-"""Eval lock + coverage — `soup eval lock` / `soup eval coverage` (v0.55.0 Part C).
+"""Eval lock + coverage — `kadhi eval lock` / `kadhi eval coverage` (v0.55.0 Part C).
 
 Freezes an :class:`EvalDesign` as a versioned, hash-checksummed baseline:
 

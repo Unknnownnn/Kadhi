@@ -1,4 +1,4 @@
-"""v0.45.0 Part A — `soup plugins` CLI."""
+"""v0.45.0 Part A — `kadhi plugins` CLI."""
 
 from __future__ import annotations
 

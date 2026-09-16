@@ -1,6 +1,6 @@
-"""v0.43.0 Part C — `soup doctor --vscode` writer for `.vscode/launch.json`.
+"""v0.43.0 Part C — `kadhi doctor --vscode` writer for `.vscode/launch.json`.
 
-Generates a minimal but useful Python debug config for `soup train` plus a
+Generates a minimal but useful Python debug config for `kadhi train` plus a
 pytest config. Path containment via shared `is_under_cwd`; refuses to
 overwrite an existing launch.json without `force=True` (matches v0.40.2
 register_data policy).
@@ -16,7 +16,7 @@ from soup_cli.utils.paths import atomic_write_text, is_under_cwd
 def build_launch_json(*, config_path: str = "soup.yaml") -> dict:
     """Build the launch.json contents.
 
-    `config_path` is the YAML config to pass to `soup train --config`.
+    `config_path` is the YAML config to pass to `kadhi train --config`.
     Validates the path so a crafted argument cannot inject arbitrary
     args into the generated JSON.
     """

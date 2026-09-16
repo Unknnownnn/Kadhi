@@ -1,4 +1,4 @@
-"""soup serve — local inference server with OpenAI-compatible API."""
+"""kadhi serve — local inference server with OpenAI-compatible API."""
 
 import contextlib
 import json
@@ -2250,7 +2250,7 @@ def _create_app(
         """v0.71.1 #230 — record thumbs-up/down feedback into local-rl SQLite.
 
         Stateless by design: the client POSTs the full {prompt, response,
-        thumb} (mirrors the ``soup local-rl record`` CLI). Returns 404 when
+        thumb} (mirrors the ``kadhi local-rl record`` CLI). Returns 404 when
         ``--record-thumbs`` was not passed at startup.
         """
         _check_tool_auth(authorization)

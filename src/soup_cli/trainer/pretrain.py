@@ -126,7 +126,7 @@ class PretrainTrainerWrapper:
 
         # --- Dataset ---
         # v0.53.7 #86 — short-circuit tokenization when caller pre-tokenized
-        # via `soup data preprocess`. Skips the raw-text load entirely.
+        # via `kadhi data preprocess`. Skips the raw-text load entirely.
         from soup_cli.trainer.sft import _maybe_load_pretokenized
 
         pretok = _maybe_load_pretokenized(cfg.data, cfg.base, console)

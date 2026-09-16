@@ -1,4 +1,4 @@
-"""Eval design from data — `soup eval design` (v0.55.0 Part A).
+"""Eval design from data — `kadhi eval design` (v0.55.0 Part A).
 
 Builds an evaluation suite from a JSONL dataset + a one-line goal. CPU-only:
 TF-IDF clustering for dimension discovery, heuristic categorisation for
@@ -6,7 +6,7 @@ scorer selection (rlvr / judge / exact_match / regex), and a goal-conditioned
 rubric template per dimension.
 
 Pure functions — no GPU, no network. Live LLM-judge prompts are emitted as
-plain-text rubrics that `soup eval gate` can drive via the v0.19.0 backends.
+plain-text rubrics that `kadhi eval gate` can drive via the v0.19.0 backends.
 
 Public surface
 --------------

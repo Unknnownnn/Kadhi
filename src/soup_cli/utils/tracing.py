@@ -1,4 +1,4 @@
-"""OpenTelemetry request tracing for soup serve (v0.30.0).
+"""OpenTelemetry request tracing for kadhi serve (v0.30.0).
 
 All imports are lazy; tracing is a no-op when the SDK is missing.
 """

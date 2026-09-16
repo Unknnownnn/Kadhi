@@ -1,4 +1,4 @@
-"""soup card — generate a HuggingFace model card from a registry entry (v0.71.35).
+"""kadhi card — generate a HuggingFace model card from a registry entry (v0.71.35).
 
 Turns a Local Model Registry entry into a ready-to-publish ``MODELCARD.md``:
 base model, training config, eval scorecard, provenance (config/data hashes),
@@ -8,7 +8,7 @@ documented, provenance-carrying release.
 
 Design notes:
   * ``build_model_card`` is a pure function over plain dicts (no store / no
-    torch) so it is trivially unit-testable and reusable by ``soup push --card``.
+    torch) so it is trivially unit-testable and reusable by ``kadhi push --card``.
   * User-controlled text is escaped for its output target: registry ``notes`` is
     free-form -> ``html.escape`` (blocks script/``javascript:`` injection on the
     HF README viewer); markdown table cells -> ``_safe_md_cell`` (reused from
@@ -263,7 +263,7 @@ def build_card_for_ref(ref: str) -> str:
     """Resolve ``ref`` in the registry and render its model card.
 
     Raises :class:`CardError` on ambiguous / missing refs (so callers such as
-    ``soup push --card`` can map it to an exit code).
+    ``kadhi push --card`` can map it to an exit code).
     """
     with RegistryStore() as store:
         try:

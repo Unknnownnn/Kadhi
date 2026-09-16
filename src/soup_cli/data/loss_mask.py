@@ -359,7 +359,7 @@ def build_full_sequence_labels(
     # EOS id when the sequence does not already end on it. Probing the
     # post-processor instead (an earlier #788 attempt) under-appended for
     # BOS-only and Qwen-shaped tokenizers, dropping the stop token ``main``
-    # trained on and teaching run-on generation (the failure `soup data doctor`'s
+    # trained on and teaching run-on generation (the failure `kadhi data doctor`'s
     # eos_in_labels check exists to catch).
     full_ids = append_training_eos(tokenizer, full_ids)
     labels = list(full_ids)
@@ -376,7 +376,7 @@ def append_training_eos(tokenizer: Any, input_ids: list[int]) -> list[int]:
     space so the pre-tokenised row trains on the same EOS ``main`` did.
 
     Used by the live-training path (:func:`build_full_sequence_labels`). The
-    ``soup data preprocess`` cache path deliberately does NOT use this -- it
+    ``kadhi data preprocess`` cache path deliberately does NOT use this -- it
     tokenises exactly as ``main`` (``add_special_tokens=True``, so the
     post-processor supplies the EOS) and only drops #785's duplicated leading
     BOS via :func:`strip_doubled_leading_bos`. Its EOS is therefore whatever the
@@ -394,7 +394,7 @@ def strip_doubled_leading_bos(
 ) -> tuple[list[int], list[int]]:
     """Drop only the one duplicated leading BOS #785 introduced on the cache path.
 
-    ``soup data preprocess`` tokenises the rendered chat template exactly as
+    ``kadhi data preprocess`` tokenises the rendered chat template exactly as
     ``main`` did (``add_special_tokens=True``), which keeps ``main``'s truncation
     reservation and post-processor EOS. The only #785 defect on this path is the
     doubled BOS: a template rendering ``{{ bos_token }}`` on a tokenizer whose

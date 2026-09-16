@@ -1,11 +1,11 @@
-"""``soup data canary insert|check`` — Secret-Sharer canaries (v0.71.36).
+"""``kadhi data canary insert|check`` — Secret-Sharer canaries (v0.71.36).
 
 insert: add K high-entropy secrets to a dataset + write the manifest.
 check:  measure whether a model memorized them, by comparing each canary's
         loss against N never-inserted controls from the same secret space.
 
 Exit 0 = OK/MINOR, 2 = MAJOR (a canary was memorized), 1 = runtime error.
-Mirrors ``soup diagnose`` / ``soup ship`` exit conventions so CI can gate.
+Mirrors ``kadhi diagnose`` / ``kadhi ship`` exit conventions so CI can gate.
 """
 
 from __future__ import annotations

@@ -1,7 +1,7 @@
 """Auto-profiling helper (v0.34.0 Part F).
 
 Wraps torch.profiler in a context manager that records a trace + writes a
-Chrome trace JSON. Designed to be opt-in (``soup train --profile``) and to
+Chrome trace JSON. Designed to be opt-in (``kadhi train --profile``) and to
 no-op gracefully when torch is unavailable so unit tests can exercise the
 glue code on a CPU-only / torch-less CI runner.
 """

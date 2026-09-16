@@ -1,4 +1,4 @@
-"""soup diff — compare outputs of two models side-by-side."""
+"""kadhi diff — compare outputs of two models side-by-side."""
 
 import json
 from pathlib import Path

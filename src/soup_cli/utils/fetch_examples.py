@@ -1,4 +1,4 @@
-"""v0.44.0 Part D — `soup fetch` example/config catalog.
+"""v0.44.0 Part D — `kadhi fetch` example/config catalog.
 
 Maps short names (e.g. `llama-3.1-8b-lora`) to ready-to-edit YAML payloads.
 The catalog is a frozen registry; payload bodies live in

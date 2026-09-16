@@ -1,7 +1,7 @@
-"""`soup plan` — Terraform-shape pre-flight summary (v0.64.0 Part B).
+"""`kadhi plan` — Terraform-shape pre-flight summary (v0.64.0 Part B).
 
 Renders the cost / ETA / SHA / peak-VRAM summary for a planned training
-run and writes ``soup.tfstate`` for ``soup apply`` to consult.
+run and writes ``soup.tfstate`` for ``kadhi apply`` to consult.
 """
 
 from __future__ import annotations
@@ -37,7 +37,7 @@ def _load_yaml_config(path: str) -> dict:
     if not is_under_cwd(path):
         raise ValueError(f"config {path!r} is outside cwd")
     # TOCTOU defence: reject symlink at the YAML path BEFORE open so a
-    # pre-placed `soup.yaml -> /etc/shadow` cannot redirect the read.
+    # pre-placed `kadhi.yaml -> /etc/shadow` cannot redirect the read.
     if os.path.lexists(path):
         st = os.lstat(path)
         if _stat.S_ISLNK(st.st_mode):
@@ -187,7 +187,7 @@ def apply_cmd(
         )
         return
 
-    # Mark state applied; the actual `soup train` invocation is left to
+    # Mark state applied; the actual `kadhi train` invocation is left to
     # the operator. Future v0.64.1 may inline a subprocess call.
     new_state = TrainingState(
         plan=state.plan,

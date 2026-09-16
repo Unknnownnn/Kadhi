@@ -2,7 +2,7 @@
 
 Pure-Python converter between OpenAI ``/v1/chat/completions`` payloads and
 Anthropic ``/v1/messages`` payloads. The wire-up of the Anthropic-shaped
-endpoint inside ``soup serve`` is deferred to v0.45.1 (matches the
+endpoint inside ``kadhi serve`` is deferred to v0.45.1 (matches the
 project's stub-then-live policy).
 
 Surface kept narrow on purpose:

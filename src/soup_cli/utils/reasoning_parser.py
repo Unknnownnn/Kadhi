@@ -1,4 +1,4 @@
-"""v0.44.0 Part D — `soup serve --reasoning-parser <name>` allowlist.
+"""v0.44.0 Part D — `kadhi serve --reasoning-parser <name>` allowlist.
 
 Closed-allowlist of reasoning parser names compatible with vLLM 0.6+ and
 sglang. Schema-only in v0.44.0; live wiring into the inference loop deferred

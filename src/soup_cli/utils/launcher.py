@@ -99,7 +99,7 @@ def _as_accelerate_target(script_list: list[str]) -> list[str]:
           ELF
         SyntaxError: source code cannot contain null bytes
 
-    Every rank died before the trainer existed, i.e. ``soup train --gpus N`` — the
+    Every rank died before the trainer existed, i.e. ``kadhi train --gpus N`` — the
     documented multi-GPU entry point — never ran at all. Measured on 4xH100; every
     arm of the #77 matrix had to be launched by hand.
 
@@ -150,7 +150,7 @@ def collect_reexec_passthrough(
 ) -> list[str]:
     """User-flag tail shared by auto-reexec and the ``--no-reexec`` hint (#372).
 
-    Keep this as the only place that decides which ``soup train`` flags survive
+    Keep this as the only place that decides which ``kadhi train`` flags survive
     a multi-GPU launch. ``build_train_reexec_argv`` wraps the result; the hint
     is derived from that same argv, so the two cannot drift.
 
@@ -238,7 +238,7 @@ def build_train_reexec_argv(
 
 
 def hint_argv_from_reexec(script_args: Sequence[str]) -> list[str]:
-    """``soup train ...`` form of a re-exec argv, for the ``--no-reexec`` hint.
+    """``kadhi train ...`` form of a re-exec argv, for the ``--no-reexec`` hint.
 
     Drops ``--no-reexec``: under ``accelerate launch`` the run is already
     distributed and never re-execs, so repeating the flag would be noise.

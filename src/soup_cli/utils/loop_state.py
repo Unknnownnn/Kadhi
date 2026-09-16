@@ -1,6 +1,6 @@
 """Loop state file (v0.58.0 Part A — control plane).
 
-`soup loop` orchestrates the *production traces → preference pairs →
+`kadhi loop` orchestrates the *production traces → preference pairs →
 Eval-Gated DPO → canary deploy → rollback* cycle. State for the whole
 loop lives in a single ``.soup/loop.yaml`` next to the project, with
 atomic writes + cwd containment + symlink rejection — the same TOCTOU
@@ -9,7 +9,7 @@ v0.43.0 Part C / v0.53.7 #106).
 
 Status (``running`` / ``paused`` / ``stopped``) and counters (traces /
 pairs / runs / deploys) live here; per-iteration artifacts ship as
-v0.26.0 Soup Cans under ``.soup-loops/``.
+v0.26.0 Kadhi Cans under ``.soup-loops/``.
 """
 
 from __future__ import annotations
@@ -38,13 +38,13 @@ _DEFAULT_STATE_FILENAME = "loop.yaml"
 
 @dataclass(frozen=True)
 class LoopState:
-    """Immutable snapshot of a `soup loop` configuration + counters.
+    """Immutable snapshot of a `kadhi loop` configuration + counters.
 
     The persisted file is JSON-formatted (despite the ``.yaml`` extension)
     so we can use the stdlib parser without pulling pyyaml into the read
     path; YAML is a superset of JSON for objects and the file remains
     human-readable. Counters are absolute lifetime totals; per-iteration
-    detail lives in the ``.soup-loops/`` Soup Can artifacts.
+    detail lives in the ``.soup-loops/`` kadhi Can artifacts.
     """
 
     served_model: str

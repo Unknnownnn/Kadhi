@@ -1,4 +1,4 @@
-"""MCP server wiring for ``soup mcp serve`` (v0.71.28; network transports #296).
+"""MCP server wiring for ``kadhi mcp serve`` (v0.71.28; network transports #296).
 
 This is the ONLY module that imports the ``mcp`` SDK — importing it therefore
 requires the ``[mcp]`` extra. The pure tool table lives in
@@ -184,7 +184,7 @@ def allowed_hosts_for(host: str, port: int) -> List[str]:
 
     A wildcard bind degrades to ``["*"]`` — with no single advertised name
     there is nothing to pin, and pinning the wrong one would reject every real
-    client. ``soup mcp serve`` warns loudly in that case rather than pretending
+    client. ``kadhi mcp serve`` warns loudly in that case rather than pretending
     the check is still doing work.
     """
     if is_wildcard_host(host):

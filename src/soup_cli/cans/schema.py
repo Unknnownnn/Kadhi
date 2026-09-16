@@ -49,9 +49,9 @@ class DeployTarget(BaseModel):
     """One declarative deploy target embedded in a can manifest (v2+).
 
     ``kind`` selects the deploy backend:
-      - ``ollama``: model name to deploy via ``soup deploy ollama``
+      - ``ollama``: model name to deploy via ``kadhi deploy ollama``
       - ``gguf``: relative path inside the can to a GGUF artifact
-      - ``vllm``: model id to serve via ``soup serve --backend vllm``
+      - ``vllm``: model id to serve via ``kadhi serve --backend vllm``
     """
 
     kind: Literal["ollama", "gguf", "vllm"] = Field(description="Deploy backend")

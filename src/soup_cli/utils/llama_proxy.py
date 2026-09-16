@@ -1,4 +1,4 @@
-"""v0.44.0 Part D — `soup llama <subcommand>` proxy for llama.cpp binaries.
+"""v0.44.0 Part D — `kadhi llama <subcommand>` proxy for llama.cpp binaries.
 
 Validates the subcommand against a closed allowlist + builds the argv list
 (no shell). Live subprocess invocation is owned by the CLI command in

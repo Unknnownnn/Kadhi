@@ -201,7 +201,7 @@ def _ensure_vision_processor_pad_token(processor: object) -> None:
 def _vision_messages_with_image_parts(
     messages: list[dict[str, Any]], image_count: int
 ) -> list[dict[str, Any]]:
-    """Convert Soup's legacy ``<image>`` messages to HF multimodal content.
+    """Convert Kadhi's legacy ``<image>`` messages to HF multimodal content.
 
     LLaVA JSON rows reach the trainer with string ``content`` fields. Modern
     processors such as Idefics3 only preserve an image placeholder when the
@@ -345,7 +345,7 @@ class VisionLanguageDataCollator:
     perform its own image-token expansion and emit architecture-specific
     tensors (``pixel_values``, ``pixel_attention_mask``, ``image_grid_thw``,
     and so on). This deliberately mirrors TRL's newer VLM collator without
-    requiring a newer TRL than Soup's declared floor.
+    requiring a newer TRL than Kadhi's declared floor.
     """
 
     def __init__(self, processor: object, max_length: Optional[int]) -> None:
@@ -421,7 +421,7 @@ def _maybe_load_pretokenized(
     dcfg, base: str, console_obj: Console,
 ) -> Optional[Tuple[object, object]]:
     """v0.53.7 #86 — short-circuit tokenization when caller pre-tokenized via
-    ``soup data preprocess``.
+    ``kadhi data preprocess``.
 
     Returns ``(train_ds, eval_ds)`` when the pre-tokenized path is configured
     and valid, otherwise ``None`` (caller falls back to the normal tokenize
@@ -432,7 +432,7 @@ def _maybe_load_pretokenized(
     ``(base, max_length, format, train)`` config via
     :func:`make_preprocess_cache_key`. Mismatch raises ``ValueError`` with
     the keyword ``"cache hash mismatch"`` so users know to re-run
-    ``soup data preprocess``. Missing ``metadata.json`` falls back to
+    ``kadhi data preprocess``. Missing ``metadata.json`` falls back to
     "trusted" mode with a yellow advisory.
     """
     if dcfg.format != "pre_tokenized" or not dcfg.tokenized_path:
@@ -695,7 +695,7 @@ class SFTTrainerWrapper(StreamingSetupMixin):
 
         # --- Dataset ---
         # v0.53.7 #86 — short-circuit tokenization when caller pre-tokenized
-        # via `soup data preprocess`. Skips the format_row + tokenizer pass
+        # via `kadhi data preprocess`. Skips the format_row + tokenizer pass
         # entirely; rows already carry input_ids/labels/attention_mask.
         # v0.71.10 #199 — RAFT format: golden/distractor-doc rows are NOT
         # {messages}; build a pre-tokenised answer-only-mask dataset instead.
@@ -876,7 +876,7 @@ class SFTTrainerWrapper(StreamingSetupMixin):
                 f"update_gap={tcfg.galore_update_proj_gap}, scale={tcfg.galore_scale}"
             )
 
-        # #78 — only when Soup's own patch actually landed, so an unsupported
+        # #78 — only when Kadhi's own patch actually landed, so an unsupported
         # architecture keeps today's warning instead of becoming an HF exception.
         if getattr(self, "_liger_applied", False):
             training_kwargs["use_liger_kernel"] = True
@@ -1684,7 +1684,7 @@ class SFTTrainerWrapper(StreamingSetupMixin):
 
         # Preserve ``messages``. Idefics3 and other modern processors need the
         # structured image part before they render the chat template; rendering
-        # Soup's legacy string content here loses the image marker (#302).
+        # Kadhi's legacy string content here loses the image marker (#302).
         remove_cols = ["image"]
         train_ds = Dataset.from_list(dataset["train"]).map(
             load_and_format_vision,

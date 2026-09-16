@@ -1,12 +1,12 @@
-"""soup lock — shared run lockfile (v0.67.0 Part E).
+"""kadhi lock — shared run lockfile (v0.67.0 Part E).
 
 Subcommands:
 
-- ``soup lock write``: render a ``soup.lock`` from operator-supplied
+- ``kadhi lock write``: render a ``kadhi.lock`` from operator-supplied
   base-model / dataset / env hashes.
-- ``soup lock check``: compare a tracked ``soup.lock`` against a
+- ``kadhi lock check``: compare a tracked ``kadhi.lock`` against a
   freshly-computed closure; exit 3 on drift.
-- ``soup lock show``: print a tracked lock.
+- ``kadhi lock show``: print a tracked lock.
 """
 
 from __future__ import annotations
@@ -43,10 +43,10 @@ def write_lock_cmd(
     ),
     output: str = typer.Option("soup.lock", "--output", "-o", help="Output path"),
 ):
-    """Render a ``soup.lock`` from the base/dataset/env hashes.
+    """Render a ``kadhi.lock`` from the base/dataset/env hashes.
 
     When ``--env-hash`` is omitted, it is auto-derived from ``--env-lock``
-    (default ``soup-env.lock``) so an operator who ran ``soup env lock`` does
+    (default ``soup-env.lock``) so an operator who ran ``kadhi env lock`` does
     not have to copy the hash by hand (v0.71.1 #224).
     """
     from soup_cli import __version__

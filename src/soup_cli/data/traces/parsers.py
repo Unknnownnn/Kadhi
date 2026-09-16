@@ -1,4 +1,4 @@
-"""Trace parsers for LangChain / OpenAI-style / Soup-serve JSONL logs."""
+"""Trace parsers for LangChain / OpenAI-style / Kadhi-serve JSONL logs."""
 
 from __future__ import annotations
 
@@ -169,7 +169,7 @@ def parse_openai(events: Iterable[Any]) -> Iterator[Trace]:
 
 
 # ---------------------------------------------------------------------------
-# Soup-serve (directory of JSONL files)
+# Kadhi-serve (directory of JSONL files)
 # ---------------------------------------------------------------------------
 
 

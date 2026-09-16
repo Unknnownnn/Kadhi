@@ -1,4 +1,4 @@
-"""soup bom — CycloneDX ML-BOM + SPDX AI emitter (v0.59.0 Part A)."""
+"""kadhi bom — CycloneDX ML-BOM + SPDX AI emitter (v0.59.0 Part A)."""
 
 from __future__ import annotations
 

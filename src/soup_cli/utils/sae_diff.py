@@ -17,7 +17,7 @@ Public surface:
 - ``render_report_json`` / ``render_report_markdown`` for CI consumption
 
 OK / MINOR / MAJOR taxonomy not used here — feature diff is a descriptive
-report, not a regression gate. Callers chain into ``soup diagnose`` if they
+report, not a regression gate. Callers chain into ``kadhi diagnose`` if they
 want verdict classification.
 """
 from __future__ import annotations

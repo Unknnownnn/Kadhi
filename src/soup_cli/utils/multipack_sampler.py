@@ -23,7 +23,7 @@ from typing import Union
 
 # Allow-list of HF model architectures that support the FA varlen path
 # (``_get_unpad_data`` monkey-patch). Mirrors Axolotl's list plus the v0.31.0
-# Soup recipe expansion. Keep frozenset to prevent runtime mutation.
+# kadhi recipe expansion. Keep frozenset to prevent runtime mutation.
 MULTIPACK_ARCHITECTURES: frozenset[str] = frozenset({
     "LlamaForCausalLM",
     "MistralForCausalLM",

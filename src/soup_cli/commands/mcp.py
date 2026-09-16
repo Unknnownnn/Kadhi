@@ -1,6 +1,6 @@
-"""soup mcp - Model Context Protocol server (v0.71.28; network transports #296).
+"""kadhi mcp - Model Context Protocol server (v0.71.28; network transports #296).
 
-``soup mcp serve`` exposes Soup's read-only commands (plus two plan-only
+``kadhi mcp serve`` exposes Kadhi's read-only commands (plus two plan-only
 mutating tools) to any MCP client (Claude Code / Cursor / Cline / Continue).
 stdio remains the default and is unchanged; ``--transport sse`` and
 ``--transport http`` add a local listener for remote or multi-client setups.
@@ -84,7 +84,7 @@ def reconcile(
 def _resolve_auth_token(auth_token: Optional[str]) -> str:
     """Return the operator's token (validated), or mint a fresh one.
 
-    Reuses ``utils.qr_url.validate_token`` so ``soup ui`` and ``soup mcp serve``
+    Reuses ``utils.qr_url.validate_token`` so ``kadhi ui`` and ``kadhi mcp serve``
     agree on what a token is (16-128 urlsafe-base64 chars) instead of growing a
     second bespoke format.
     """
@@ -214,7 +214,7 @@ def serve(
     try:
         from soup_cli.mcp_server.server import run_stdio_server
     except ImportError:
-        # NB: escape the '[' in 'soup-cli[mcp]' so Rich prints it literally
+        # NB: escape the '[' in 'kadhi[mcp]' so Rich prints it literally
         # instead of parsing '[mcp]' as a (dropped) markup tag.
         console.print(
             "[red]The MCP server needs the 'mcp' SDK.[/] "

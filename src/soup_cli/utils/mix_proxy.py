@@ -1,7 +1,7 @@
-"""Live proxy training for ``soup data mix --live`` (v0.53.5 #116).
+"""Live proxy training for ``kadhi data mix --live`` (v0.53.5 #116).
 
 Lifts the v0.48.0 Part B synthetic-only proxy: ``proxy_run_for_weights``
-renders a temp ``soup.yaml`` that splices the candidate weights into a base
+renders a temp ``kadhi.yaml`` that splices the candidate weights into a base
 recipe, invokes ``python -m soup_cli.cli train --config <tmp> --yes`` via a
 list-argv ``subprocess.run`` (no shell), and reads the final ``eval_loss``
 back from the SQLite tracker.
@@ -176,7 +176,7 @@ def _render_overlay_yaml(
 
     ``data.train`` renders as the full dataset list, index-aligned with
     ``data.interleave.probs`` — #443 wired ``data.interleave`` into
-    ``load_dataset()``, so ``soup train`` can now consume the real
+    ``load_dataset()``, so ``kadhi train`` can now consume the real
     N-dataset mixture this candidate searched, rather than the
     single-highest-weighted-dataset collapse #330/#442 used as a stopgap
     while there was no training-time reader.
@@ -266,7 +266,7 @@ def proxy_run_for_weights(
     Args:
         weights: Per-dataset interleave probabilities (simplex).
         datasets: Dataset paths in the same order as ``weights``.
-        base_yaml_path: A real ``soup.yaml`` under cwd that supplies all the
+        base_yaml_path: A real ``kadhi.yaml`` under cwd that supplies all the
             non-data fields (base, task, training, output). The proxy
             overlays only ``data.train`` + ``data.interleave``.
         timeout_seconds: Hard cap on the subprocess (60s..30m).

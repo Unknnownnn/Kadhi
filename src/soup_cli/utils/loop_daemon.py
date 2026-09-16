@@ -1,4 +1,4 @@
-"""Watch-daemon orchestrator for `soup loop watch` (v0.58.0).
+"""Watch-daemon orchestrator for `kadhi loop watch` (v0.58.0).
 
 The full production cycle is:
 
@@ -105,7 +105,7 @@ class WatchConfig:
     deploy_fn: DeployFn = default_deploy
     cost_fn: CostFn = default_cost
     on_iteration: Optional[Callable[[IterationRecord], None]] = None
-    # v0.71.4 #177 — pack each successful iteration as a v0.26 Soup Can +
+    # v0.71.4 #177 — pack each successful iteration as a v0.26 kadhi Can +
     # append a Registry entry (default off so existing tests / stub watchers
     # have no registry side effects).
     pack_iterations: bool = False
@@ -258,7 +258,7 @@ def watch(config: WatchConfig) -> "tuple[LoopState, int]":
     prev_registry_id: Optional[str] = None
     state = read_state(config.state_path)
     # Only promote `stopped` → `running` automatically; `paused` must
-    # survive a `soup loop watch` invocation so a SIGTERM + restart
+    # survive a `kadhi loop watch` invocation so a SIGTERM + restart
     # cycle does not silently un-pause the daemon (code-review HIGH #2).
     if state.status == "stopped":
         state = state.with_status("running")
@@ -328,7 +328,7 @@ def _pack_iteration_safely(
     config: WatchConfig,
     prev_registry_id: Optional[str],
 ) -> Optional[str]:
-    """Pack one iteration as a Soup Can; never crash the daemon.
+    """Pack one iteration as a kadhi Can; never crash the daemon.
 
     Returns the new Registry entry id (to chain as the next iteration's
     parent) on success, or the unchanged ``prev_registry_id`` on failure.

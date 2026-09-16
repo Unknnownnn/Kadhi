@@ -1,4 +1,4 @@
-"""v0.44.0 Part A — `soup monitor` GPU live-monitor primitives.
+"""v0.44.0 Part A — `kadhi monitor` GPU live-monitor primitives.
 
 Pure-Python helpers for parsing nvidia-smi CSV output and Apple Silicon
 `powermetrics` output. Subprocess invocations use list args (no shell).

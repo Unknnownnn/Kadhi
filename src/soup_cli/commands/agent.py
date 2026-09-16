@@ -2,7 +2,7 @@
 
 v0.46.0 Part B. Live ``train`` and ``eval`` wrappers print the planned
 sub-command rather than re-entering the Typer app in-process (matches the
-``soup quantize`` design from v0.44.0 Part D).
+``kadhi quantize`` design from v0.44.0 Part D).
 """
 
 from __future__ import annotations
@@ -125,7 +125,7 @@ def train(
         4, "--examples-per-endpoint", "-n", min=1, max=32,
     ),
 ):
-    """One-shot wrapper: synth + planned soup train invocation (printed)."""
+    """One-shot wrapper: synth + planned kadhi train invocation (printed)."""
     from soup_cli.utils.agent_forge import (
         load_spec_file,
         parse_spec,

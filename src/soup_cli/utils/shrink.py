@@ -1,4 +1,4 @@
-"""soup shrink — depth-prune + distill-heal (v0.71.29, arXiv:2403.17887).
+"""kadhi shrink — depth-prune + distill-heal (v0.71.29, arXiv:2403.17887).
 
 "The Unreasonable Ineffectiveness of the Deeper Layers" (Gromov et al.): rank a
 model's decoder layers by the angular distance of the residual stream across a
@@ -88,7 +88,7 @@ def decide_shrink(
 ) -> ShrinkVerdict:
     """SHIP iff ``ppl_final / ppl_original - 1 <= tolerance``.
 
-    ``decide_ship`` (soup ship) would trivially reject every shrink because
+    ``decide_ship`` (kadhi ship) would trivially reject every shrink because
     pruning always raises perplexity — so shrink has its own rule: the pruned
     (and optionally healed) model ships when its perplexity regression stays
     within ``tolerance`` (absolute ratio, default 10 %).

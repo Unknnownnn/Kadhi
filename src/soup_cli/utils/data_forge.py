@@ -4,13 +4,13 @@ Multi-stage synthetic data pipeline: docs/traces → judge generation →
 active selection (uncertainty-based pruning) → JSONL with full
 provenance graph (which doc, which judge call, which filter score).
 
-Differentiates from existing ``soup data generate`` + ``data augment``
+Differentiates from existing ``kadhi data generate`` + ``data augment``
 (single-shot) by composing chunking, judge prompts, active pruning and
 provenance into a single CLI surface.
 
 Design notes:
 - Pure-function math kernel (``chunk_document`` / ``score_uncertainty``)
-  so the same routines feed the CLI, future ``soup eval`` integration,
+  so the same routines feed the CLI, future ``kadhi eval`` integration,
   and (eventually) live trainer callbacks.
 - The ``judge`` argument is a callable so callers can plug the v0.20.0
   Ollama / Anthropic / vLLM providers, or a stub in tests. No network or
@@ -44,7 +44,7 @@ _VALID_TASKS_SET = frozenset(VALID_TASKS)
 
 # Allowlist of document extensions. Mirrors v0.42.0 `data ingest` design
 # intent — text-shaped corpora only. PDF/DOCX support intentionally lives
-# in `soup data ingest`, which feeds JSONL into this pipeline.
+# in `kadhi data ingest`, which feeds JSONL into this pipeline.
 _DOC_EXTENSIONS = frozenset({".txt", ".md", ".jsonl", ".json"})
 
 # DoS caps. These match the spirit of v0.42.0 / v0.45.0 / v0.46.0 caps.

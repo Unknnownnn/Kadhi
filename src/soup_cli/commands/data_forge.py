@@ -1,4 +1,4 @@
-"""soup data forge — Synthetic Data Forge CLI (v0.47.0 Part A / v0.53.7 #111)."""
+"""kadhi data forge — Synthetic Data Forge CLI (v0.47.0 Part A / v0.53.7 #111)."""
 
 from __future__ import annotations
 

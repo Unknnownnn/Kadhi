@@ -68,7 +68,7 @@ def consume_trigger(output_dir: str) -> bool:
 
 
 def write_trigger(output_dir: str, *, contents: Optional[str] = None) -> str:
-    """Helper for `soup train` to manually create the trigger file (testing
+    """Helper for `kadhi train` to manually create the trigger file (testing
     + scripting). Returns the resolved trigger path."""
     path = trigger_path(output_dir)
     body = contents if contents is not None else ""

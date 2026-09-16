@@ -52,7 +52,7 @@ class MaskingPlan:
     """
 
     token_mask: bool
-    """Use Soup's per-token mask -- the only option correct for multi-turn chat."""
+    """Use Kadhi's per-token mask -- the only option correct for multi-turn chat."""
 
     mask_prompt: bool
     """Set upstream's single-prefix flag; correct only for prompt/completion."""
@@ -67,7 +67,7 @@ def plan_response_masking(responses_only: bool, sample: Dict[str, Any]) -> Maski
     Dispatches on the same row shapes upstream's ``create_dataset`` does
     (``datasets.py:180-199``) rather than on a guess about the loader:
 
-    * chat rows -> Soup's per-token mask. Upstream's flag would supervise only
+    * chat rows -> Kadhi's per-token mask. Upstream's flag would supervise only
       the final assistant turn.
     * prompt/completion rows -> upstream's flag. Its single masked prefix *is*
       the whole prompt here, so it is exactly right and needs no replacement.

@@ -1,4 +1,4 @@
-"""``soup apple-adapter`` CLI — v0.68.0 Part D.
+"""``kadhi apple-adapter`` CLI — v0.68.0 Part D.
 
 HF / PEFT <-> MLX <-> Apple Foundation Models adapter conversion + signing.
 """

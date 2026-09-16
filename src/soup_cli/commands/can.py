@@ -1,4 +1,4 @@
-"""soup can — shareable .can artifact CLI (v0.26.0 Part E)."""
+"""kadhi can — shareable .can artifact CLI (v0.26.0 Part E)."""
 
 from __future__ import annotations
 

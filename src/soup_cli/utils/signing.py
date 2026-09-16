@@ -1,13 +1,13 @@
 """Ed25519 detached signing primitives (v0.71.2 #179 / #185).
 
-Shared by ``soup attest`` (#179) and ``soup adapters sign`` (#185). Pure
+Shared by ``kadhi attest`` (#179) and ``kadhi adapters sign`` (#185). Pure
 ``cryptography`` — no network, fully offline, validatable on any box. This is
 the half of the "Sigstore + ed25519" issues that the maintainer can honestly
 smoke-test on a Windows/offline machine; the Sigstore keyless path (needs an
 OIDC identity provider + Fulcio/Rekor network) stays infra-blocked and is NOT
 implemented here.
 
-``cryptography`` ships in the ``[sign]`` extra (``pip install soup-cli[sign]``)
+``cryptography`` ships in the ``[sign]`` extra (``pip install kadhi[sign]``)
 and is imported lazily so the core CLI stays light (v0.71.0 deps-split policy).
 
 Threat model: the detached signature provides *authentication* — proof the
@@ -202,7 +202,7 @@ def read_public_key_file(path: Any) -> str:
     Public keys are not secrets and may live anywhere the operator points at,
     so this does NOT enforce cwd-containment — but it DOES refuse to follow a
     planted symlink (TOCTOU) and caps the read so a ``/dev/zero`` symlink can't
-    OOM the verifier. Shared by ``soup attest verify`` and
+    OOM the verifier. Shared by ``kadhi attest verify`` and
     ``adapter_sign.verify_adapter`` for consistent hardening.
     """
     if not isinstance(path, str) or not path:

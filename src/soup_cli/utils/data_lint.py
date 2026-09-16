@@ -1,4 +1,4 @@
-"""``soup data lint`` — preference-data linter for dpo/orpo/simpo/ipo/bco/kto
+"""``kadhi data lint`` — preference-data linter for dpo/orpo/simpo/ipo/bco/kto
 (v0.71.27).
 
 ORPO/SimPO/IPO/BCO all share DPO's on-disk ``{prompt, chosen, rejected}``

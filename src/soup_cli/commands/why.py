@@ -1,4 +1,4 @@
-"""soup why — explain anomalies in the most recent (or named) training run."""
+"""kadhi why — explain anomalies in the most recent (or named) training run."""
 
 from __future__ import annotations
 

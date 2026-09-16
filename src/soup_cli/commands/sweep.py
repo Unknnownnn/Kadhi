@@ -1,4 +1,4 @@
-"""soup sweep — hyperparameter search over training configs."""
+"""kadhi sweep — hyperparameter search over training configs."""
 
 import itertools
 import math

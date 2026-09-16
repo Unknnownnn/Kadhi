@@ -232,7 +232,7 @@ def _render_markdown(data: AnnexXIData, section_lc: str) -> str:
 def render_annex_pdf(data: AnnexXIData, section: str) -> bytes:
     """Render an Annex XI or XII document as PDF bytes.
 
-    Lazy-imports ``reportlab`` (install via ``pip install soup-cli[pdf]``).
+    Lazy-imports ``reportlab`` (install via ``pip install kadhi[pdf]``).
     The PDF body is a block-level projection of the markdown rendering: ``#`` /
     ``##`` / ``###`` become heading styles, ``- `` becomes a bullet, blank
     lines become spacers (inline emphasis is not interpreted). Operator-

@@ -1,9 +1,9 @@
-"""`soup env` — hermetic env lockfile + ABI-mismatch detection (v0.64.0 Part C).
+"""`kadhi env` — hermetic env lockfile + ABI-mismatch detection (v0.64.0 Part C).
 
 The "CUDA hell" problem: a fine-tune that worked on Friday breaks on
 Monday because PyPI silently upgraded ``transformers`` past the trainer's
 compat band, or because the box rebuilt with a different CUDA. v0.34
-``soup doctor`` surfaces some of this; v0.64 makes it lockable.
+``kadhi doctor`` surfaces some of this; v0.64 makes it lockable.
 
 ``snapshot_env`` reads Python + CUDA + key package versions from the
 current interpreter via ``importlib.metadata`` (no network, no shell-out
@@ -63,9 +63,9 @@ _MAX_ENTRIES = 4096
 # Source allowlist — defends against schema drift on read.
 _VALID_SOURCES = frozenset({"pip", "conda", "system", "wheel", "unknown"})
 
-# Extras that make up a Soup TRAINING install — the environment #368 is about
-# (a training venv later contaminated by `pip install "soup-cli[serve-fast]"`).
-# `[all]` and `[dev]` both re-declare `soup-cli[train,...]`, which pip flattens,
+# Extras that make up a Kadhi TRAINING install — the environment #368 is about
+# (a training venv later contaminated by `pip install "kadhi[serve-fast]"`).
+# `[all]` and `[dev]` both re-declare `kadhi[train,...]`, which pip flattens,
 # so metadata restates the training bounds under each of these three. `[mlx]`
 # shares the same Transformers 5 range after #502, so its ABI bound is safe to
 # enforce too (including for a standalone MLX install).
@@ -178,13 +178,13 @@ class AbiCheck:
                 raise TypeError("changes entries must be str")
 
 
-# Distribution whose declared bounds `check_declared_bounds` audits — Soup's own.
+# Distribution whose declared bounds `check_declared_bounds` audits — Kadhi's own.
 _SELF_DIST = "soup-cli"
 
 
 @dataclass(frozen=True)
 class BoundViolation:
-    """One installed package that violates Soup's own declared version bound."""
+    """One installed package that violates Kadhi's own declared version bound."""
 
     name: str
     installed: str
@@ -201,7 +201,7 @@ class BoundViolation:
 
 @dataclass(frozen=True)
 class BoundsCheck:
-    """Outcome of auditing installed packages against Soup's declared bounds."""
+    """Outcome of auditing installed packages against Kadhi's declared bounds."""
 
     ok: bool
     violation_count: int
@@ -227,7 +227,7 @@ def check_declared_bounds(
     requirements: Iterable[str],
     installed: Mapping[str, str],
 ) -> BoundsCheck:
-    """Flag any *installed* package whose version violates Soup's declared bound.
+    """Flag any *installed* package whose version violates Kadhi's declared bound.
 
     ``requirements`` are raw PEP 508 strings exactly as
     ``importlib.metadata.requires`` returns them, so the bound is read from
@@ -240,7 +240,7 @@ def check_declared_bounds(
     requirement or version is skipped rather than crashing the diagnostic.
     """
     # ``packaging`` is a declared core dependency (#368 review), so it is present
-    # wherever Soup runs. If it somehow is not, the audit still degrades to
+    # wherever kadhi runs. If it somehow is not, the audit still degrades to
     # "clean" rather than breaking `env check` — but it says so first: a checker
     # that silently reports clean when it could not run is the wrong failure
     # direction (#368 review).
@@ -266,8 +266,8 @@ def check_declared_bounds(
         if not req.specifier:
             continue
         # #368 review — EVALUATE the marker, don't just name it. A requirement
-        # gated behind `extra == "X"` is only Soup's declared bound when the user
-        # opted into `soup-cli[X]`; evaluating in the base environment (no extra
+        # gated behind `extra == "X"` is only Kadhi's declared bound when the user
+        # opted into `kadhi[X]`; evaluating in the base environment (no extra
         # active) deselects it, so a package installed for other reasons (e.g.
         # wandb) is not a false-positive violation.
         #
@@ -530,7 +530,7 @@ def compute_env_hash(lock: EnvLock) -> str:
 
     Excludes ``created_at`` (and the on-disk ``schema_version``) so that
     re-snapshotting the same environment yields the same hash — which lets
-    ``soup lock write`` auto-derive ``--env-hash`` from a ``soup-env.lock``
+    ``kadhi lock write`` auto-derive ``--env-hash`` from a ``soup-env.lock``
     without the timestamp churning the closure on every run. Entries are
     sorted so package ordering does not affect the digest. The output is
     lowercase 64-hex so it is accepted by

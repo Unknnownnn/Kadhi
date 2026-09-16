@@ -1,4 +1,4 @@
-"""v0.71.8 #218 — live measurement for ``soup probe interference --measure``.
+"""v0.71.8 #218 — live measurement for ``kadhi probe interference --measure``.
 
 The v0.66.0 :mod:`soup_cli.utils.interference` matrix builder consumes a dict of
 pre-measured per-pair losses. This module produces that dict by actually loading

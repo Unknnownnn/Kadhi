@@ -1,4 +1,4 @@
-"""v0.44.0 Part D — `soup delinearize-llama4` weight reshape.
+"""v0.44.0 Part D — `kadhi delinearize-llama4` weight reshape.
 
 Llama 4 ships its fused-MoE expert weights as parameters on
 ``Llama4TextExperts`` (``...feed_forward.experts.gate_up_proj`` /

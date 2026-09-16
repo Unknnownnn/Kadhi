@@ -653,7 +653,7 @@ def _snapshot_materialization_entries(
 
     Canonical Hugging Face snapshots contain symlinks into their sibling
     ``blobs`` directory.  Only those links are followed: a crafted snapshot
-    cannot turn Soup's regular-file copy into an arbitrary-file disclosure.
+    cannot turn Kadhi's regular-file copy into an arbitrary-file disclosure.
     """
     from soup_cli.utils.paths import is_under
 

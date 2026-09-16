@@ -1,4 +1,4 @@
-"""v0.44.0 Part D — `soup merge-sharded-fsdp-weights` consolidator.
+"""v0.44.0 Part D — `kadhi merge-sharded-fsdp-weights` consolidator.
 
 v0.44.0 shipped the planner (``plan_consolidation`` / ``discover_shards``).
 v0.71.14 (#96) lifts the deferred runtime: ``consolidate_shards`` streams each

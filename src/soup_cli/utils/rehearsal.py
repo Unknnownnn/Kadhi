@@ -5,7 +5,7 @@ the old and INTERLEAVE it into the new so fine-tuning on the new task does
 not erase the previous one. No torch, no I/O.
 
 Named ``rehearsal`` rather than ``replay`` because ``utils/replay.py`` is
-already taken by v0.34.0's metric-history replay (``soup runs replay``) —
+already taken by v0.34.0's metric-history replay (``kadhi runs replay``) —
 an unrelated feature. The user-facing flag is still ``--replay``; only the
 module name differs.
 

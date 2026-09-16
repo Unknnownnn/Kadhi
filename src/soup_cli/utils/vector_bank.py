@@ -17,7 +17,7 @@ v0.67.0 shipped the schema + atomic disk I/O + validators with a deferred
 ``apply_bank_to_serve`` stub; v0.71.12 #221 lifts the stub to a live
 ``LoadedVectorBank`` (reconstructed ``P`` + per-user vectors) with a
 decode-time forward hook (``install_serve_hook``) wired into
-``soup serve --bank`` (per-request user via the ``X-User-Id`` header).
+``kadhi serve --bank`` (per-request user via the ``X-User-Id`` header).
 
 Public surface:
 
@@ -397,7 +397,7 @@ class LoadedVectorBank:
         # handles two ``X-User-Id`` requests concurrently: each request's
         # ``set_active_user`` writes its own context, and the decode hook reads
         # back the value set in the SAME call stack. One ContextVar per bank
-        # instance (there is one bank per ``soup serve`` process).
+        # instance (there is one bank per ``kadhi serve`` process).
         self._active_user_var: contextvars.ContextVar[Optional[str]] = (
             contextvars.ContextVar(
                 "soup_vector_bank_active_user", default=None
@@ -500,11 +500,11 @@ class LoadedVectorBank:
 
 
 def apply_bank_to_serve(bank: VectorBank, *, server: Any = None) -> "LoadedVectorBank":
-    """Apply a vector bank to a running ``soup serve`` instance (v0.71.12 #221).
+    """Apply a vector bank to a running ``kadhi serve`` instance (v0.71.12 #221).
 
     Reconstructs the shared projection ``P`` from ``projection_seed`` and builds
     the per-user scaling map, returning a :class:`LoadedVectorBank`. The caller
-    (``soup serve --bank``) installs the decode hook and selects the active user
+    (``kadhi serve --bank``) installs the decode hook and selects the active user
     per request via the ``X-User-Id`` header.
 
     Memory cost ≈ ``vector_dim²`` (the shared P) + ``N × vector_dim`` (per-user

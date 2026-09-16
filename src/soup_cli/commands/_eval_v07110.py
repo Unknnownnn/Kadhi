@@ -1,7 +1,7 @@
-"""v0.71.10 #202 — `soup eval citation`.
+"""v0.71.10 #202 — `kadhi eval citation`.
 
 Scores citation precision / recall / F1 per row + an aggregate, routed through
-``citation_faithful.score_citations``. Attached to the existing ``soup eval``
+``citation_faithful.score_citations``. Attached to the existing ``kadhi eval``
 Typer app via :func:`register` (mirrors the v0.55.0 / v0.61.0 / v0.65.0
 registration pattern so ``commands/eval.py`` stays under length cap).
 
@@ -124,7 +124,7 @@ def _row_predicted_expected(
 
 
 def register(app: typer.Typer, console: Console) -> None:
-    """Attach ``soup eval citation`` to the eval Typer app."""
+    """Attach ``kadhi eval citation`` to the eval Typer app."""
 
     @app.command(name="citation")
     def citation(

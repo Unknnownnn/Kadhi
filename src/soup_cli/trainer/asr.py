@@ -433,7 +433,7 @@ class AsrTrainerWrapper:
 
         self.trainer.save_model(self._output_dir)
         self.processor.save_pretrained(self._output_dir)
-        # Persist language/task so `soup infer --task asr` restores them
+        # Persist language/task so `kadhi infer --task asr` restores them
         # (set_prefix_tokens is NOT serialized by the processor).
         if self._prefix_customized:
             write_asr_sidecar(

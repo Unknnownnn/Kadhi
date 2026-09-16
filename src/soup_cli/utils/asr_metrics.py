@@ -2,9 +2,9 @@
 
 Word- and character-level error rates via Levenshtein edit distance, with a
 light Whisper-style text normalizer. No heavy dependency (no torch /
-transformers / datasets) — usable from ``soup infer --task asr``.
+transformers / datasets) — usable from ``kadhi infer --task asr``.
 :func:`word_accuracy` (= ``1 - WER``) is provided so ASR quality can feed a
-higher-is-better metric leg (e.g. ``soup ship --task-mode metric``) unchanged.
+higher-is-better metric leg (e.g. ``kadhi ship --task-mode metric``) unchanged.
 
 Semantics:
 - ``wer`` / ``cer`` are true error *rates* — edits divided by the reference

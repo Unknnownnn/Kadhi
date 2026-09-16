@@ -1,4 +1,4 @@
-"""soup train — the main training command."""
+"""kadhi train — the main training command."""
 
 from __future__ import annotations
 
@@ -563,7 +563,7 @@ def train(
         ),
     ),
 ):
-    """Start training from a soup.yaml config."""
+    """Start training from a kadhi.yaml config."""
     config_path = Path(config)
     if not config_path.exists():
         console.print(f"[red]Config not found: {config_path}[/]")
@@ -975,7 +975,7 @@ def train(
             if dry_run and not is_in_distributed():
                 # --dry-run must NEVER os.execvp into a real multi-GPU run.
                 # Without this guard the re-exec fired before the dry_run check
-                # (~350 lines below), so `soup train --dry-run --gpus N` launched
+                # (~350 lines below), so `kadhi train --dry-run --gpus N` launched
                 # a full accelerate run instead of just validating.
                 console.print(
                     f"[dim]--dry-run: skipping accelerate re-exec "
@@ -1701,7 +1701,7 @@ def train(
                 "(install `pip install soup-cli\\[carbon]`)"
             )
 
-    # --- v0.71.15 #244 --energy-out: persist for `soup bom emit --energy` -
+    # --- v0.71.15 #244 --energy-out: persist for `kadhi bom emit --energy` -
     if energy_out and _should_run_diagnose_gate_on_rank():
         if energy_measurement is not None:
             try:
@@ -1762,7 +1762,7 @@ def train(
 
 
 def _write_annex_xi(out_path: str, run_id: str, cfg, *, energy=None) -> None:
-    """Render an Annex XI doc using values from the resolved soup.yaml.
+    """Render an Annex XI doc using values from the resolved kadhi.yaml.
 
     v0.71.3 #180: the optional ``energy`` measurement populates the kWh / CO2
     fields. v0.71.3 #184: the top crawled domains are auto-extracted from the
@@ -1810,7 +1810,7 @@ def _write_annex_xi(out_path: str, run_id: str, cfg, *, energy=None) -> None:
 
 
 def _write_repro_receipt(out_path: str, run_id: str, cfg) -> None:
-    """Render an SR 11-7 receipt from the resolved soup.yaml."""
+    """Render an SR 11-7 receipt from the resolved kadhi.yaml."""
     from soup_cli.utils.repro_receipt import build_repro_receipt, write_repro_receipt
 
     seeds: dict[str, int] = {}
@@ -1874,7 +1874,7 @@ def _capture_activations(
     ``layer``, and writes the per-token activations to
     ``<output_dir>/activations/activations.json`` in the
     ``{"activations": [[...]], "layer", "num_tokens", "hidden_dim"}`` shape that
-    ``soup probe sae-diff`` / ``sleeper`` consume directly.
+    ``kadhi probe sae-diff`` / ``sleeper`` consume directly.
     """
     import json
 
@@ -1929,11 +1929,11 @@ def _capture_activations(
 
 
 def _write_energy_json(path: str, measurement: "EnergyMeasurement") -> None:
-    """Persist an ``EnergyMeasurement`` as JSON for ``soup bom emit --energy``.
+    """Persist an ``EnergyMeasurement`` as JSON for ``kadhi bom emit --energy``.
 
     Writes exactly the five fields ``EnergyMeasurement(**parsed)`` expects so
-    the producer (``soup train --track-energy --energy-out``) and the consumer
-    (``soup bom emit --energy`` — v0.71.3 #256) round-trip cleanly. Atomic +
+    the producer (``kadhi train --track-energy --energy-out``) and the consumer
+    (``kadhi bom emit --energy`` — v0.71.3 #256) round-trip cleanly. Atomic +
     cwd-contained + symlink-rejected via the shared helper (v0.71.15 #244).
     """
     import json

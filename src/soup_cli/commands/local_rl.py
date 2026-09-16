@@ -1,4 +1,4 @@
-"""``soup local-rl`` — personal-LLM flywheel daemon CLI (v0.68.0 Part E).
+"""``kadhi local-rl`` — personal-LLM flywheel daemon CLI (v0.68.0 Part E).
 
 Subcommands:
 
@@ -251,7 +251,7 @@ def train_cmd(
         console.print(f"[red]{escape(str(exc))}[/]")
         raise typer.Exit(2) from exc
     except subprocess.SubprocessError as exc:
-        # The underlying `soup train` subprocess failed (e.g. OOM / bad base).
+        # The underlying `kadhi train` subprocess failed (e.g. OOM / bad base).
         console.print(
             Panel(
                 f"[red]Training subprocess failed:[/] {escape(str(exc))}",

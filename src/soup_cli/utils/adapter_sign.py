@@ -461,7 +461,7 @@ def _read_trusted_pubkey(path: str) -> str:
 
     Delegates to the shared ``signing.read_public_key_file`` so the hardening
     (symlink rejection + size cap, no cwd-containment for keys) is identical to
-    ``soup attest verify`` (security-review M1 consolidation).
+    ``kadhi attest verify`` (security-review M1 consolidation).
     """
     from soup_cli.utils.signing import read_public_key_file
 

@@ -1,4 +1,4 @@
-"""``soup distill-prompt`` — distill prompt-heavy traces into a small FT plan (v0.68.0 Part B).
+"""``kadhi distill-prompt`` — distill prompt-heavy traces into a small FT plan (v0.68.0 Part B).
 
 Bridge between prompt-engineering and FT worlds: take a JSONL of
 large-prompt teacher calls (GPT-5 / Claude / etc.) and prepare a
@@ -230,12 +230,12 @@ def prepare_distill_dataset(
     the output row depends on ``plan.strategy``:
 
     - ``sft`` -> ``{messages: [user, assistant=teacher_response]}`` (feed to
-      ``soup train --task sft``).
+      ``kadhi train --task sft``).
     - ``preference`` -> ``{prompt, chosen=teacher_response,
-      rejected=student_baseline}`` (feed to ``soup train --task dpo``). The
+      rejected=student_baseline}`` (feed to ``kadhi train --task dpo``). The
       student model is called once per prompt for the rejected response.
     - ``kl`` -> the same ``{messages}`` rows as ``sft`` — ``DistillTrainerWrapper``
-      (``soup train --task distill``) computes the per-token logit-KL live, so
+      (``kadhi train --task distill``) computes the per-token logit-KL live, so
       no pre-computed logprobs are emitted; cross-tokenizer projection is the
       v0.70 Part B deliverable.
 

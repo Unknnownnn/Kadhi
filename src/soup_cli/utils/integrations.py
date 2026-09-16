@@ -1,6 +1,6 @@
 """v0.45.0 Part C — External integrations catalog (schema-only).
 
-Closed allowlist of integration descriptors so a future ``soup deploy
+Closed allowlist of integration descriptors so a future ``kadhi deploy
 <target>`` can know about LM Studio, ComfyUI, stable-diffusion.cpp,
 Open WebUI, etc. without each command growing its own ad-hoc list. Live
 launch wiring lands in v0.45.1.

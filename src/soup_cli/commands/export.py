@@ -1,4 +1,4 @@
-"""soup export — convert a model to GGUF format for Ollama / llama.cpp."""
+"""kadhi export — convert a model to GGUF format for Ollama / llama.cpp."""
 
 import json
 import shutil
@@ -425,7 +425,7 @@ def _merge_adapter(
 # index plus an old `transformers`. Installing it into the user's interpreter
 # silently DOWNGRADES a CUDA torch to CPU-only and breaks their training setup
 # (observed live on Windows during the v0.71.35 GGUF validation: torch
-# 2.5.1+cu -> 2.2.2+cpu, transformers 4.57 -> 4.46). Soup's `[train]` extra
+# 2.5.1+cu -> 2.2.2+cpu, transformers 4.57 -> 4.46). Kadhi's `[train]` extra
 # already provides torch / transformers / numpy, so install ONLY the extra
 # packages the convert script needs, unpinned, and never touch the rest.
 _CONVERT_EXTRA_DEPS = ("gguf", "sentencepiece", "protobuf")
@@ -576,7 +576,7 @@ def _run_quantize(llama_dir: Path, input_path: Path, output_path: Path, quant_ty
 # MSVC / Xcode are multi-config generators: they nest binaries under a
 # per-configuration subdirectory (build/bin/Release/llama-quantize.exe) rather
 # than the flat build/bin/ that single-config generators (Make/Ninja) produce.
-# Without these, `soup export --format gguf` cannot find a correctly-built
+# Without these, `kadhi export --format gguf` cannot find a correctly-built
 # llama.cpp on Windows (v0.71.35 GGUF-on-Windows validation, #70/#144).
 _CMAKE_CONFIG_DIRS = ("Release", "RelWithDebInfo", "MinSizeRel", "Debug")
 
@@ -1241,7 +1241,7 @@ def _auto_deploy_ollama(
         f"named '{ollama_name}'."
     )
 
-    # Auto-detect template from soup.yaml, fall back to chatml
+    # Auto-detect template from kadhi.yaml, fall back to chatml
     from soup_cli.commands.deploy import _auto_detect_template
 
     resolved_template = _auto_detect_template() or "chatml"
@@ -1307,7 +1307,7 @@ def _export_torchao_cli(
     quant_config: Optional[str],
     trust_remote_code: bool,
 ) -> None:
-    """Dispatch ``soup export --format torchao``.
+    """Dispatch ``kadhi export --format torchao``.
 
     Per v0.53.0 ``validate_quant_config_path`` docstring contract:
     enforce cwd containment + ``os.lstat + S_ISLNK`` rejection at CLI
@@ -1395,7 +1395,7 @@ def _export_bitnet_gguf(
     llama_cpp_path: Optional[str],
     trust_remote_code: bool,
 ) -> None:
-    """Dispatch ``soup export --format bitnet | tq1_0`` (v0.71.20 #134).
+    """Dispatch ``kadhi export --format bitnet | tq1_0`` (v0.71.20 #134).
 
     Reuses the v0.53.1 gguf convert→quantize pipeline with the TQ1_0 ternary
     flavour. Pre-merges a LoRA adapter when one is detected. Requires a built
@@ -1470,7 +1470,7 @@ def _export_gguf_advanced(
     llama_cpp_path: Optional[str],
     trust_remote_code: bool,
 ) -> None:
-    """Dispatch ``soup export --format gguf-ud --gguf-flavour <...>``.
+    """Dispatch ``kadhi export --format gguf-ud --gguf-flavour <...>``.
 
     Routes through llama.cpp's ``imatrix`` + ``quantize`` binaries. Supports
     UD-Q*_K_XL ladder, IQ*_M family, Apple/ARM Q4_0_4_4 / Q4_NL etc.

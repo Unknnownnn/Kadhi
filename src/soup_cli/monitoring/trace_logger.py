@@ -1,4 +1,4 @@
-"""Append-only JSONL request log for ``soup serve --trace-log``.
+"""Append-only JSONL request log for ``kadhi serve --trace-log``.
 
 One JSON object per request with shape::
 

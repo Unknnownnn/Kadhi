@@ -1,6 +1,6 @@
 """v0.66.0 Part E — Activation probe pack.
 
-``soup probe pack <base>`` assembles a per-base manifest of calibrated
+``kadhi probe pack <base>`` assembles a per-base manifest of calibrated
 linear probes (sleeper, SAE, truth, harm…). The pack composes with:
 
 - Part C (``soup_cli.utils.sleeper_probe``) — the live sleeper probe
@@ -10,7 +10,7 @@ linear probes (sleeper, SAE, truth, harm…). The pack composes with:
 The pack manifest is metadata only — probe weights are derived on demand
 by the relevant ``utils/<probe>.py`` module. This release intentionally
 does not auto-download from HF Hub (operators bring their own weights);
-``soup probe pack`` exposes the manifest so future v0.66.x can land a
+``kadhi probe pack`` exposes the manifest so future v0.66.x can land a
 real fetcher via ``utils/hubs.py``.
 
 Public surface:
@@ -236,7 +236,7 @@ def render_pack_json(pack: ProbePack) -> str:
 
 
 def render_pack_markdown(pack: ProbePack) -> str:
-    """Human-readable markdown for `soup probe pack <base>`.
+    """Human-readable markdown for `kadhi probe pack <base>`.
 
     All operator-controlled string fields (``base`` / probe ``name`` /
     ``kind`` / ``description``) are routed through ``_md_escape`` so a

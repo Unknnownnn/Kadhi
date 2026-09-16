@@ -1,9 +1,9 @@
-"""``soup compile`` — DSPy / GEPA / TextGrad prompt-program compiler.
+"""``kadhi compile`` — DSPy / GEPA / TextGrad prompt-program compiler.
 
 Schema + validators ship from v0.68.0 Part A; the live DSPy / GEPA /
 TextGrad orchestrator lands in v0.71.13 (#225). The optimizer libraries are
 lazy-imported with a friendly ``ImportError`` (naming ``pip install
-'soup-cli[compile]'``) so the command works without them installed.
+'kadhi[compile]'``) so the command works without them installed.
 
 Public surface:
 
@@ -451,7 +451,7 @@ def run_compile(plan: CompilePlan) -> CompileResult:
 
     Dispatches by ``plan.optimizer``: DSPy (bootstrap_fewshot / mipro / copro),
     GEPA, or TextGrad. Each branch lazy-imports its library and raises a
-    friendly ``ImportError`` (naming ``pip install soup-cli[compile]``) when it
+    friendly ``ImportError`` (naming ``pip install kadhi[compile]``) when it
     is absent. The ``_OPTIMIZER_RUN_OVERRIDE`` seam lets tests exercise the
     dispatcher + result handling without the heavy optimizer libraries.
 

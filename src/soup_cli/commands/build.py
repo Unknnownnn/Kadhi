@@ -1,4 +1,4 @@
-"""soup build — dbt-for-SFT DAG of dataset transforms (v0.69.0 Part A).
+"""kadhi build — dbt-for-SFT DAG of dataset transforms (v0.69.0 Part A).
 
 Reads a YAML manifest, validates the model DAG, prints the topological plan,
 and (with ``--dry-run``) exits cleanly. Without ``--dry-run`` the live runner

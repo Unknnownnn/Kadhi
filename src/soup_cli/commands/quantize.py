@@ -1,6 +1,6 @@
-"""v0.44.0 Part D — `soup quantize` standalone (ergonomic alias for `soup export`).
+"""v0.44.0 Part D — `kadhi quantize` standalone (ergonomic alias for `kadhi export`).
 
-Prints the equivalent `soup export ...` invocation. We intentionally do NOT
+Prints the equivalent `kadhi export ...` invocation. We intentionally do NOT
 in-process call `commands.export.export` because Typer commands aren't
 designed for re-entry from another command — pre-validation of arguments,
 signal handlers, and Rich Console lifetimes can interact badly. The user
@@ -42,10 +42,10 @@ def quantize(
         help="Destination directory (default: <model_path>-<to>).",
     ),
 ) -> None:
-    """Quantize a model - ergonomic alias for `soup export --format <to>`.
+    """Quantize a model - ergonomic alias for `kadhi export --format <to>`.
 
     Example:
-      soup quantize ./out --to gguf --bits 4
+      kadhi quantize ./out --to gguf --bits 4
     """
     canonical = to.lower().strip()
     if canonical not in VALID_FORMATS:

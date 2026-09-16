@@ -74,7 +74,7 @@ def use(
         help="Skip confirmation prompts",
     ),
 ):
-    """Copy a recipe to soup.yaml (or custom path)."""
+    """Copy a recipe to kadhi.yaml (or custom path)."""
     from soup_cli.recipes.catalog import get_recipe
 
     recipe = get_recipe(name)

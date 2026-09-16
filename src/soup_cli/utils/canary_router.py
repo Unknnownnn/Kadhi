@@ -7,7 +7,7 @@ within an iteration — and *sticky on rollback* so a flaky verdict can't
 ping-pong traffic between adapters.
 
 Why this lives in `utils/` and not inside `commands/serve.py`: the
-canary policy is a pure math kernel exercised by `soup loop watch`
+canary policy is a pure math kernel exercised by `kadhi loop watch`
 without needing a live FastAPI app. The HTTP middleware in `serve.py`
 plugs into `route()` directly.
 """
@@ -120,7 +120,7 @@ def rollback(policy: CanaryPolicy, *, reason: str = "regression") -> CanaryPolic
 
 
 # ---------------------------------------------------------------------------
-# Verdict bucket aggregation — used by `soup loop watch` to decide whether to
+# Verdict bucket aggregation — used by `kadhi loop watch` to decide whether to
 # roll back. Each per-bucket result is a {0, 1} OK/MAJOR signal (matches the
 # v0.26.0 Quant-Lobotomy verdict surface).
 # ---------------------------------------------------------------------------

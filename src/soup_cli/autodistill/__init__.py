@@ -1,4 +1,4 @@
-"""Model-free foundations for Soup's future offline AutoDistill pipeline."""
+"""Model-free foundations for Kadhi's future offline AutoDistill pipeline."""
 
 from soup_cli.autodistill.capture import (
     TeacherExpertExample,

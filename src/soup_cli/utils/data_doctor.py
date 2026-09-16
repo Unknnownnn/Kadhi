@@ -1,4 +1,4 @@
-"""``soup data doctor`` — chat-template compatibility report + loss-mask X-ray
+"""``kadhi data doctor`` — chat-template compatibility report + loss-mask X-ray
 (v0.71.27).
 
 Kills the top *silent* fine-tune failures before a single training step:
@@ -20,7 +20,7 @@ CLOSED tuple of diagnose's own failure modes, so a parallel
 is exactly what the trainer would produce — not a re-implementation.
 
 No top-level torch / transformers import — tokenizer loading is lazy so
-`soup data doctor --help` stays fast.
+`kadhi data doctor --help` stays fast.
 """
 
 from __future__ import annotations
@@ -255,7 +255,7 @@ def _build_row_labels(
     ``data.sft_format.build_format_row`` uses at train time (per-message
     train field / assistant-only / legacy full-sequence), so every check in
     this module and ``--show-mask`` agree on what the trainer would
-    actually train on for a given ``soup.yaml``. Raises on a row the
+    actually train on for a given ``kadhi.yaml``. Raises on a row the
     template can't render — callers decide whether to skip or propagate.
     """
     from soup_cli.data.loss_mask import (
@@ -672,11 +672,11 @@ def run_doctor(
     ``data.sft_format.build_format_row``'s dispatch), so the compat report's
     ``eos_in_labels``/``bos_duplication`` verdicts and the mask preview
     agree on what the trainer would actually train on for a given
-    ``soup.yaml`` — defaults match ``DataConfig``'s own defaults.
+    ``kadhi.yaml`` — defaults match ``DataConfig``'s own defaults.
 
     Raises ``ValueError`` when nothing converts to chat messages (wrong
     ``fmt``, or ``fmt`` is a preference/RAFT shape this command doesn't
-    cover — routes the caller to ``soup data lint`` / ``--show-mask``).
+    cover — routes the caller to ``kadhi data lint`` / ``--show-mask``).
     """
     if isinstance(sample_size, bool) or not isinstance(sample_size, int) or sample_size <= 0:
         raise ValueError("sample_size must be a positive int")

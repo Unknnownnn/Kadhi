@@ -1,4 +1,4 @@
-"""soup push — upload a trained model to HuggingFace Hub."""
+"""kadhi push — upload a trained model to HuggingFace Hub."""
 
 from __future__ import annotations
 
@@ -431,7 +431,7 @@ def generate_model_card_v2(
 ) -> str:
     """Model card v2 — enriched with eval scorecard, training config, lineage.
 
-    This is the generator invoked by both ``soup push`` (manual upload) and
+    This is the generator invoked by both ``kadhi push`` (manual upload) and
     the auto-push callback. When the training run wrote a sidecar
     ``training_config.yaml`` next to the adapter, we surface task / base /
     learning rate / optimizer in the card. When the caller passes a

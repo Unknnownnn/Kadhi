@@ -1,4 +1,4 @@
-"""soup registry — Local Model Registry CLI (v0.26.0 Part A)."""
+"""kadhi registry — Local Model Registry CLI (v0.26.0 Part A)."""
 
 from __future__ import annotations
 

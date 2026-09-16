@@ -256,7 +256,7 @@ class InterleaveSpec:
 def parse_interleave(
     raw: object, *, num_datasets: int,
 ) -> Optional[InterleaveSpec]:
-    """Parse an interleave directive from a ``soup.yaml`` value.
+    """Parse an interleave directive from a ``kadhi.yaml`` value.
 
     Accepts:
     - ``None`` → return ``None`` (legacy single-dataset path).
@@ -509,7 +509,7 @@ def validate_prompt_strategy(value: Optional[str]) -> Optional[str]:
 
 # --- v0.53.7 #86: pre-tokenized Arrow shard loader ------------------------
 #
-# Reads a directory produced by ``soup data preprocess`` (Arrow shards from
+# Reads a directory produced by ``kadhi data preprocess`` (Arrow shards from
 # ``datasets.Dataset.save_to_disk``). Used by SFT + Pretrain wrappers to
 # short-circuit tokenization when ``data.format='pre_tokenized'`` and
 # ``data.tokenized_path`` is set. Containment + symlink TOCTOU defence

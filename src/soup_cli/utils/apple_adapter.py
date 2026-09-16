@@ -1,4 +1,4 @@
-"""``soup apple-adapter`` — HF / PEFT ↔ MLX ↔ Apple FoundationModels (v0.68.0 Part D).
+"""``kadhi apple-adapter`` — HF / PEFT ↔ MLX ↔ Apple FoundationModels (v0.68.0 Part D).
 
 v0.71.21 (#228) lifts ``convert_apple_adapter`` to live:
 

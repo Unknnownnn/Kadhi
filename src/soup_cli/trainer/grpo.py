@@ -50,7 +50,7 @@ def _make_grpo_trainer_variant_cached(base_cls: type, variant: str) -> type:
     from soup_cli.utils.grpo_variants import apply_variant_loss
 
     class _GRPOTrainerVariant(base_cls):  # type: ignore[misc, valid-type]
-        """GRPOTrainer subclass that routes compute_loss through Soup's variants."""
+        """GRPOTrainer subclass that routes compute_loss through Kadhi's variants."""
 
         _soup_grpo_variant: str = variant
         # v0.71.11 #159 — one-shot WARNING flag so a silent fallback to the
@@ -197,7 +197,7 @@ def _select_reward_fn(
 ) -> "Any":  # Callable | list[Callable] (a single reward or a comma-split ensemble)
     """Choose the GRPO reward function (v0.71.30).
 
-    When ``tcfg.prm_reward`` is set, a trained Soup PRM scores each completion's
+    When ``tcfg.prm_reward`` is set, a trained Kadhi PRM scores each completion's
     steps and REPLACES the configured ``reward_fn`` (process-supervision). The
     returned callable rides the existing shaping + ``wrap_reward_funcs`` seam in
     :meth:`GRPOTrainerWrapper.setup` unchanged, so the v0.71.26 reward-hack
@@ -264,7 +264,7 @@ class GRPOTrainerWrapper:
         Priority:
         - MPS → BF16 only when the live runtime accepts a BF16 allocation;
           otherwise FP32. This is the same hardware-probed policy used by
-          Soup's other validated text trainers.
+          Kadhi's other validated text trainers.
         - Other non-CUDA devices (CPU / XPU) → no mixed precision.
         - ``grpo_fp16=True`` (CUDA) → ``fp16=True, bf16=False`` (unsloth
           parity).
@@ -319,7 +319,7 @@ class GRPOTrainerWrapper:
         use_unsloth = cfg.backend == "unsloth"
 
         # --- Load reward function ---
-        # v0.71.30 — when tcfg.prm_reward is set, a trained Soup PRM replaces
+        # v0.71.30 — when tcfg.prm_reward is set, a trained Kadhi PRM replaces
         # the configured reward (process-supervision); otherwise load reward_fn.
         reward_fn = _select_reward_fn(tcfg, self.device, self._trust_remote_code)
 
@@ -481,7 +481,7 @@ class GRPOTrainerWrapper:
 
         # v0.71.21 #124 — vLLM sleep mode: set TRL's GRPOConfig hook when the
         # installed TRL exposes it; otherwise print a friendly advisory
-        # (Soup's own vLLM engine factory honors sleep_mode=True).
+        # (Kadhi's own vLLM engine factory honors sleep_mode=True).
         if tcfg.vllm_sleep_mode:
             import inspect as _inspect
 

@@ -196,7 +196,7 @@ def embed_texts(
     """Embed ``texts`` -> an ``(n, d)`` float32 array with L2-normalized rows.
 
     Torch / transformers / numpy are imported lazily so this module stays
-    importable on the light core (a ``pip install soup-cli`` without the
+    importable on the light core (a ``pip install kadhi`` without the
     ``[train]`` extra).
     """
     items = _validate_texts(texts)

@@ -4,7 +4,7 @@ Public API for third-party plugins. Plugins register themselves at module
 import time via ``register_plugin(...)`` and provide hooks the trainer fires
 at well-known points (``pre_train`` / ``post_train`` / ``pre_step`` /
 ``post_step``). Plugins may also expose chat-template and model-group names as
-descriptive metadata in ``soup plugins``.
+descriptive metadata in ``kadhi plugins``.
 
 Bundled modules and third-party ``soup_cli.plugins`` entry points are discovered
 lazily by plugin-aware CLI and training paths. Third-party code and hooks are

@@ -1,13 +1,13 @@
-"""`soup advise` — the pre-flight decision (v0.54.0).
+"""`kadhi advise` — the pre-flight decision (v0.54.0).
 
 Top-level usage:
 
-  soup advise data.jsonl --goal "make our chatbot better"
+  kadhi advise data.jsonl --goal "make our chatbot better"
 
 Subcommands:
 
-  soup advise explain   — print the rubric / evidence trail of the last verdict
-  soup advise compare   — show prior verdicts from advise_history.jsonl
+  kadhi advise explain   — print the rubric / evidence trail of the last verdict
+  kadhi advise compare   — show prior verdicts from advise_history.jsonl
 
 The default invocation (with a positional data path) is the headline UX.
 """
@@ -66,7 +66,7 @@ app = typer.Typer(
 def _last_verdict_path() -> str:
     """Path to the per-user last-verdict scratch file used by `explain`.
 
-    Lives under ``~/.soup/`` so concurrent `soup advise` invocations from
+    Lives under ``~/.soup/`` so concurrent `kadhi advise` invocations from
     different shells do NOT clobber each other's scratch via a shared
     tempdir filename (review-fix policy mirroring ``history_path()``).
     """
@@ -74,7 +74,7 @@ def _last_verdict_path() -> str:
 
 
 def _write_last_verdict(verdict: Verdict) -> None:
-    """Persist the most recent verdict so `soup advise explain` can recall it.
+    """Persist the most recent verdict so `kadhi advise explain` can recall it.
 
     Atomic via ``tempfile.mkstemp`` + ``os.replace`` and rejects symlinks
     at the target — matches v0.33.0 #22 / v0.43.0 Part C / v0.44.0 Part B
@@ -196,7 +196,7 @@ def _render_roi_table(roi: ROIEstimate) -> Table:
 
 
 # ---------------------------------------------------------------------------
-# Default (callback): soup advise <data> --goal <s>
+# Default (callback): kadhi advise <data> --goal <s>
 # ---------------------------------------------------------------------------
 
 @app.command(name="run")
@@ -253,8 +253,8 @@ def advise_run(
 ) -> None:
     """Render a Verdict for the supplied dataset.
 
-    Default subcommand: `soup advise <data>` is rewritten to
-    `soup advise run <data>` by the top-level CLI dispatcher.
+    Default subcommand: `kadhi advise <data>` is rewritten to
+    `kadhi advise run <data>` by the top-level CLI dispatcher.
     """
     try:
         rows = load_advise_dataset(data)
@@ -353,7 +353,7 @@ def advise_run(
 
 
 # ---------------------------------------------------------------------------
-# `soup advise explain`
+# `kadhi advise explain`
 # ---------------------------------------------------------------------------
 
 @app.command()
@@ -375,7 +375,7 @@ def explain() -> None:
 
 
 # ---------------------------------------------------------------------------
-# `soup advise compare`
+# `kadhi advise compare`
 # ---------------------------------------------------------------------------
 
 @app.command()

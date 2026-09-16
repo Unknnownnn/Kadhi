@@ -1,4 +1,4 @@
-"""Pydantic schemas for soup.yaml config — single source of truth."""
+"""Pydantic schemas for kadhi.yaml config — single source of truth."""
 
 import re
 from urllib.parse import urlparse
@@ -39,7 +39,7 @@ _MAX_UNFROZEN_PARAMETERS = 50_000
 _MAX_UNFROZEN_PATTERN_LEN = 512
 # Reject nested-unbounded-quantifier regexes — e.g. ``(x+)+y`` / ``(a*)*`` —
 # which catastrophically backtrack (ReDoS) when re.search'd against parameter
-# names in apply_unfrozen_parameters. soup.yaml is shareable config, so the
+# names in apply_unfrozen_parameters. kadhi.yaml is shareable config, so the
 # pattern *class* is rejected at parse time, not just compile failures.
 _UNFROZEN_REDOS_RE = re.compile(r"\([^)]*[+*][^)]*\)\s*[+*]")
 
@@ -717,7 +717,7 @@ class DataConfig(BaseModel):
             raise ValueError("path must be <= 4096 chars")
         # Schema-level containment via shared `is_under_cwd` (os.path.realpath
         # + commonpath). Rejects arbitrary system paths at config load so a
-        # crafted soup.yaml fails fast instead of at first filesystem read.
+        # crafted kadhi.yaml fails fast instead of at first filesystem read.
         from soup_cli.utils.paths import is_under_cwd
 
         if not is_under_cwd(value):
@@ -938,8 +938,8 @@ class DataConfig(BaseModel):
 class AdviseConfig(BaseModel):
     """Pre-flight decision config (v0.54.0 — schema-only).
 
-    Surfaces the `soup advise` knobs through the central config schema so a
-    `soup.yaml` can carry persistent advise settings (e.g. a frozen goal
+    Surfaces the `kadhi advise` knobs through the central config schema so a
+    `kadhi.yaml` can carry persistent advise settings (e.g. a frozen goal
     string + history-log path override). Live consumption is owned by
     ``soup_cli/commands/advise.py``; this field is informational on
     ``SoupConfig`` only.
@@ -1357,7 +1357,7 @@ class TrainingConfig(BaseModel):
             "Required when reward_fn='verifiable'."
         ),
     )
-    # v0.71.30 — PRM-guided GRPO: use a trained Soup PRM as the per-step
+    # v0.71.30 — PRM-guided GRPO: use a trained Kadhi PRM as the per-step
     # reward inside GRPO. ``prm_reward`` names the PRM directory (or HF id);
     # ``prm_aggregate`` folds the per-step scalars into one reward.
     prm_reward: Optional[str] = Field(
@@ -2706,7 +2706,7 @@ class TrainingConfig(BaseModel):
         the reward_model string, matching the validation policy applied to
         cfg.base elsewhere. The Quant Menu loader (build_quantization_config_for_loader)
         already null-byte-rejects ref strings at training time; this is a
-        defence-in-depth check at config-load so a crafted soup.yaml fails
+        defence-in-depth check at config-load so a crafted kadhi.yaml fails
         fast before any trainer is constructed.
         """
         if v is None:
@@ -3950,11 +3950,11 @@ class TrainingConfig(BaseModel):
 
 
 class ShipConfig(BaseModel):
-    """`soup ship` verdict config (v0.71.39) — mirrors ``EvalGateConfig``.
+    """`kadhi ship` verdict config (v0.71.39) — mirrors ``EvalGateConfig``.
 
-    Committing the gate config to ``soup.yaml`` (under ``eval.ship``) makes the
+    Committing the gate config to ``kadhi.yaml`` (under ``eval.ship``) makes the
     SHIP / DON'T-SHIP decision reviewable in a PR diff and reproducible across
-    runs. ``soup ship --config soup.yaml`` reads these as defaults; an explicit
+    runs. ``kadhi ship --config kadhi.yaml`` reads these as defaults; an explicit
     CLI flag always wins (CLI > config > hard default).
     """
 
@@ -3987,7 +3987,7 @@ class ShipConfig(BaseModel):
         ),
     )
     # v0.73.2 shipped `--noise-floor` (#376) without its config surface, so it
-    # was the one gate-policy flag that could not be committed to soup.yaml
+    # was the one gate-policy flag that could not be committed to kadhi.yaml
     # (#406). Bounds import from ship_verdict so the schema and the CLI
     # validator (_validate_noise_floor_flag) share one source of truth.
     noise_floor: Optional[int] = Field(
@@ -4231,7 +4231,7 @@ def remap_root_level_misplaced_keys(values):
 
 
 class SoupConfig(BaseModel):
-    """Root config for soup.yaml."""
+    """Root config for kadhi.yaml."""
 
     base: str = Field(..., description="Base model name or path (HF model ID)")
     task: Literal[
@@ -5303,7 +5303,7 @@ class SoupConfig(BaseModel):
         # v0.72.3: the disk overflow tier is live. It is still NVMe-only —
         # `choose_tier` refuses spinning disks, where each step costs two seeks
         # per layer (plan P11) and the run thrashes rather than merely running
-        # slower. `soup doctor` reports the detected media type.
+        # slower. `kadhi doctor` reports the detected media type.
         # v0.72.3: any concrete batch size is supported — bigger batches are
         # where streaming PAYS OFF, since one weight read is amortised over more
         # tokens. "auto" is still refused: it resolves by OOM-probing a resident
@@ -6609,7 +6609,7 @@ TEMPLATES: dict[str, str] = {
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: sft
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/train.jsonl
@@ -6634,7 +6634,7 @@ output: ./output
 
 base: codellama/CodeLlama-7b-Instruct-hf
 task: sft
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/code_train.jsonl
@@ -6659,7 +6659,7 @@ output: ./output
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: grpo
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/reasoning_train.jsonl
@@ -6689,7 +6689,7 @@ output: ./output
 base: meta-llama/Llama-3.2-11B-Vision-Instruct
 task: sft
 modality: vision
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/vision_train.jsonl
@@ -6715,7 +6715,7 @@ output: ./output
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: sft
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/medical_train.jsonl
@@ -6745,7 +6745,7 @@ output: ./output
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: kto
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/kto_train.jsonl
@@ -6775,7 +6775,7 @@ output: ./output
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: orpo
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/preference_train.jsonl
@@ -6805,7 +6805,7 @@ output: ./output
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: bco
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/preference_train.jsonl
@@ -6835,7 +6835,7 @@ output: ./output
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: simpo
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/preference_train.jsonl
@@ -6866,7 +6866,7 @@ output: ./output
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: ipo
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/preference_train.jsonl
@@ -6898,7 +6898,7 @@ output: ./output
 
 base: meta-llama/Llama-3.1-8B
 task: pretrain
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/corpus.jsonl
@@ -6926,7 +6926,7 @@ output: ./output_pretrain
 
 base: Qwen/Qwen3-30B-A3B
 task: sft
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/train.jsonl
@@ -6957,7 +6957,7 @@ output: ./output
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: sft
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/long_context_train.jsonl
@@ -6978,7 +6978,7 @@ training:
   gradient_checkpointing: true
   rope_scaling_type: dynamic
   use_flash_attn: true
-  # use_liger: true       # pip install "soup-cli[liger]" for fused ops
+  # use_liger: true       # pip install "kadhi[liger]" for fused ops
   # use_ring_attention: true  # Multi-GPU sequence parallelism
 
 output: ./output_longctx
@@ -6994,7 +6994,7 @@ output: ./output_longctx
 
 base: BAAI/bge-base-en-v1.5
 task: embedding
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/embedding_train.jsonl
@@ -7031,7 +7031,7 @@ output: ./output_embedding
 base: Qwen/Qwen2-Audio-7B-Instruct
 task: sft
 modality: audio
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/audio_train.jsonl
@@ -7072,7 +7072,7 @@ output: ./output_audio
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: sft
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/tool_calling_train.jsonl
@@ -7097,16 +7097,16 @@ output: ./output
 # Three-stage training: 1) SFT warmup, 2) Reward model, 3) PPO alignment
 #
 # Usage:
-#   Step 1: soup train --config soup_sft.yaml       # SFT warmup
-#   Step 2: soup train --config soup_rm.yaml         # Train reward model
-#   Step 3: soup train --config soup_ppo.yaml        # PPO with reward model
+#   Step 1: kadhi train --config soup_sft.yaml       # SFT warmup
+#   Step 2: kadhi train --config soup_rm.yaml         # Train reward model
+#   Step 3: kadhi train --config soup_ppo.yaml        # PPO with reward model
 #
 # This template generates the PPO config (step 3).
-# For steps 1-2, use: soup init --template chat (SFT) and edit task to reward_model.
+# For steps 1-2, use: kadhi init --template chat (SFT) and edit task to reward_model.
 
 base: meta-llama/Llama-3.1-8B-Instruct
 task: ppo
-# backend: unsloth  # 2-5x faster, pip install "soup-cli[fast]"
+# backend: unsloth  # 2-5x faster, pip install "kadhi[fast]"
 
 data:
   train: ./data/prompts.jsonl

@@ -1,11 +1,11 @@
-"""v0.62.0 Part C — `soup steer` CLI command group.
+"""v0.62.0 Part C — `kadhi steer` CLI command group.
 
 Three subcommands:
 
-* ``soup steer train`` — fit a control vector from contrastive pairs.
-* ``soup steer apply`` — apply a stored vector at decode time (also exposed
-  via ``soup serve --steer <name>``).
-* ``soup steer list`` — list locally-stored steering vectors.
+* ``kadhi steer train`` — fit a control vector from contrastive pairs.
+* ``kadhi steer apply`` — apply a stored vector at decode time (also exposed
+  via ``kadhi serve --steer <name>``).
+* ``kadhi steer list`` — list locally-stored steering vectors.
 
 Schema + CLI surface ship in v0.62.0; the live forward-hook + per-method
 fitting kernels land in v0.62.1 (mirrors v0.50.0 / v0.52.0 / v0.61.0
@@ -241,7 +241,7 @@ def apply_steer(
 ) -> None:
     """Resolve + load a stored steering vector and print its metadata.
 
-    The live decode-time intervention is applied by ``soup serve --steer
+    The live decode-time intervention is applied by ``kadhi serve --steer
     <name> --steer-strength <s>`` (which installs the forward hook on the
     running model). This subcommand resolves the vector by name and confirms it
     loads cleanly so operators can verify an artifact before serving.

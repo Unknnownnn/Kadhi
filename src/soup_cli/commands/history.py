@@ -1,4 +1,4 @@
-"""soup history — DAG-style lineage view for a named artifact."""
+"""kadhi history — DAG-style lineage view for a named artifact."""
 
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ def history(
             )
             # v0.40.1 Part D / N6 — disambiguate model registry vs dataset
             # registry. Look up <name> in dataset registry; if found, point
-            # the user at `soup data registry`.
+            # the user at `kadhi data registry`.
             if _name_exists_in_dataset_registry(name):
                 console.print(
                     f"[dim]A dataset named '{escape(name)}' exists in the "
@@ -71,7 +71,7 @@ def history(
                         f"[yellow]({escape(desc.get('relation', ''))})[/]"
                     )
             # v0.71.4 #173 — surface attached branch pointers as a distinct
-            # lineage edge so `soup adapters branch --attach-to-registry`
+            # lineage edge so `kadhi adapters branch --attach-to-registry`
             # snapshots show up in the DAG view.
             branch_refs = [
                 art for art in store.get_artifacts(entry["id"])

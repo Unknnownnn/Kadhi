@@ -5,7 +5,7 @@ DPO generates two completions per prompt ON-POLICY at each step and asks a
 *judge* (an LLM judge) OR a *reward model* which is better — the winner becomes
 ``chosen``, the loser ``rejected``. The judge closes the loop.
 
-Data is prompt-only (like GRPO): Soup's ``{"messages": [...]}`` rows are
+Data is prompt-only (like GRPO): Kadhi's ``{"messages": [...]}`` rows are
 normalized to the OnlineDPO ``prompt`` column (chat, minus the assistant turn).
 
 **Cross-version adapter.** TRL changed the OnlineDPO API before 1.0 and in 1.x:
@@ -16,9 +16,9 @@ normalized to the OnlineDPO ``prompt`` column (chat, minus the assistant turn).
   passed as ``reward_model=`` / ``reward_processing_class=``.
 - **trl 1.x** — pairwise judges were removed; ``OnlineDPOTrainer`` moved to
   ``trl.experimental.online_dpo`` and ranks completions by ``reward_funcs=``. The
-  same Soup ``JudgeEvaluator`` is adapted to a *pointwise* reward function
+  same Kadhi ``JudgeEvaluator`` is adapted to a *pointwise* reward function
   (:func:`soup_cli.eval.judge.make_judge_reward_func`) — the same pointwise judge
-  ``soup data best-of-n`` uses. Reward models pass as ``reward_funcs=[rm]`` /
+  ``kadhi data best-of-n`` uses. Reward models pass as ``reward_funcs=[rm]`` /
   ``reward_processing_classes=[tok]``.
 
 ``_ONLINE_DPO_JUDGE_OVERRIDE`` is a test seam for injecting a synthetic Soup
@@ -59,7 +59,7 @@ def _trl_accepts(param: str) -> bool:
     DECOUPLED: trl dropped ``reward_model=`` at **0.25.0** and kept
     ``BasePairwiseJudge`` exported through **0.28.0**, so the probe said yes for
     every trl in the supported ``<0.27`` range — including whatever a fresh
-    ``pip install "soup-cli[train]"`` resolves — and the wrapper passed a keyword
+    ``pip install "kadhi[train]"`` resolves — and the wrapper passed a keyword
     removed five releases earlier::
 
         TypeError: OnlineDPOTrainer.__init__() got an unexpected keyword

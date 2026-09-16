@@ -1,4 +1,4 @@
-"""`soup merge-sharded-fsdp-weights` command.
+"""`kadhi merge-sharded-fsdp-weights` command.
 
 v0.44.0 shipped the planner; v0.71.14 (#96) lifts the live torch-side
 consolidation: by default the command loads each FSDP shard and writes a single

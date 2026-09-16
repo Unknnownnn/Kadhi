@@ -1,4 +1,4 @@
-"""v0.44.0 Part D — `soup sweep --config sweep.yaml` separate-file loader.
+"""v0.44.0 Part D — `kadhi sweep --config sweep.yaml` separate-file loader.
 
 Schema for a standalone sweep YAML so it can be version-controlled
 independently from the training config.

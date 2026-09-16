@@ -21,7 +21,7 @@ from soup_cli.utils.constants import EXPERIMENTS_DB, SOUP_DIR
 from soup_cli.utils.crash import redact_secrets
 from soup_cli.utils.process_liveness import process_is_alive as _process_is_alive
 
-# error_message is operator-facing text read in `soup runs show`, not a
+# error_message is operator-facing text read in `kadhi runs show`, not a
 # diagnostic dump — capped well short of a full traceback so one runaway
 # stack trace can't bloat the runs table (#764/#767 review).
 _MAX_ERROR_MESSAGE_CHARS = 2000
@@ -166,7 +166,7 @@ class ExperimentTracker:
 
         Lazy migration adds the v0.34.0 cost columns and the ``val_loss``
         metrics column to legacy DBs -- ``~/.soup/experiments.db`` exists on
-        every machine that has ever run ``soup train``, so the schema is
+        every machine that has ever run ``kadhi train``, so the schema is
         upgraded in place rather than assumed. Each column is gated on its own
         table's ``PRAGMA table_info``, so a second run is a no-op rather than a
         caught exception. The
@@ -507,7 +507,7 @@ class ExperimentTracker:
     def get_metric_series(self, run_id: str, metric: str) -> list[float]:
         """Per-row series of a single named metric for a run (v0.55.0).
 
-        Used by ``soup eval against`` for run-vs-run paired-bootstrap CI.
+        Used by ``kadhi eval against`` for run-vs-run paired-bootstrap CI.
         Returns an empty list when the metric does not appear in any row
         — the caller treats that as "no signal, do not gate".
 
@@ -539,7 +539,7 @@ class ExperimentTracker:
         if series:
             return series
         # Bridge to eval_results (v0.71.5 #164) — benchmark scores for
-        # `soup eval against`. Empty when neither table has data.
+        # `kadhi eval against`. Empty when neither table has data.
         return self._eval_score_series(run_id, metric)
 
     def _eval_score_series(self, run_id: str, benchmark: str) -> list[float]:

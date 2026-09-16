@@ -1,7 +1,7 @@
 """Evolutionary CMA-ES merge for LoRA adapters (v0.67.0 Part A).
 
 CMA-ES over merge weights driven by the operator's eval. Extends v0.57.0
-``soup adapters merge`` with a ``cmaes`` strategy that searches the
+``kadhi adapters merge`` with a ``cmaes`` strategy that searches the
 N-dimensional simplex of mixing weights to maximise an operator-supplied
 eval score.
 
@@ -28,7 +28,7 @@ Design notes:
 - Failures inside ``eval_fn`` are swallowed as a sentinel low score so
   one broken adapter doesn't crash the run (mirrors v0.40.3 #33 / v0.48
   proxy-failure isolation).
-- Live ``soup eval`` wiring is operator-supplied — `cmaes_merge` does
+- Live ``kadhi eval`` wiring is operator-supplied — `cmaes_merge` does
   NOT auto-load models. Callers wrap their eval suite as a closure.
 """
 
@@ -439,7 +439,7 @@ def run_cmaes_merge(
 def _read_merged_base_name(merged_dir: str) -> str:
     """Read + validate ``base_model_name_or_path`` from a merged adapter dir.
 
-    On the wired cmaes path ``merged_dir`` is always a Soup-written mkdtemp,
+    On the wired cmaes path ``merged_dir`` is always a Kadhi-written mkdtemp,
     but this is a public helper — guard the config read with a symlink
     rejection + size cap so a caller-supplied dir can't smuggle a symlink or
     a multi-GB JSON (defence-in-depth, parity with every other config read).

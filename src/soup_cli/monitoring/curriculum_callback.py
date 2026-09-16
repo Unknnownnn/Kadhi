@@ -146,7 +146,7 @@ class _DynamicCurriculumCallback_body:  # type: ignore[misc]  # noqa: N801
     BETA: the callback is live in v0.53.5 but the sampler-side consumer
     (live re-weighting of an HF Dataset sampler) is still wired through the
     existing v0.48.0 schema gate. This callback's primary deliverable is the
-    ``curriculum_history.jsonl`` record so ``soup runs curriculum-curve``
+    ``curriculum_history.jsonl`` record so ``kadhi runs curriculum-curve``
     can render the BO trajectory.
 
     Args:

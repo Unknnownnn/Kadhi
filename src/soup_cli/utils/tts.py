@@ -228,7 +228,7 @@ TTS_CODEC_PACKAGES: Mapping[str, str] = MappingProxyType({
 # Per-family emotion control templating. Emotion-conditioned families
 # (Orpheus / Oute) prepend a family-specific control string to the user turn.
 # Kept deliberately small + documented — the codec-token contents live in the
-# operator's data; Soup's per-family contribution is the emotion convention.
+# operator's data; Kadhi's per-family contribution is the emotion convention.
 _TTS_EMOTION_TEMPLATE: Mapping[str, str] = MappingProxyType({
     "orpheus": "<|emotion|>{emotion}<|/emotion|> ",
     "oute": "[emotion: {emotion}] ",

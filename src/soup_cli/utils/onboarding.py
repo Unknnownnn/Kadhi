@@ -1,6 +1,6 @@
 """v0.44.0 Part B — Studio-style onboarding wizard.
 
-Pure-Python: takes the answers as a dict and renders a complete `soup.yaml`.
+Pure-Python: takes the answers as a dict and renders a complete `kadhi.yaml`.
 The interactive prompt loop lives in `commands/init.py` and calls
 `render_onboarding_yaml(answers)` here.
 
@@ -43,7 +43,7 @@ def _check_string(value: Any, *, field: str, max_len: int) -> str:
 
 
 def render_onboarding_yaml(answers: Dict[str, Any]) -> str:
-    """Render a complete `soup.yaml` from a 5-answer dict.
+    """Render a complete `kadhi.yaml` from a 5-answer dict.
 
     Required keys: base, dataset, task, quantization, epochs.
     Optional: output (default `./out`), batch_size (default `auto`).

@@ -1,7 +1,7 @@
-"""`soup license-advisor` — pick a license-clean base for a deploy target.
+"""`kadhi license-advisor` — pick a license-clean base for a deploy target.
 
 v0.64.0 Part F. Composes with v0.60 Part E ``license_matrix.check_license_compat``
-which gates ``soup adapters merge``.
+which gates ``kadhi adapters merge``.
 """
 
 from __future__ import annotations

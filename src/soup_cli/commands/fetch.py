@@ -1,4 +1,4 @@
-"""v0.44.0 Part D — `soup fetch <namespace> <name>` example/config fetcher."""
+"""v0.44.0 Part D — `kadhi fetch <namespace> <name>` example/config fetcher."""
 
 from __future__ import annotations
 

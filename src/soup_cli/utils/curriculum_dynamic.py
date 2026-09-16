@@ -404,7 +404,7 @@ def render_curve(
 def parse_history_jsonl(rows: Sequence[Mapping]) -> List[Dict[str, object]]:
     """Validate and normalise a sequence of curriculum-history rows.
 
-    Used by ``soup runs curriculum-curve <run_id>`` to load the JSONL written
+    Used by ``kadhi runs curriculum-curve <run_id>`` to load the JSONL written
     by the dynamic callback.
 
     Args:

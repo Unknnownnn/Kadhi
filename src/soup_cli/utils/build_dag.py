@@ -1,4 +1,4 @@
-"""v0.69.0 Part A — `soup build` (dbt-for-SFT DAG).
+"""v0.69.0 Part A — `kadhi build` (dbt-for-SFT DAG).
 
 Parses a YAML manifest describing a DAG of dataset transforms (``ref``-connected
 models with ``incremental`` / ``table`` / ``view`` materialization). Validates

@@ -208,7 +208,7 @@ def maybe_enable_trl_sleep_mode(
     ``GRPOTrainer`` (server / colocate modes), so Soup cannot reach the
     engine to call ``sleep()``/``wake_up()`` directly. When the installed
     TRL exposes a ``vllm_enable_sleep_mode`` GRPOConfig parameter it is
-    set here; otherwise a yellow advisory explains that Soup's own vLLM
+    set here; otherwise a yellow advisory explains that Kadhi's own vLLM
     engine factory (``create_vllm_engine(sleep_mode=True)``) honors the
     flag for serve / custom rollout loops.
 

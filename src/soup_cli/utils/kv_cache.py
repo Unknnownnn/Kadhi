@@ -1,7 +1,7 @@
 """v0.53.0 Part C — KV cache types schema helpers + v0.71.14 #140 live wiring.
 
 Closed allowlist of ``kv_cache_type`` strings exposed to
-``soup serve --kv-cache-type <type>`` and YAML ``training.kv_cache_type``.
+``kadhi serve --kv-cache-type <type>`` and YAML ``training.kv_cache_type``.
 Mirrors the unsloth serve recipe.
 
 * ``q8_0`` — 8-bit quantized KV cache (transformers: HQQ quantized cache)

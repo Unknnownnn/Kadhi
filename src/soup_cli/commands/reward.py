@@ -1,13 +1,13 @@
-"""soup reward — synthesize a deterministic reward verifier (v0.71.40).
+"""kadhi reward — synthesize a deterministic reward verifier (v0.71.40).
 
-    soup reward synth <references.jsonl> -o reward.py
+    kadhi reward synth <references.jsonl> -o reward.py
         [--kind auto|numeric|json_schema|regex|tool_call]
 
 Infers a deterministic verifier from a dataset of reference (gold) outputs, emits a
 readable / committable ``.py`` that rides ``load_reward_fn``'s existing ``.py`` path,
 and REFUSES to emit a degenerate verifier via a mandatory calibration report.
 
-Exit codes mirror ``soup ship`` / ``soup shrink``: 0 = emitted, 2 = refused (the
+Exit codes mirror ``kadhi ship`` / ``kadhi shrink``: 0 = emitted, 2 = refused (the
 verifier could not discriminate references from perturbed negatives), 1 = usage /
 runtime error.
 """

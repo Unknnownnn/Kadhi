@@ -16,7 +16,7 @@ def build_peft_config(
     target_modules: "str | list[str]",
     task_type: str,
 ) -> dict[str, Any]:
-    """Build a peft config spec from Soup's schema LoraConfig.
+    """Build a peft config spec from Kadhi's schema LoraConfig.
 
     Returns:
         Dict with keys:

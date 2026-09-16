@@ -640,7 +640,7 @@ def prefetch_model_from_hub(
 ) -> str:
     """Snapshot ``base`` from ``hub`` into a cwd-contained cache + return path.
 
-    v0.53.10 #152 — shared helper extracted from the v0.53.8 ``soup train``
+    v0.53.10 #152 — shared helper extracted from the v0.53.8 ``kadhi train``
     pre-fetch path so chat / serve / infer / merge / export / push can route
     non-HF hubs through the same SSRF-hardened, cwd-contained snapshot flow
     without each command re-implementing the slug + containment + cache
@@ -681,7 +681,7 @@ def prefetch_model_from_hub(
         raise ValueError("base must be a non-empty string")
     if "\x00" in base or any(ord(c) < 0x20 for c in base):
         raise ValueError("base must not contain control characters")
-    # Mirror v0.53.8 ``soup train`` cache-dir slug policy: strip every
+    # Mirror v0.53.8 ``kadhi train`` cache-dir slug policy: strip every
     # path-separator and ``..`` segment so a crafted ``base: ../../etc``
     # cannot escape the cache root (Windows ``\\`` + POSIX ``/`` both
     # blocked).

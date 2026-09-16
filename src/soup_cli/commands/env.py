@@ -1,9 +1,9 @@
-"""`soup env` — hermetic env lockfile + ABI status (v0.64.0 Part C).
+"""`kadhi env` — hermetic env lockfile + ABI status (v0.64.0 Part C).
 
 Sub-commands:
-- ``soup env lock`` — snapshot the current env into ``soup-env.lock``.
-- ``soup env status`` — print currently-locked env summary.
-- ``soup env check`` — compare current env against ``soup-env.lock`` and
+- ``kadhi env lock`` — snapshot the current env into ``soup-env.lock``.
+- ``kadhi env status`` — print currently-locked env summary.
+- ``kadhi env check`` — compare current env against ``soup-env.lock`` and
   report any ABI-sensitive drift (exit 3 on drift).
 """
 
@@ -31,7 +31,7 @@ from soup_cli.utils.paths import is_under_cwd
 
 console = Console()
 
-# Both an ABI drift against the lock and an installed package violating Soup's
+# Both an ABI drift against the lock and an installed package violating Kadhi's
 # own declared dependency bound exit with this code (#368).
 DRIFT_EXIT_CODE = 3
 
@@ -130,9 +130,9 @@ def env_check_cmd(
     ),
 ) -> None:
     """Compare the current env against the lock and report drift."""
-    # Audit installed packages against Soup's OWN declared bounds first — this
+    # Audit installed packages against Kadhi's OWN declared bounds first — this
     # is independent of any lock file, so it catches the `pip install vllm`
-    # transformers/torch downgrade even for a user who never ran `soup env lock`
+    # transformers/torch downgrade even for a user who never ran `kadhi env lock`
     # (#368). The bound is read from package metadata, not a hardcoded copy.
     bounds = current_declared_bounds_check()
 

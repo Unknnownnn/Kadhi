@@ -58,7 +58,7 @@ def to_number(value: Any) -> Any:
 
 
 def config_to_yaml(config: Dict[str, Any]) -> str:
-    """Convert a migration result dict to soup.yaml YAML string.
+    """Convert a migration result dict to kadhi.yaml YAML string.
 
     Strips internal keys like _warnings before serialization.
     """

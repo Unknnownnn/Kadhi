@@ -1,4 +1,4 @@
-"""`soup tunability` — probe-train candidate bases + report Pareto frontier.
+"""`kadhi tunability` — probe-train candidate bases + report Pareto frontier.
 
 CLI surface for the v0.64.0 Part A pre-flight probe. Live LoRA probe lands
 in v0.64.1 (see ``utils/tunability._default_probe`` docstring).

@@ -1,4 +1,4 @@
-"""soup doctor — check dependency compatibility and system health."""
+"""kadhi doctor — check dependency compatibility and system health."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ console = Console()
 
 # Dependencies to check: (import_name, package_name, min_version, required)
 #
-# A core-only install (`pip install soup-cli`) is intentionally light: the CLI,
+# A core-only install (`pip install kadhi`) is intentionally light: the CLI,
 # config system, and data tools — no PyTorch. Only the core rows below are
 # required; the heavy training stack lives in EXTRA_GROUPS as one optional
 # extra, so a healthy core-only install reports no failures (#828).
@@ -65,7 +65,7 @@ EXTRA_GROUPS: list[tuple[str, list[tuple[str, str, str]]]] = [
 ]
 
 # Packages whose declared breaking-major ceiling must be reported as
-# incompatible instead of silently green-lighted by ``soup doctor``.
+# incompatible instead of silently green-lighted by ``kadhi doctor``.
 _MAX_EXCLUSIVE: dict[str, str] = {
     "transformers": "6.0.0",
     "peft": "1.0.0",
@@ -163,7 +163,7 @@ def doctor(
                     version = "?"
             version_str = str(version)
 
-            # Flag versions beyond Soup's validated compatibility band.
+            # Flag versions beyond Kadhi's validated compatibility band.
             max_excl = _MAX_EXCLUSIVE.get(pkg_name)
             if max_excl and _version_ge(version_str, max_excl):
                 status = f"[red]INCOMPATIBLE (need <{max_excl})[/]"
@@ -436,7 +436,7 @@ def _get_mlx_info() -> dict:
 
 
 def _check_mlx():
-    """Report the MLX (Apple Silicon) backend in ``soup doctor``.
+    """Report the MLX (Apple Silicon) backend in ``kadhi doctor``.
 
     MLX is an Apple Silicon-only stack, so the panel is informational rather
     than a pass/fail dependency: it shows the installed version and hardware
@@ -752,7 +752,7 @@ def _check_resources(probe_disk: bool = False):
     #
     # Opt-in behind --disk, matching this command's own --nccl convention for
     # expensive probes. Measured on the dev box: the Windows PowerShell query
-    # costs ~9 s cold and ~2.4 s warm (17.6 s -> 20.0 s on `soup doctor`), paid
+    # costs ~9 s cold and ~2.4 s warm (17.6 s -> 20.0 s on `kadhi doctor`), paid
     # by every user including the majority who never touch layer streaming. A
     # streaming run does its own lazy probe when the tier decision actually
     # depends on the answer, so nothing is lost by defaulting this off.

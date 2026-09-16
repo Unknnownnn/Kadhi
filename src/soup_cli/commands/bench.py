@@ -1,4 +1,4 @@
-"""soup bench -- simple measuring tool for model speed and memory."""
+"""kadhi bench -- simple measuring tool for model speed and memory."""
 
 import time
 from pathlib import Path

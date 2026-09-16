@@ -6,7 +6,7 @@ schedule_free / muon / dion / came_pytorch / ao_adamw_{fp8,4bit,8bit}.
 
 Schema-level allowlist + dependency advisory. Live wiring delegates to HF
 Trainer (which accepts arbitrary optimizer strings via TrainingArguments) plus
-optional adapter packages installed alongside Soup.
+optional adapter packages installed alongside Kadhi.
 
 Security:
 - Closed allowlist of optimizer names (no arbitrary string accepted at

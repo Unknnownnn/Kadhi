@@ -1,7 +1,7 @@
 """HF Space custom template directory renderer (v0.40.2 #51).
 
 Lets users supply their own ``app.py`` / ``README.md`` (+ optional
-``requirements.txt``) for ``soup deploy hf-space`` instead of the built-in
+``requirements.txt``) for ``kadhi deploy hf-space`` instead of the built-in
 ``gradio-chat`` / ``streamlit-chat`` templates.
 
 Security model — mirrors v0.29.0 Part F policy:

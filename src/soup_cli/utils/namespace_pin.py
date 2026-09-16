@@ -3,7 +3,7 @@
 Threat model: an attacker watches a popular repo on HuggingFace, waits until
 the original owner deletes it (or the repo expires), then re-creates the same
 ``owner/name`` with malicious weights. Anyone with ``soup`` pinned to that
-namespace silently pulls poison on next ``soup train`` / ``soup download``.
+namespace silently pulls poison on next ``kadhi train`` / ``kadhi download``.
 
 Defence: trust-on-first-use. The first time Soup sees a ``owner/name`` repo
 it records the author + created_at fingerprint. On every subsequent load,

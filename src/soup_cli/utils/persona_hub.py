@@ -2,7 +2,7 @@
 
 Samples prompt × persona × style combinations to drive synthetic-data diversity
 (per Tencent's Persona-Hub paper). Ships with a small bundled persona list so
-``soup data persona-mix`` works offline; operators wanting the full 200k-persona
+``kadhi data persona-mix`` works offline; operators wanting the full 200k-persona
 HF dataset can pass ``--personas <jsonl>`` from a downloaded copy.
 
 The topic-diversity metric is a pure-Python token-entropy heuristic — same

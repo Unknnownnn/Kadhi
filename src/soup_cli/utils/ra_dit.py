@@ -10,8 +10,8 @@ Meta 2023 recipe. Two-stage:
 
 Schema-only release. Both stages share the existing trainer wrappers;
 v0.62.0 ships the ``ra_dit_stage`` schema field + cross-validator so a
-``soup.yaml`` can lock both stages in a hub-shareable recipe. Live
-orchestration that chains the two stages in a single ``soup train`` call
+``kadhi.yaml`` can lock both stages in a hub-shareable recipe. Live
+orchestration that chains the two stages in a single ``kadhi train`` call
 is deferred to v0.62.1 (mirrors the v0.50.0 / v0.52.0 / v0.61.0
 stub-then-live pattern).
 """

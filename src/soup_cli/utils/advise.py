@@ -1,4 +1,4 @@
-"""Pre-flight decision engine — `soup advise` (v0.54.0).
+"""Pre-flight decision engine — `kadhi advise` (v0.54.0).
 
 Answers the question "should I fine-tune?" *before* the user spends 8 hours
 on a GPU. Heuristic-only — no GPU required for the verdict itself; the
@@ -483,7 +483,7 @@ def _base_verdict(
 ) -> Verdict:
     """Combine profile + task into a recommendation.
 
-    Rubric (advisory, encoded explicitly so `soup advise explain` can print
+    Rubric (advisory, encoded explicitly so `kadhi advise explain` can print
     the exact rule that fired):
 
     1. Preference data shape → DPO (regardless of category).
@@ -1009,7 +1009,7 @@ def synth_probe_lora_delta(
 
 
 # ---------------------------------------------------------------------------
-# Rubric rendering (`soup advise explain`)
+# Rubric rendering (`kadhi advise explain`)
 # ---------------------------------------------------------------------------
 
 def format_verdict_rubric(verdict: Verdict) -> str:

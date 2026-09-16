@@ -1,4 +1,4 @@
-"""SHIP / DON'T-SHIP verdict engine — `soup ship` (v0.71.25).
+"""SHIP / DON'T-SHIP verdict engine — `kadhi ship` (v0.71.25).
 
 After fine-tuning, answer ONE question: did the model get better, or did I
 break it? The output is a binary **SHIP / DON'T SHIP** plus a one-screen
@@ -30,7 +30,7 @@ Public surface
   ``decide_ship`` (the moat), ``render_ship_panel``, ``format_ship_rubric``,
   ``verdict_from_evidence`` (the canonical evidence reader),
   ``verdict_to_dict``, ``verdict_to_evidence`` (the inverse of the ``--evidence``
-  reader — makes ``soup ship`` output replayable as input, #312),
+  reader — makes ``kadhi ship`` output replayable as input, #312),
   ``numerics_family`` / ``numerics_from_evidence`` (the #367 judge-numerics stamp).
 """
 
@@ -109,7 +109,7 @@ _MIN_MD_FENCE_LEN = 3
 #
 # Greedy decoding is not deterministic on GPU. Measured on an H100: the same
 # model, no adapter, five runs, spread **0.015 strict / 0.020 format-blind** —
-# and `soup ship` compared against a 0.05 threshold without ever telling the
+# and `kadhi ship` compared against a 0.05 threshold without ever telling the
 # operator what its own instrument could resolve. Four of six paired deltas in
 # that session sat inside the floor.
 #
@@ -764,7 +764,7 @@ def verdict_to_evidence(
 
     ``commands/ship.py`` reads pre-computed evidence as
     ``{"task": {"mode", "base", "tuned"}, "benchmarks": {name: {"base", "tuned"}}}``.
-    This is the missing serialiser that makes ``soup ship`` *output* replayable
+    This is the missing serialiser that makes ``kadhi ship`` *output* replayable
     as *input* (#312): feeding the result back through ``--evidence`` with the
     same ``forgetting_threshold`` reproduces an identical verdict (decision +
     both legs + failed_rule). The threshold / decision / failed_rule are NOT

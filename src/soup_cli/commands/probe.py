@@ -2,12 +2,12 @@
 
 Sub-commands:
 
-- ``soup probe pack <base>``     — list calibrated probes for a base
-- ``soup probe sleeper <run-id>``— defection probe (Part C)
-- ``soup probe interference``    — pairwise adapter interference (Part D)
-- ``soup probe sae-diff``        — SAE feature diff (Part A)
+- ``kadhi probe pack <base>``     — list calibrated probes for a base
+- ``kadhi probe sleeper <run-id>``— defection probe (Part C)
+- ``kadhi probe interference``    — pairwise adapter interference (Part D)
+- ``kadhi probe sae-diff``        — SAE feature diff (Part A)
 
-Composes with ``soup diagnose`` (v0.56.0) — the four probes here are
+Composes with ``kadhi diagnose`` (v0.56.0) — the four probes here are
 the v0.66.0 "Post-train X-rays" extension to the v0.56 diagnose surface.
 """
 from __future__ import annotations
@@ -275,7 +275,7 @@ def _run_kind_probe_cli(
     render_json: Callable[[Any], str],
     render_markdown: Callable[[Any], str],
 ) -> None:
-    """Shared CLI body for ``soup probe truth`` / ``soup probe harm`` (#217).
+    """Shared CLI body for ``kadhi probe truth`` / ``kadhi probe harm`` (#217).
 
     Mirrors the sleeper command: no ``--evidence`` lists the probe metadata +
     emits a neutral OK report (matches v0.56.0 diagnose); ``--weights`` loads a

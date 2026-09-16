@@ -1,16 +1,16 @@
-"""soup shrink — depth-prune + distill-heal (v0.71.29, arXiv:2403.17887).
+"""kadhi shrink — depth-prune + distill-heal (v0.71.29, arXiv:2403.17887).
 
 Top-level CLI command (NOT a sub-group). Ranks a model's decoder layers by the
 angular distance of the residual stream across a contiguous block over a
 calibration set, drops the least-important block, optionally distill-heals, and
 emits a single dense smaller model with a before/after perplexity verdict::
 
-    soup shrink --model <id|path> --drop-ratio 0.25 --calib calib.jsonl -o shrunk
-    soup shrink --model <id|path> --drop-layers 6 --calib calib.jsonl \
+    kadhi shrink --model <id|path> --drop-ratio 0.25 --calib calib.jsonl -o shrunk
+    kadhi shrink --model <id|path> --drop-layers 6 --calib calib.jsonl \
         --heal heal.jsonl --heal-steps 200 -o shrunk
 
-Exit codes: 0 = SHIP, 2 = DON'T SHIP, 1 = runtime error (mirrors soup ship /
-soup diagnose). Heavy imports (torch/transformers) are lazy inside functions.
+Exit codes: 0 = SHIP, 2 = DON'T SHIP, 1 = runtime error (mirrors kadhi ship /
+kadhi diagnose). Heavy imports (torch/transformers) are lazy inside functions.
 """
 from __future__ import annotations
 
@@ -139,7 +139,7 @@ def _perplexity(
     ``exp(mean per-example cross-entropy)`` with ``labels = input_ids`` (the
     whole sequence is the target). Each prompt is weighted equally regardless of
     length — this is NOT token-count-weighted corpus perplexity, so the absolute
-    numbers are not directly comparable to ``soup eval`` / lm-eval-harness; the
+    numbers are not directly comparable to ``kadhi eval`` / lm-eval-harness; the
     identical procedure is applied before and after, so the SHIP/DON'T-SHIP
     *ratio* is valid. Returns ``inf`` when no example is usable.
     """
@@ -477,7 +477,7 @@ def _build_heal_config_yaml(
     out_dir: str,
     heal_rows: int,
 ) -> str:
-    """Render a distill ``soup.yaml`` that heals the pruned student.
+    """Render a distill ``kadhi.yaml`` that heals the pruned student.
 
     ``--heal-steps`` maps to epochs (there is no ``max_steps`` knob): epochs =
     ceil(steps * batch / rows), clamped to >= 1, so ~``steps`` optimiser steps
@@ -533,7 +533,7 @@ def _run_heal(
 ) -> None:
     """Distill the teacher into the pruned student, then fuse the adapter.
 
-    Writes a validated distill config, runs ``soup train`` as a subprocess
+    Writes a validated distill config, runs ``kadhi train`` as a subprocess
     (argv list, no shell — mirrors ``ra_dit_run._run_train_subprocess``), and
     merges the resulting LoRA adapter back into ``pruned_dir`` so the shipped
     artifact stays a single dense model. When ``device == "cpu"`` the subprocess

@@ -1,6 +1,6 @@
-"""`soup prune-prompt` — detect + strip a shared system-prompt prefix.
+"""`kadhi prune-prompt` — detect + strip a shared system-prompt prefix.
 
-Mines a JSONL of prompts (typically the output of `soup ingest`) for a
+Mines a JSONL of prompts (typically the output of `kadhi ingest`) for a
 static prefix that appears in >= `min_frequency` of rows, then strips it
 from the training data so the fine-tuned model internalises the prefix
 instead of needing it pinned at inference time. OpenPipe's signature

@@ -360,7 +360,7 @@ def explain_giveup(
     """Plain-English explanation of why the controller gave up (mirrors why.py).
 
     Names the signal, how long it stayed elevated, and the actions tried, so
-    ``soup diagnose`` / ``soup why`` can surface it to the operator.
+    ``kadhi diagnose`` / ``kadhi why`` can surface it to the operator.
     """
     lines = [
         "Reward-hacking mitigation gave up: the controller could not suppress "
@@ -994,7 +994,7 @@ class _RewardHackMitigationCallback_body:  # type: ignore[misc, valid-type]  # n
         """Write the controller's coefficient to the trainer.
 
         GRPO: β must be dual-written — stock ``GRPOTrainer.compute_loss`` reads
-        ``self.beta`` (the instance) while Soup's ``_GRPOTrainerVariant`` reads
+        ``self.beta`` (the instance) while Kadhi's ``_GRPOTrainerVariant`` reads
         ``self.args.beta`` (the config). PPO: ``args.kl_coef``.
         """
         trainer = self._trainer

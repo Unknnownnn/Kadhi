@@ -479,7 +479,7 @@ def _load_canary_scores(
     Two supported shapes:
 
     - ``{"baseline_scores": [...], "candidate_scores": [...]}`` — pre-scored
-      (no model load; the no-GPU workflow). Operators run ``soup eval custom``
+      (no model load; the no-GPU workflow). Operators run ``kadhi eval custom``
       against the baseline and merged adapters, then assemble the two arrays.
     - ``{"tasks": [{"prompt", "expected"}, ...]}`` — requires an injectable
       ``scorer(role, tasks) -> list[float]`` (the live path).

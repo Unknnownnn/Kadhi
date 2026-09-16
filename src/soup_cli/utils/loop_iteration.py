@@ -1,9 +1,9 @@
-"""Per-iteration artifact packing for `soup loop` (v0.58.0 Part D).
+"""Per-iteration artifact packing for `kadhi loop` (v0.58.0 Part D).
 
 Each loop iteration is summarised as a small JSON manifest under
 ``.soup-loops/<iteration_id>/iteration.json``. The directory is laid
-out so a v0.26.0 Soup Can can wrap it later without re-shaping the
-files — same naming as ``soup history`` lineage entries.
+out so a v0.26.0 kadhi Can can wrap it later without re-shaping the
+files — same naming as ``kadhi history`` lineage entries.
 
 `replay` re-reads a recorded iteration and returns its manifest +
 metric trace so the operator can run "would the loop have shipped v17
@@ -225,12 +225,12 @@ def pack_iteration_as_can(
     task: str = "dpo",
     parent_registry_id: Optional[str] = None,
 ) -> Tuple[str, str]:
-    """Pack a loop iteration as a v0.26 Soup Can + append a Registry entry.
+    """Pack a loop iteration as a v0.26 kadhi Can + append a Registry entry.
 
     Reads ``<base_dir>/<iteration_id>/iteration.json``, pushes a Registry
     entry (name derived from ``served_model``, tag ``loop-iter``), links it
     to ``parent_registry_id`` via a ``forked_from`` lineage edge so the loop
-    forms a real DAG visible through ``soup history``, and writes
+    forms a real DAG visible through ``kadhi history``, and writes
     ``<base_dir>/<iteration_id>/iteration.can``. Returns ``(can_path,
     registry_entry_id)``.
     """

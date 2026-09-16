@@ -3,7 +3,7 @@
 Pure-Python implementations sufficient for unit-level eval. For research-grade
 scoring users should still wire in `sacrebleu` / `rouge_score` via lm-eval; this
 module provides a self-contained baseline that does not require those packages
-so `soup eval custom --metric bleu` / `--metric rouge_l` works on a vanilla
+so `kadhi eval custom --metric bleu` / `--metric rouge_l` works on a vanilla
 install. The closed metric allowlist `NLG_METRICS` is shared with the schema
 field validator on `EvalConfig.nlg_metrics`.
 """

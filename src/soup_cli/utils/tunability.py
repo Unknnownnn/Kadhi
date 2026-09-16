@@ -1,4 +1,4 @@
-"""`soup tunability` — probe-train 6-10 candidate bases, report Pareto frontier.
+"""`kadhi tunability` — probe-train 6-10 candidate bases, report Pareto frontier.
 
 Before committing to a single base model, an operator can run a short LoRA
 probe on each of N candidates against a held-out dataset slice. Reports
@@ -416,7 +416,7 @@ def live_lora_probe(
     report the absolute held-out-loss drop as ``delta`` (higher = more tunable).
 
     Loads the model fresh per candidate — expensive but honest. Use it via
-    ``soup tunability --live`` or by passing ``probe_fn=live_lora_probe``.
+    ``kadhi tunability --live`` or by passing ``probe_fn=live_lora_probe``.
     """
     from soup_cli.utils import live_eval
 

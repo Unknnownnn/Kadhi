@@ -1,4 +1,4 @@
-"""Textual application for ``soup tui`` (v0.34.0 Part G).
+"""Textual application for ``kadhi tui`` (v0.34.0 Part G).
 
 Kept in its own module so the heavy ``textual`` import only fires when the
 TUI is actually launched. The class derives from ``textual.App`` if textual

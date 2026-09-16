@@ -2,7 +2,7 @@
 
 Sample → RM-score → re-pair → retrain over N rounds. Frozen plan +
 per-round artifact tracking; the actual round orchestrator (which
-would invoke ``soup train --task dpo`` between rounds) is deferred to
+would invoke ``kadhi train --task dpo`` between rounds) is deferred to
 v0.70.1 (mirrors v0.68.0 local-rl nightly-train policy).
 
 The plan models each round explicitly so the v0.70.1 runner can:
@@ -384,7 +384,7 @@ def _default_train_fn(
     pairs_path: str,
     adapter_path: str,
 ) -> None:
-    """Run a DPO round via a ``soup train`` subprocess (no shell).
+    """Run a DPO round via a ``kadhi train`` subprocess (no shell).
 
     Each round trains a fresh LoRA from ``base_model`` (always the plan's
     base, never a prior adapter dir — code-review HIGH fix) on the round's
@@ -445,7 +445,7 @@ def run_iterative_dpo(
 
     The ``sample_fn`` / ``score_fn`` / ``train_fn`` seams default to real
     implementations (load model + generate / load RM + score / subprocess
-    ``soup train``); tests inject fast fakes.
+    ``kadhi train``); tests inject fast fakes.
     """
     if not isinstance(plan, IterativeDPOPlan):
         raise TypeError(

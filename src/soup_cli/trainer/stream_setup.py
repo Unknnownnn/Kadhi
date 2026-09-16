@@ -403,7 +403,7 @@ class StreamingSetupMixin:
         a realistic outcome on exactly the small cards this feature targets,
         and on the disk tier the runtime holds one open shard handle per decoder
         layer — which is the case that leaks across back-to-back runs in one
-        process (`soup sweep`, the web UI).
+        process (`kadhi sweep`, the web UI).
 
         Yields the stack so a caller can enter further contexts conditionally.
         """
@@ -1037,7 +1037,7 @@ class StreamingSetupMixin:
                 # at seq 6144). A config predicted several times over budget is
                 # not a disagreement, and deferring it would trade a free
                 # arithmetic refusal for minutes of sharding plus a real
-                # allocation attempt at that shape — driven by a soup.yaml whose
+                # allocation attempt at that shape — driven by a kadhi.yaml whose
                 # author need not be whoever runs it.
                 raise ValueError(
                     f"{fit.reason} training.stream_vram_probe cannot overrule a "

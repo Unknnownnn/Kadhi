@@ -1,13 +1,3 @@
-# Synthetic-data workflow recipe (v0.53.9 #12)
-#
-# Pairs with `examples/synthetic_workflow.md`. Trains TinyLlama-1.1B on
-# a JSONL produced by:
-#   soup data generate --provider ollama --output ./synth_raw.jsonl
-#   soup data filter --input ./synth_raw.jsonl --output ./synth_filtered.jsonl
-#   soup data score --input ./synth_filtered.jsonl --output ./synth_scored.jsonl
-#   soup data decontaminate --input ./synth_scored.jsonl \
-#       --output ./synth_clean.jsonl --benchmarks mmlu,gsm8k
-
 base: TinyLlama/TinyLlama-1.1B-Chat-v1.0
 task: sft
 modality: text

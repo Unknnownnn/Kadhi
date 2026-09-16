@@ -1,7 +1,7 @@
 """v0.52.0 Part D — BitNet 1.58-bit fine-tuning + export schema helpers.
 
 Schema-only support for ``quantization='bitnet_1.58'`` and the new
-``soup export --format bitnet`` / ``--format tq1_0`` GGUF flavours.
+``kadhi export --format bitnet`` / ``--format tq1_0`` GGUF flavours.
 
 Live ``onebitllms`` wrapping + llama.cpp ``TQ1_0`` export wiring are
 deferred to v0.52.1 (mirrors v0.50.0 stub-then-live pattern).

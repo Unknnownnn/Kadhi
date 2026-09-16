@@ -1,4 +1,4 @@
-"""soup init — interactive project setup wizard."""
+"""kadhi init — interactive project setup wizard."""
 
 from pathlib import Path
 
@@ -39,7 +39,7 @@ def init(
         help="Overwrite existing config without prompting (v0.40.1 / M2).",
     ),
 ):
-    """Create a new soup.yaml config interactively or from a template."""
+    """Create a new kadhi.yaml config interactively or from a template."""
     output_path = Path(output)
 
     if output_path.exists() and not force:

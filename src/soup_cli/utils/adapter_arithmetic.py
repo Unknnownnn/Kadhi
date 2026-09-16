@@ -62,7 +62,7 @@ class TaskTerm:
 
 @dataclass(frozen=True)
 class ArithmeticReport:
-    """Result of a ``soup adapters arithmetic`` run."""
+    """Result of a ``kadhi adapters arithmetic`` run."""
 
     expression: str
     terms: tuple[TaskTerm, ...]

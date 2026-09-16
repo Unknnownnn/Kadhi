@@ -371,8 +371,8 @@ class PRMTrainerWrapper:
         result = self.trainer.train()
         self.trainer.save_model(str(output_dir))
         # v0.71.30 — save the tokenizer alongside the model so the PRM
-        # checkpoint is loadable standalone (soup shrink / PRMScorer /
-        # `soup train prm_reward=<dir>` all call AutoTokenizer.from_pretrained
+        # checkpoint is loadable standalone (kadhi shrink / PRMScorer /
+        # `kadhi train prm_reward=<dir>` all call AutoTokenizer.from_pretrained
         # on the dir). Previously the tokenizer was never persisted.
         self.tokenizer.save_pretrained(str(output_dir))
         return build_prm_train_result(

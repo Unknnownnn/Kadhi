@@ -1,4 +1,4 @@
-"""Adversarial verifier probe — `soup reward stress` (v0.71.41).
+"""Adversarial verifier probe — `kadhi reward stress` (v0.71.41).
 
 Turn the v0.71.26 reward-hacking expertise on a reward VERIFIER itself: does it
 pay out for degenerate completions (empty / length-padded / repetition /
@@ -22,7 +22,7 @@ from typing import Any, Optional
 # Mirrors ``reward_hack_control._DEFAULT_SENTINEL``, deliberately NOT imported
 # from it. That module resolves its ``TrainerCallback`` base at module scope, so
 # importing it costs ~4.4s of transformers+torch — and this module sits on the
-# light CLI path via ``soup reward stress``. Importing a heavy module for one
+# light CLI path via ``kadhi reward stress``. Importing a heavy module for one
 # string constant made `soup --help` 7x slower (v0.71.41 regression).
 # The two values are pinned equal by a test; if that test ever goes red, the
 # constant moved and this copy must follow.

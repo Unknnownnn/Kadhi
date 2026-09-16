@@ -243,7 +243,7 @@ class EditGovernor:
     # v0.71.16 #252 — the edit_count this governor was loaded / constructed
     # with. The atomic store save merges THIS run's increments
     # (``edit_count - _persisted_edit_count``) onto the freshly-read persisted
-    # count so two concurrent ``soup edit set`` runs cannot lose an increment.
+    # count so two concurrent ``kadhi edit set`` runs cannot lose an increment.
     # Defaults to ``-1`` (sentinel) and is initialised to ``edit_count`` in
     # ``__post_init__``. compare/repr-excluded so it never leaks into equality
     # or snapshots.
@@ -333,7 +333,7 @@ class EditGovernor:
 # ---------------------------------------------------------------------------
 # v0.71.9 #196 — SQLite persistence + cross-process locking.
 #
-# Sequential edits accumulate across separate `soup edit set` invocations, so
+# Sequential edits accumulate across separate `kadhi edit set` invocations, so
 # the governor's edit_count / last_verdict MUST survive between processes. We
 # mirror the v0.60.0 ``namespace_pin.NamespacePinStore`` policy exactly: WAL +
 # busy_timeout, a cross-process lock around get+upsert, $HOME/$CWD/$TMPDIR
@@ -525,7 +525,7 @@ class EditGovernorStore:
         The persisted ``edit_count`` is re-read INSIDE the cross-process lock
         and merged with THIS run's increments
         (``governor.edit_count - governor._persisted_edit_count``) so two
-        concurrent ``soup edit set`` runs on the same base cannot lose a count
+        concurrent ``kadhi edit set`` runs on the same base cannot lose a count
         (the pre-#252 absolute write let the last writer clobber the first).
         The governor's in-memory ``edit_count`` and baseline are then advanced
         to the merged value so a subsequent save does not double-count.
@@ -578,7 +578,7 @@ def load_governor(
     Returns a fresh governor (edit_count=0) when no prior state exists. When a
     row is found, restores ``edit_count`` / ``last_method`` / ``last_verdict``
     / ``last_norm_delta`` / ``max_sequential_edits`` so successive
-    ``soup edit set`` runs see the accumulated history.
+    ``kadhi edit set`` runs see the accumulated history.
     """
     state = store.get_state(base_model)
     resolved_policy = policy if policy is not None else NormBlowupPolicy()

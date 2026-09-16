@@ -1,4 +1,4 @@
-"""v0.69.0 Part C — `soup data gen magpie` synthetic generator.
+"""v0.69.0 Part C — `kadhi data gen magpie` synthetic generator.
 
 The Magpie technique (Xu et al. 2024) feeds an aligned chat-tuned model just
 the chat-template prefix (system + user-turn header tokens) and lets the model
@@ -47,7 +47,7 @@ GenerateFn = Callable[[str], str]
 
 @dataclass(frozen=True)
 class MagpieConfig:
-    """Frozen plan for one ``soup data gen-magpie`` invocation."""
+    """Frozen plan for one ``kadhi data gen-magpie`` invocation."""
 
     base_model: str
     provider: str

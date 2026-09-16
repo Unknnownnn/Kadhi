@@ -333,7 +333,7 @@ class MLXSFTTrainerWrapper:
     def train(self, display=None, tracker=None, run_id=None, resume_from_checkpoint=None) -> dict:
         """Run MLX training loop via mlx-lm (mlx-lm >= 0.31 API).
 
-        ``display`` / ``tracker`` / ``run_id`` drive Soup's live dashboard the
+        ``display`` / ``tracker`` / ``run_id`` drive Kadhi's live dashboard the
         way they do on the transformers path (#23). This is an adapter, not a
         reuse of ``SoupTrainerCallback``: that is a HuggingFace
         ``TrainerCallback`` wanting ``args, state, control``, while mlx-lm
@@ -421,7 +421,7 @@ class MLXSFTTrainerWrapper:
         # `ChatDataset` masks a single prefix before `messages[-1]`, so on
         # multi-turn chat it supervises the last assistant turn and silently
         # drops the earlier ones -- a different wrong distribution, not a fix.
-        # Chat rows therefore go through Soup's own per-token mask, injected
+        # Chat rows therefore go through Kadhi's own per-token mask, injected
         # via `train(loss=..., iterate_batches=...)`.
         from soup_cli.trainer.mlx_masking import plan_response_masking
 
@@ -515,7 +515,7 @@ class MLXSFTTrainerWrapper:
         total_epochs = float(cfg.training.epochs)
 
         class _Callback(TrainingCallback):
-            """mlx-lm's two hooks, adapted onto Soup's display and tracker.
+            """mlx-lm's two hooks, adapted onto Kadhi's display and tracker.
 
             Keys are mlx-lm's own, built at ``mlx_lm/tuner/trainer.py``:
             ``iteration``, ``train_loss``, ``learning_rate``,
@@ -679,7 +679,7 @@ class MLXSFTTrainerWrapper:
                         gpu_mem=gpu_mem,
                     )
 
-                # Feed the SSE buffer so `soup ui` and GET /api/train/stream
+                # Feed the SSE buffer so `kadhi ui` and GET /api/train/stream
                 # show an MLX run, not just the terminal panel. Best-effort in
                 # the same shape as the transformers path: any exception in
                 # here must never take down training. grad_norm stays None --
@@ -746,7 +746,7 @@ class MLXSFTTrainerWrapper:
                     )["lora_parameters"],
                     # #683: the EFFECTIVE masking, not a hardcoded False.
                     # `mask_prompt` stays upstream's meaning (a single masked
-                    # prefix); `response_token_mask` is Soup's per-token mask,
+                    # prefix); `response_token_mask` is Kadhi's per-token mask,
                     # which is what a multi-turn chat run actually used.
                     "mask_prompt": bool(args.mask_prompt),
                     "response_token_mask": use_token_mask,
@@ -757,7 +757,7 @@ class MLXSFTTrainerWrapper:
                     # records the recipe that ran rather than the one requested.
                     **optimizer_plan.as_metadata(),
                     # #749: the norm gradients were actually clipped at.
-                    # Recorded because MLX honours it through a Soup-side
+                    # Recorded because MLX honours it through a Kadhi-side
                     # wrapper rather than through anything mlx-lm writes, so
                     # the output dir is the only place a finished run says
                     # whether it clipped.

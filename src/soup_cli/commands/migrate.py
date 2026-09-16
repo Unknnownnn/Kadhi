@@ -1,4 +1,4 @@
-"""soup migrate — import configs from LLaMA-Factory, Axolotl, and Unsloth."""
+"""kadhi migrate — import configs from LLaMA-Factory, Axolotl, and Unsloth."""
 
 import json
 from pathlib import Path

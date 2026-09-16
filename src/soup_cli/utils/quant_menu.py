@@ -514,7 +514,7 @@ def check_quant_distributed_compat(
 
     Hard incompatibilities are emitted as plain strings; advisories use a
     leading ``"warning:"`` prefix so callers can split severity. Used by
-    ``soup train`` at startup.
+    ``kadhi train`` at startup.
     """
     family = _quant_family(quantization)
     strategy = _distributed_strategy(deepspeed, fsdp)

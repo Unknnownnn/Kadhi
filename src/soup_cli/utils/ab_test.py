@@ -2,7 +2,7 @@
 
 v0.63.0 Part D — proper sequential statistics on (latency, judge_score,
 retry_rate) instead of naive repeated Wald tests. Composes with v0.58
-`soup loop canary` so a canary deploy can be promoted (or rolled back)
+`kadhi loop canary` so a canary deploy can be promoted (or rolled back)
 as soon as the evidence clears the threshold, not at a fixed sample size.
 
 Why mSPRT and not a t-test:

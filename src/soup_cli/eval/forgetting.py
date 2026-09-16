@@ -168,8 +168,8 @@ def score_answer(output: str, answer: str) -> bool:
 # rather than being rounded away).
 #
 # PROVENANCE / decontamination: every item below is ORIGINAL, hand-authored for
-# Soup. NO row is copied from MMLU / GSM8K / HellaSwag / any public benchmark —
-# the gate suite must itself pass ``soup data decontaminate``. Answers are
+# Kadhi. NO row is copied from MMLU / GSM8K / HellaSwag / any public benchmark —
+# the gate suite must itself pass ``kadhi data decontaminate``. Answers are
 # scored by ``score_answer`` (extraction + boundary match), never raw substring.
 # ---------------------------------------------------------------------------
 

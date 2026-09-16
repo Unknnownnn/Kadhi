@@ -1,4 +1,4 @@
-"""``soup distill-prompt`` CLI — v0.68.0 Part B.
+"""``kadhi distill-prompt`` CLI — v0.68.0 Part B.
 
 Distill prompt-heavy traces into a small FT plan.
 """

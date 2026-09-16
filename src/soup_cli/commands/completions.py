@@ -1,6 +1,6 @@
-"""`soup completions <shell>` — emit a bash / zsh / fish completion script.
+"""`kadhi completions <shell>` — emit a bash / zsh / fish completion script.
 
-Sourceable script: `eval "$(soup completions bash)"` adds tab-completion
+Sourceable script: `eval "$(kadhi completions bash)"` adds tab-completion
 for the `soup` command in the current shell. Designed for `eval`
 consumption — every output goes to stdout exactly once, no panels or
 banners.

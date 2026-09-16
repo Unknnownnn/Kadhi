@@ -1,10 +1,10 @@
-"""Pre-wired production stages for `soup loop watch` (v0.71.4 #176).
+"""Pre-wired production stages for `kadhi loop watch` (v0.71.4 #176).
 
 v0.58.0 shipped the watch daemon with no-op default stage callbacks; this
 module supplies real harvest / train / gate / deploy callables that compose
 the existing v0.26.0 trace-to-preference, eval-gate, and v0.30.0 multi-adapter
-deploy surfaces. Operators opt in via ``soup loop init --pre-wired`` (or
-``soup loop watch --pre-wired``).
+deploy surfaces. Operators opt in via ``kadhi loop init --pre-wired`` (or
+``kadhi loop watch --pre-wired``).
 
 Each callable matches the ``HarvestFn`` / ``TrainFn`` / ``GateFn`` /
 ``DeployFn`` protocols from ``loop_daemon``. Heavy deps (transformers / peft /
@@ -123,12 +123,12 @@ def harvest_from_traces(state: LoopState) -> Mapping[str, object]:
 
 
 # ---------------------------------------------------------------------------
-# Train — generated DPO YAML → `soup train` subprocess
+# Train — generated DPO YAML → `kadhi train` subprocess
 # ---------------------------------------------------------------------------
 
 
 def _render_dpo_yaml(state: LoopState, pairs_path: str, output_dir: str) -> str:
-    """Render a minimal DPO ``soup.yaml`` referencing the harvested pairs."""
+    """Render a minimal DPO ``kadhi.yaml`` referencing the harvested pairs."""
     import yaml
 
     base = (
@@ -149,7 +149,7 @@ def _render_dpo_yaml(state: LoopState, pairs_path: str, output_dir: str) -> str:
 def train_dpo_from_pairs(
     state: LoopState, ctx: Mapping[str, object]
 ) -> Mapping[str, object]:
-    """Train a DPO adapter from harvested pairs via a ``soup train`` subprocess.
+    """Train a DPO adapter from harvested pairs via a ``kadhi train`` subprocess.
 
     Returns ``{run_id, skipped, adapter_path}``. Skips (no run) when the
     harvest produced no pairs. The subprocess is argv-list (no shell);

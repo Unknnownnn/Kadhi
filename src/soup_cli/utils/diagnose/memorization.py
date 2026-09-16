@@ -83,7 +83,7 @@ def score_memorization(
     When ``tokenizer`` is supplied (v0.71.6 #167) the prefix/suffix split AND
     the echo-overlap are computed over sub-word tokens (resolved ONCE up front,
     not per row) instead of whitespace words — catching BPE-level memorization
-    that whitespace tokenisation misses. The live ``soup diagnose`` wiring of
+    that whitespace tokenisation misses. The live ``kadhi diagnose`` wiring of
     ``--tokenizer`` lands with the live probe runner (#165).
     """
     if not isinstance(training_rows, Sequence):

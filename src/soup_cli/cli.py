@@ -216,7 +216,7 @@ app.add_typer(
     help="Tokenizer tools: train a BPE tokenizer from JSONL (v0.53.9).",
 )
 
-# v0.54.0 — `soup advise` pre-flight decision engine.
+# v0.54.0 — `kadhi advise` pre-flight decision engine.
 from soup_cli.commands import advise as _advise_cmd  # noqa: E402
 
 app.add_typer(
@@ -228,7 +228,7 @@ app.add_typer(
     ),
 )
 
-# v0.56.0 — `soup diagnose` post-training failure-mode report card.
+# v0.56.0 — `kadhi diagnose` post-training failure-mode report card.
 from soup_cli.commands import diagnose as _diagnose_cmd  # noqa: E402
 
 app.command(
@@ -239,7 +239,7 @@ app.command(
     ),
 )(_diagnose_cmd.diagnose)
 
-# v0.71.25 — `soup ship` SHIP / DON'T-SHIP verdict engine.
+# v0.71.25 — `kadhi ship` SHIP / DON'T-SHIP verdict engine.
 from soup_cli.commands import ship as _ship_cmd  # noqa: E402
 
 app.add_typer(
@@ -251,7 +251,7 @@ app.add_typer(
     ),
 )
 
-# v0.58.0 — `soup loop` CLI-first data flywheel capstone.
+# v0.58.0 — `kadhi loop` CLI-first data flywheel capstone.
 from soup_cli.commands import loop as _loop_cmd  # noqa: E402
 
 app.add_typer(
@@ -295,7 +295,7 @@ from soup_cli.commands import airgap as _airgap_cmd  # noqa: E402
 
 app.command(name="airgap-bundle")(_airgap_cmd.airgap_bundle)
 
-# v0.61.0 — Unlearning & Knowledge Edit: `soup edit set / diff`.
+# v0.61.0 — Unlearning & Knowledge Edit: `kadhi edit set / diff`.
 from soup_cli.commands import edit as _edit_cmd  # noqa: E402
 
 app.add_typer(
@@ -307,7 +307,7 @@ app.add_typer(
     ),
 )
 
-# v0.62.0 Part C — Activation steering: `soup steer train / apply / list`.
+# v0.62.0 Part C — Activation steering: `kadhi steer train / apply / list`.
 from soup_cli.commands import steer as _steer_cmd  # noqa: E402
 
 app.add_typer(
@@ -439,7 +439,7 @@ app.add_typer(
     ),
 )
 
-# v0.67.0 Part E — soup.lock shared run lockfile.
+# v0.67.0 Part E — kadhi.lock shared run lockfile.
 from soup_cli.commands import lock as _lock_cmd  # noqa: E402
 
 app.add_typer(
@@ -482,7 +482,7 @@ app.add_typer(
     help="Personal-LLM flywheel daemon (init / status / record / harvest / train) (v0.68.0).",
 )
 
-# v0.69.0 Part A — `soup build` (dbt-for-SFT DAG).
+# v0.69.0 Part A — `kadhi build` (dbt-for-SFT DAG).
 from soup_cli.commands import build as _build_cmd  # noqa: E402
 
 app.command(
@@ -490,7 +490,7 @@ app.command(
     help="dbt-for-SFT DAG: validate + plan dataset transforms (v0.69.0 Part A).",
 )(_build_cmd.build_cmd)
 
-# v0.69.0 Part B — `soup expect` (expectations suite).
+# v0.69.0 Part B — `kadhi expect` (expectations suite).
 from soup_cli.commands import expect as _expect_cmd  # noqa: E402
 
 app.command(
@@ -498,7 +498,7 @@ app.command(
     help="Run an expectations suite against a JSONL dataset (v0.69.0 Part B).",
 )(_expect_cmd.expect_cmd)
 
-# v0.70.0 Part E — `soup iterative-dpo` (iterative DPO loop driver).
+# v0.70.0 Part E — `kadhi iterative-dpo` (iterative DPO loop driver).
 from soup_cli.commands import iterative_dpo as _iterative_dpo_cmd  # noqa: E402
 
 app.add_typer(
@@ -507,7 +507,7 @@ app.add_typer(
     help="Iterative DPO loop driver (v0.70.0 Part E).",
 )
 
-# v0.71.10 #200 — `soup ra-dit` (two-stage RA-DIT orchestrator).
+# v0.71.10 #200 — `kadhi ra-dit` (two-stage RA-DIT orchestrator).
 from soup_cli.commands import ra_dit as _ra_dit_cmd  # noqa: E402
 
 app.add_typer(
@@ -542,7 +542,7 @@ app.add_typer(
     help="Model Context Protocol server - drive Soup from any MCP client (v0.71.28).",
 )
 
-# v0.71.29 — `soup shrink` depth-prune + distill-heal.
+# v0.71.29 — `kadhi shrink` depth-prune + distill-heal.
 from soup_cli.commands import shrink as _shrink_cmd  # noqa: E402
 
 app.command(
@@ -553,7 +553,7 @@ app.command(
     ),
 )(_shrink_cmd.shrink)
 
-# v0.71.33 — `soup draft` train-your-own speculative-decoding draft.
+# v0.71.33 — `kadhi draft` train-your-own speculative-decoding draft.
 from soup_cli.commands import draft as _draft_cmd  # noqa: E402
 
 app.add_typer(
@@ -565,7 +565,7 @@ app.add_typer(
     ),
 )
 
-# v0.71.40 — `soup reward synth` auto-generate a deterministic verifier.
+# v0.71.40 — `kadhi reward synth` auto-generate a deterministic verifier.
 from soup_cli.commands import reward as _reward_cmd  # noqa: E402
 
 app.add_typer(
@@ -581,8 +581,8 @@ app.add_typer(
 def _rewrite_advise_argv(argv: list) -> list:
     """Inject `run` between `advise` and a non-subcommand first argument.
 
-    Lets users type ``soup advise data.jsonl`` instead of the explicit
-    ``soup advise run data.jsonl``. Click's group/positional collision
+    Lets users type ``kadhi advise data.jsonl`` instead of the explicit
+    ``kadhi advise run data.jsonl``. Click's group/positional collision
     makes the bare-positional design impossible at the parser level, so
     we rewrite argv before Typer ever sees it.
 
@@ -705,7 +705,7 @@ def _installed_extras() -> list[str]:
                 if not req.marker.evaluate({"extra": extra}):
                     continue
                 if req.name.lower().replace("_", "-") == "soup-cli":
-                    # Self-reference (e.g. all = ["soup-cli[train,...]"]):
+                    # Self-reference (e.g. all = ["kadhi[train,...]"]):
                     # it names our own extras, not a third-party package.
                     continue
                 names.append(req.name)
@@ -924,7 +924,7 @@ def run():
 
     start_time = time.monotonic()
 
-    # v0.54.0 — rewrite `soup advise <data>` → `soup advise run <data>`.
+    # v0.54.0 — rewrite `kadhi advise <data>` → `kadhi advise run <data>`.
     sys.argv = _rewrite_advise_argv(sys.argv)
     argv_snapshot = list(sys.argv)
     try:

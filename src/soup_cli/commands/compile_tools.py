@@ -1,4 +1,4 @@
-"""``soup compile-tools`` CLI — v0.68.0 Part C.
+"""``kadhi compile-tools`` CLI — v0.68.0 Part C.
 
 Generate tool schemas + descriptions optimized via textual gradients.
 """

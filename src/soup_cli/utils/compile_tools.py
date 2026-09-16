@@ -1,9 +1,9 @@
-"""``soup compile-tools`` — TextGrad / GEPA tool-schema optimizer.
+"""``kadhi compile-tools`` — TextGrad / GEPA tool-schema optimizer.
 
 Generate tool schemas + descriptions optimized via textual gradients.
 Schema + validators from v0.68.0 Part C; the live optimizer pass lands in
 v0.71.13 (#227), lazy-importing TextGrad / GEPA with a friendly
-``ImportError`` (``pip install "soup-cli[compile]"``).
+``ImportError`` (``pip install "kadhi[compile]"``).
 
 Composes with v0.46 Agent Forge (OpenAPI / MCP / GraphQL parser) — Agent
 Forge produces the spec, ``compile-tools`` optimises the descriptions.

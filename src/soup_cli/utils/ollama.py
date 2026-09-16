@@ -53,7 +53,7 @@ OLLAMA_TEMPLATES: Dict[str, str] = {
     ),
 }
 
-# Map Soup data formats to Ollama template names
+# Map kadhi data formats to Ollama template names
 FORMAT_TO_TEMPLATE: Dict[str, str] = {
     "chatml": "chatml",
     "alpaca": "llama",
@@ -67,7 +67,7 @@ FORMAT_TO_TEMPLATE: Dict[str, str] = {
 # Valid model name pattern: alphanumeric, hyphens, underscores, colons (for tags)
 _MODEL_NAME_RE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._:-]*$")
 
-# Soup-deployed model prefix
+# Kadhi-deployed model prefix
 SOUP_MODEL_PREFIX = "soup-"
 
 # Allowed Ollama PARAMETER keys (prevents injection of arbitrary directives)
@@ -142,7 +142,7 @@ def detect_ollama() -> Optional[str]:
 
 
 def infer_chat_template(config_format: Optional[str]) -> Optional[str]:
-    """Map a Soup config format to an Ollama template name.
+    """Map a kadhi config format to an Ollama template name.
 
     Returns template name (key into OLLAMA_TEMPLATES) or None if unknown.
     """
@@ -244,7 +244,7 @@ def deploy_to_ollama(name: str, modelfile_content: str) -> Tuple[bool, str]:
 
 
 def list_soup_models() -> List[Dict[str, str]]:
-    """List Ollama models deployed by Soup (prefixed with soup-).
+    """List Ollama models deployed by Kadhi (prefixed with soup-).
 
     Returns list of dicts with 'name' and 'size' keys.
     """

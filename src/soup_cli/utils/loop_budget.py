@@ -1,4 +1,4 @@
-"""Cost + budget guardrails for `soup loop` (v0.58.0 Part C).
+"""Cost + budget guardrails for `kadhi loop` (v0.58.0 Part C).
 
 Two orthogonal rate limits:
 

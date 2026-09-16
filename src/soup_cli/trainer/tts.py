@@ -11,7 +11,7 @@ and layers TTS-specific behaviour on top:
 * **Pre-encoded chat mode** (live, validated): the operator runs the family's
   audio codec OFFLINE, so the assistant turn already carries the codec-token
   string. Training is then plain SFT cross-entropy and runs on any GPU.
-  Soup's per-family contribution here is (a) emotion-control templating for
+  Kadhi's per-family contribution here is (a) emotion-control templating for
   emotion-conditioned families and (b) registration of operator-supplied
   codec special tokens (``data.new_special_tokens``) with an embedding resize.
 * **Live-codec mode** (``data.format == 'audio'``): encoding raw audio into

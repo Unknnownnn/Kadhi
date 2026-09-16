@@ -1,4 +1,4 @@
-"""Canary discovery — `soup eval discover` (v0.55.0 Part B).
+"""Canary discovery — `kadhi eval discover` (v0.55.0 Part B).
 
 Splits a training dataset into three behaviour-bearing groups:
 
@@ -10,7 +10,7 @@ Splits a training dataset into three behaviour-bearing groups:
   trip if the adapter regurgitates training prefixes verbatim.
 
 Pure functions — no torch / no GPU. The base model is accepted as a
-string for the signature compatibility with v0.56.0 ``soup diagnose``;
+string for the signature compatibility with v0.56.0 ``kadhi diagnose``;
 the helper does not load it.
 
 Public surface

@@ -1,7 +1,7 @@
 """Cross-project verdict history (v0.54.0 Part C).
 
 Stores accepted/rejected verdicts + outcomes as a local JSONL log so
-`soup advise compare` can render prior decisions. Separate from
+`kadhi advise compare` can render prior decisions. Separate from
 ``soup_cli/registry`` (which tracks trained model artifacts) — verdicts
 are decision records, not training artifacts.
 
@@ -269,7 +269,7 @@ def load_history(
 
     Returns an empty list when the file does not exist. Malformed lines are
     skipped silently (a corrupted line from a partial write must NOT crash
-    `soup advise compare`).
+    `kadhi advise compare`).
     """
     if isinstance(limit, bool):
         raise TypeError("limit must not be bool")
